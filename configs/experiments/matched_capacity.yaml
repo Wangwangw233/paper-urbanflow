@@ -1,0 +1,23 @@
+schema_version: 1
+experiment: matched_capacity
+description: >-
+  Road, mobility-inferred and permuted-mobility media at equal nominal block
+  count.  This is a sufficiency comparison, not a source-only prediction.
+capacity_grids:
+  Porto: [1, 4, 16, 64, 256, 1984]
+  SF: [1, 3, 12, 44, 176, 704, 5512]
+  Chengdu: [1, 4, 16, 64, 225, 900, 7080]
+selected_rank:
+  Porto: 1984
+  SF: 5512
+  Chengdu: 7080
+inputs:
+  road_geometry: external GIS raster
+  mobility_medium: TRAIN observations
+  permutation: preserve values, partition and nominal block count
+outputs:
+  results: results/frozen/anisotropy/partF_summary.json
+  figure_panel: figures/main/fig04_anisotropy_road_tests.pdf
+limitations:
+  - Chengdu uses four alternate-hour held-out dates; its interval is descriptive.
+  - Equal nominal capacity does not equal equal information.

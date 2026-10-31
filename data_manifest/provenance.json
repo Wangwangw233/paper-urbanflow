@@ -1,0 +1,20 @@
+{
+ "export_schema": 2,
+ "layout": "src/urbanflow + experiments + results/frozen + figures",
+ "reference_digest": "b7b85d7864eaf93c7916b1f4dfd24e9d23a4c7c807457c5767558905a9860566",
+ "upstream_reference_digest": "833a07ff7d5e9adbabef6818f6a36c10a8dfd30f521841eea7c8ffafe7676ceb",
+ "path_policy": "URBANFLOW_ROOT or <repo>/external_data; no workstation path fallback",
+ "source_policy": "aggregate frozen products only; no raw trajectories or model weights",
+ "paper_sync": "paper sources are preserved; figure files are canonical under figures/",
+ "manifest_files": [
+  "checksums.sha256",
+  "data.csv",
+  "data_dictionary.md",
+  "datasets.md",
+  "external_inputs.csv",
+  "figures.csv",
+  "files.csv",
+  "preprocessing.md",
+  "provenance.json"
+ ]
+}

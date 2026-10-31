@@ -1,0 +1,18 @@
+schema_version: 1
+experiment: anisotropy
+description: >-
+  Local response and road-support tensors, source-covariance weighting, and a
+  spectrum-matched rotation null for G_theta.
+tensors:
+  response: "Sigma_C = L_c C_R C_R^T L_c^T"
+  road: "Sigma_U = L_c U_R U_R^T L_c^T"
+  source_weighted: "Sigma_response = L_c C_R Sigma_xx C_R^T L_c^T"
+null:
+  draws: 999
+  seed: 20261031
+  construction: "K_0 = Q_0 Lambda V^T with Haar Q_0 in ROAD output space"
+  primary_estimate: archived tensors
+outputs:
+  anisotropy_null: results/frozen/anisotropy/anisotropy_null.json
+  provenance: results/frozen/anisotropy/gtheta_provenance.json
+  figure: figures/main/fig04_anisotropy_road_tests.pdf

@@ -1,80 +1,136 @@
-# UrbanFlow public-release candidate
+# UrbanFlow
 
-Code and small frozen products for **Road-supported effective constitutive coupling and anisotropic routing responses in urban mobility**.
+Reference code and frozen products for a study of **road-supported effective
+constitutive coupling between source-sink patterns and anisotropic urban
+routing**. The repository separates the numerical reference implementation,
+experiment entry points, frozen results and figure/table reproduction.
 
 Repository: https://github.com/Wangwangw233/paper-urbanflow
 
-> **Candidate, not yet an open-source release.** The authors must still choose a license and finalize the citation metadata. The current paper and figures are synchronized and verified. `LICENSE` intentionally grants no new rights. No DOI or author metadata is invented here.
+## What the code computes
 
-## Three reproduction levels
+For a city lattice, the aligned cache stores signed face fluxes `F_t`. The
+incidence matrix `D` maps faces to cells, so `x_t = D F_t` is the source-sink
+balance and `P0 = I - D^+ D` projects onto the divergence-free subspace. The
+road-supported response is estimated in road coordinates
+`y_t = U_R^T P0 F_t`, with a ridge operator selected on VAL and evaluated on
+held-out dates. The four scoring frames are P (raw), D (departure), I
+(identity-recombined) and CLIM (source-free phase mean). The code also
+implements phase-sensitive frequency metrics, local anisotropy tensors and
+matched-capacity diagnostics.
 
-| level | what is included | inputs and limits |
-|---|---|---|
-| **1. Frozen figure redraw** | Plotting code, 11 reference PDFs, and small aggregate frozen arrays | Runs without raw trajectories or model fitting. `frozen/source_spectra.npz` and `frozen/reconstruction.npz` contain only arrays needed for display; they are not substitutes for the large scientific inputs from which they were derived. PDF metadata and rasterization can differ by environment, so byte-identical PDFs are not claimed. |
-| **2. Core recomputation** | `urbanflow_ref`: aligned-field loading, geometry, road projection, ridge evaluation, frozen splits and numeric goldens | **Requires external frozen caches, bases, geometry and split files.** They are not bundled. `manifest/data.csv` lists their relative paths, sizes and pinned hashes. A full regression also requires every object in the manifest. |
-| **3. Raw end-to-end rebuild** | Not included in this candidate | Raw trajectory ingestion, registration, road downloading, field construction and model training still require a separate privacy/license review and their original large inputs. No command in this repository claims to perform this level. |
+The estimated relation is partial and city-dependent; the repository does not
+encode a claim that road geometry alone causes the observed coupling. See
+`docs/known_limitations.md`.
 
-## Environment and smoke tests
+## Cities
 
-Python 3.10+ is recommended; see `docs/ENVIRONMENT.md` for the exact environment used for this export. Install the small plotting/compute stack:
+| City | Source | Grid | Time window |
+|---|---|---|---|
+| Porto | ECML/PKDD taxi trajectories | 32 x 32, 250 m | 24 h |
+| San Francisco | Cabspotting | 32 x 88, 250 m | 24 h |
+| Chengdu | DiDi ride-hailing sample | 60 x 60, 250 m | 06-23 h observed block |
+
+Exact release identifiers were not archived and are marked `UNKNOWN` in
+`data_manifest/datasets.md`. No individual-level trajectories are included.
+
+## Installation
 
 ```bash
 python -m pip install -r requirements.txt
+python -m pip install -e .
+```
+
+Python 3.10+ is recommended. See `docs/ENVIRONMENT.md` for the tested export
+environment.
+
+## Repository layout
+
+```text
+configs/                 city, split, experiment and baseline definitions
+data_manifest/           dataset notes, dictionary, checksums and manifests
+src/urbanflow/           numerical reference package
+experiments/             domain experiment entry points
+scripts/reproduce_*      figure and table reproduction
+scripts/audit/           release audit and cross-reference tools
+results/frozen/          final JSON/CSV/NPZ products, grouped by result family
+figures/                 final main and supplementary vector PDFs
+tests/                   unit, integration and regression tests
+docs/                    architecture, protocol, provenance and limitations
+paper/                   manuscript sources and bibliography
+archive/legacy/          historical scripts retained for provenance
+```
+
+`src/urbanflow/` is intentionally a single flat package: its modules share one
+content-addressed manifest and one set of numerical conventions. Domain
+ownership is documented in `docs/architecture.md`; experiment directories name
+the scientific questions without duplicating numerical code.
+
+## Reproduction levels
+
+| Level | Available | Command / requirement |
+|---|---|---|
+| A. Figures and tables from frozen products | yes | `python scripts/reproduce_figures/reproduce_all.py` and `python scripts/reproduce_tables/reproduce_all.py` |
+| B. Core metrics from aligned fields | yes, with external inputs | `URBANFLOW_ROOT=/path/to/frozen_data` and an entry point under `experiments/` |
+| C. Raw-trajectory end-to-end rebuild | no | raw data, registration and model training are not bundled |
+
+Level A is data-free beyond the bundled frozen products. Level B fails if an
+external cache, road basis, freeze file or geometry file is missing; there is
+no workstation path fallback. Level C is not claimed.
+
+### Figures
+
+```bash
+python scripts/reproduce_figures/reproduce_all.py
+```
+
+Outputs: `figures/main/` and `figures/supplementary/`. The four generators are
+`redraw_urbanflow.py`, `fig_phase_response.py`, `fig5_redesign.py` and
+`make_figures.py`.
+
+### Tables
+
+```bash
+python scripts/reproduce_tables/reproduce_all.py
+```
+
+Outputs: `results/derived/table1_inference_scores.csv` and
+`results/derived/table_d_uncertainty.csv`. Graph WaveNet cells are not
+regenerated because their per-date errors are not bundled; the manuscript
+records them as archived values.
+
+### Core recomputation
+
+```bash
+export URBANFLOW_ROOT=/path/to/frozen_data
+python -m urbanflow evaluate Porto --split frozen --fold 0
+python experiments/constitutive_coupling/d_uncertainty.py
+python experiments/frequency_response/phase_metrics.py
+python experiments/anisotropy/anisotropy_null.py
+```
+
+The package verifies the code and data manifest before evaluating. The
+reference digest is
+`b7b85d7864eaf93c7916b1f4dfd24e9d23a4c7c807457c5767558905a9860566`.
+
+## Validation
+
+```bash
 python -m unittest discover -s tests -v
-python tools/verify_public_repo.py --figure-smoke
+python scripts/audit/verify_public_repo.py --figure-smoke
 ```
 
-The verifier checks the allowlist, file hashes and sizes, text/path/privacy patterns, NPZ safety, local imports, AST parsing and `compileall`. `--figure-smoke` also redraws all 11 figures into a temporary directory and checks that the candidate tree remains unchanged. Passing these tests does **not** mean the external-data core regression or raw end-to-end pipeline has run.
+The unit tests cover `D F = x`, `D U_R = 0`, `U_R^T U_R = I`, Hodge
+reconstruction and the synthetic frame identity. The audit checks privacy,
+NPZ safety, file hashes, imports, compilation and all figure entry points.
 
-## Frozen figure redraw
+## Data, privacy and license
 
-From the repository root:
-
-```bash
-python paper/merged_manuscript/figures/redraw_urbanflow.py
-python reports/review_response/scripts/fig_phase_response.py
-python reports/threecity_figure5_revision/scripts/fig5_redesign.py B
-python reports/threecity_supplement/scripts/make_figures.py
-```
-
-The scripts write PDFs and PNGs beside the reference PDFs. To avoid overwriting them, use each script's output option where provided, or set `URBANFLOW_FIGURE_OUT`, `URBANFLOW_SUPP_FIGURE_OUT`, and `URBANFLOW_RESULT_OUT` to separate directories. `URBANFLOW_ROOT` defaults to this repository and can point to another release-shaped frozen-data root. The joint-spectrum script additionally accepts `--data` and `--out`.
-
-`reorganize_threecity_figures.py` is restricted to plotting in this public copy; its manuscript-editing section is deliberately removed.
-
-The matched-capacity construction modules `benchmark/scripts/domain_lib.py` and `domain_rankmatched.py` are included as archival code. They import the private `bench_lib`/`de_lib` chain and therefore are not standalone runnable without the external analysis tree; the frozen sweep outputs and their validation are included separately.
-
-## Core recomputation with external data
-
-Arrange the pinned external inputs under one root using the relative paths in `manifest/data.csv`, then run, for example:
-
-```bash
-export URBANFLOW_ROOT=/path/to/frozen_data       # use set on Windows cmd
-python -m urbanflow_ref describe Porto
-python -m urbanflow_ref evaluate Porto --split frozen --fold 0
-python -m urbanflow_ref verify --no-legacy       # needs ALL external objects
-```
-
-Do not expect these commands to work with only the bundled figure products. The public reference digest after the path-only packaging patch is `b7b85d7864eaf93c7916b1f4dfd24e9d23a4c7c807457c5767558905a9860566`; the upstream digest and patch provenance are in `manifest/provenance.json`. Numeric goldens are unchanged. `--no-legacy` is required because private legacy comparison libraries are not exported.
-
-## Data, privacy, and attribution
-
-- No individual-level trajectory data are included. NPZ files are numeric/Unicode archives and are checked without pickle.
-- Large aligned matrices are not bundled. The two compact display products record their source hashes in `manifest/provenance.json`.
-- Basemap arrays are derived from OpenStreetMap road/water geometry; acknowledge **OpenStreetMap contributors** and review the applicable source-data terms before publication.
-- `manifest/files.csv` lists every release file other than itself, with SHA-256. `manifest/data.csv` distinguishes bundled products from required external inputs. `manifest/figures.csv` maps each paper figure to its generator and reference PDF.
-- PDF and NPZ files are deliberately **not** globally ignored. Generated rasters, caches, build products, and `external_data/` are ignored instead.
-
-## Cross-document references
-
-`main_refs.tex` and `supplement_refs.tex` provide the supplementary/main S-number macros without `xr` or any dependency on pre-existing `.aux` files. If labels change, recompile once to regenerate the aux files, run `python tools/sync_crossrefs.py`, then compile again. Fresh Overleaf-style compilation without prior aux files is supported.
-
-## Repeating the export
-
-The release builder is retained in `tools/export_public_repo.py`. From the original private analysis tree it rebuilds this directory from the explicit allowlist:
-
-```bash
-python tools/export_public_repo.py --source-root /path/to/private/analysis --output /path/to/release/urbanflow
-python tools/verify_public_repo.py --root /path/to/release/urbanflow --figure-smoke
-```
-
-The current export has passed the paper and figure synchronization checks. If any source changes, rerun both commands and review `manifest/figures.csv` before publishing.
+- No raw GPS coordinates, trip identifiers or vehicle identifiers are present.
+- NPZ files are numeric/Unicode arrays and are checked without pickle.
+- Road and basemap geometry derive from OpenStreetMap; retain the
+  OpenStreetMap contributors attribution and review the source terms.
+- `LICENSE` is a placeholder. The authors must choose a license and finalize
+  citation metadata before redistribution.
+- `data_manifest/checksums.sha256` records the frozen products; the
+  machine-readable file and data manifests are under `data_manifest/`.

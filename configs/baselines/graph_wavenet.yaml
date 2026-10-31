@@ -1,0 +1,20 @@
+schema_version: 1
+baseline: graph_wavenet
+description: >-
+  Archived completed adaptation used in the model-comparison table.  No neural
+  retraining is part of the public reproduction path.
+training:
+  epochs: 300
+  split_protocol: frozen
+  selection: VAL
+  inputs: "phase-centred TRAIN; raw VAL/TEST (P/FACE)"
+reported_cells:
+  aggregation: pooled per-date error numerators and denominators
+  Porto: 0.497
+  SF: 0.254
+  Chengdu: 0.275
+sealed_robustness:
+  Porto: {mean: 0.548, range: [0.515, 0.588]}
+  SF: {fold_mean: 0.221, range: [0.096, 0.279], note: "per-date errors not archived; not used for ranking"}
+  Chengdu: {mean: 0.315, range: [0.260, 0.350]}
+results: results/frozen/crosscity/crosscity_results.csv

@@ -1,0 +1,30 @@
+schema_version: 1
+experiment: constitutive_coupling
+description: >-
+  P/D/CLIM ridge evaluation of the road-supported effective operator, with
+  date-level uncertainty and a source-routing pairing null.
+input:
+  reference_manifest: src/urbanflow/manifest.json
+  frames: [P, D, I, CLIM]
+  source: "x_t = D F_t"
+  target: "y_t = U_R^T P_0 F_t"
+  kappa:
+    Porto: 0.01
+    SF: 0.1
+    Chengdu_D: 0.1
+    Chengdu_P_sensitivity: 0.001
+  kappa_selection: VAL only
+uncertainty:
+  bootstrap:
+    unit: held-out date
+    resamples: 10000
+    interval: [2.5, 97.5]
+    seed: 20261003
+  pairing_null:
+    draws: 199
+    permute_blocks_within: [TRAIN, VAL, TEST]
+    refit_in_each_draw: true
+    chengdu_claim: descriptive_only
+outputs:
+  d_uncertainty: results/frozen/constitutive/d_uncertainty.json
+  figure: figures/main/fig02_threecity_coupling.pdf

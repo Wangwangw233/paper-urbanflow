@@ -22,7 +22,7 @@
 \newcommand{\repositorylocation}{\url{https://github.com/Wangwangw233/paper-urbanflow}}
 
 \captionsetup{font=small,labelfont=bf,width=0.95\textwidth}
-\graphicspath{{figures/}}
+\graphicspath{{../../figures/main/}{../../figures/supplementary/}}
 \setlength{\emergencystretch}{2em}
 
 % --- notation --------------------------------------------------------------
@@ -110,7 +110,7 @@ Figure~\ref{fig:concept} illustrates the physical freedom: different directional
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=\textwidth]{figures/fig01_concept.pdf}
+\includegraphics[width=\textwidth]{fig01_concept.pdf}
 \caption{\textbf{Routing freedom under conservation.} \textbf{a,b}, Two routes share a source and sink. \textbf{c}, Their difference has zero divergence. Balance fixes the source--sink pattern but leaves routing undetermined.}
 \label{fig:concept}
 \end{figure}
@@ -132,7 +132,7 @@ Operators are estimated on training dates and evaluated on dates excluded from f
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=\textwidth]{figures/fig02_threecity_coupling.pdf}
+\includegraphics[width=\textwidth]{fig02_threecity_coupling.pdf}
 \caption{\textbf{Coupling and spatial organization.} \textbf{a--c}, P/D prediction scores on ROAD (filled) and FACE (open) support, pooling TEST errors; diamonds show the source-free P/ROAD climatology. D/ROAD points carry 95\% paired-date bootstrap intervals (Chengdu's interval is descriptive). \textbf{d--f}, Energy captured by TRAIN-derived spatial POD modes on TRAIN (dashed) and TEST (solid); mode count is logarithmic. San Francisco curves show fold means and ranges. Chengdu uses the 14-date, 06--23\,h window. POD capture measures representation, not source-based prediction. The distance between the P point and the climatology diamond is the information available to the source; in Chengdu the P score lies below the climatology.}
 \label{fig:threecity-evidence}
 \end{figure}
@@ -162,7 +162,7 @@ where $a_{d,m}$ and $b_{d,m}$ are observed and predicted coefficients on date $d
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=\textwidth]{figures/fig03_frequency_response.pdf}
+\includegraphics[width=\textwidth]{fig03_frequency_response.pdf}
 \caption{\textbf{Phase-sensitive frequency-resolved response.} \textbf{a--c}, Per-bin $R_m^2$ using per-date complex coefficients. \textbf{d--f}, Signed alignment $\widetilde\gamma_m$, which pools date-wise complex inner products and retains phase and direction. The dotted curve in \textbf{a--c} is the phase-insensitive magnitude $|\gamma_m|$, computed from TEST-date mean coefficients, used previously. The frozen P-selected operator is used throughout. San Francisco shows fold means and ranges. Porto and San Francisco use 24-point DFTs; Chengdu uses all ten single-sided bins of its 18-point observed-block DFT.}
 \label{fig:threecity-response}
 \end{figure}
@@ -177,7 +177,7 @@ The matched-capacity test asks whether the road medium is sufficient (Fig.~\ref{
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=\textwidth]{figures/fig04_anisotropy_road_tests.pdf}
+\includegraphics[width=\textwidth]{fig04_anisotropy_road_tests.pdf}
 \caption{\textbf{Road specificity without constitutive sufficiency.} \textbf{a--c}, Response anisotropy $A_C$ on complete 250\,m regular interior lattices at true aspect (San Francisco: five-fold consensus). Colour shares 0--1; segments show axial directions for $A_C>0.02$ and hollow squares mark zero anisotropy. Streets are \textcopyright~OpenStreetMap contributors. \textbf{d}, $\Delta E$ for 999 rank-matched random subspaces in fixed $\ker D$. Thick/thin marks show 1--99\%/full null ranges, not confidence intervals; 0/999 nulls are at least as good as roads, empirical $p=1/1000$. This null tests representation specificity, not all structured road alternatives. \textbf{e}, Paired mobility-minus-road $\Delta R^2$ at $R=n_{\rm int}$ with 95\% paired-date intervals. Scores use raw routing against each TEST-date mean, not P or D. GIS roads and TRAIN-derived mobility match capacity, not information. Chengdu has four alternate-hour TEST dates, so its interval is descriptive. Axis agreement with road support is not in excess of a spectrum-matched rotation null and is therefore not interpreted as independent validation (Results; Supplementary Note~\SuppRef{note:anisotropy-results}). Media: Supplementary Fig.~\SuppRef{fig:supp-5}.}
 \label{fig:road-tests}
 \end{figure}

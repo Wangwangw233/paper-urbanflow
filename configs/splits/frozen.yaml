@@ -1,0 +1,19 @@
+schema_version: 1
+description: >-
+  Frozen split definitions are content-addressed in the reference manifest.
+  This file records where they live; it does not duplicate date lists.
+reference_manifest: src/urbanflow/manifest.json
+selection_rules:
+  Porto:
+    split: frozen
+    folds: [0]
+  SF:
+    split: frozen
+    folds: [0, 1, 2, 3, 4]
+  Chengdu:
+    split: window
+    folds: [0]
+validation:
+  require_disjoint_train_val_test: true
+  require_heldout_dates_nonempty: true
+  test_used_for_selection: false

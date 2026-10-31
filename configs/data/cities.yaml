@@ -1,0 +1,37 @@
+schema_version: 1
+description: >-
+  City-level analysis definitions.  These are documentation and validation
+  inputs; the authoritative frozen split dates remain in
+  src/urbanflow/manifest.json.
+cities:
+  Porto:
+    dataset: ECML/PKDD taxi trajectories
+    release_id: UNKNOWN
+    grid_ny_nx: [32, 32]
+    cell_size_m: 250
+    dt_min: 60
+    phases_per_day: 24
+    time_window: full day
+    split: "252 dates; chronological 151 TRAIN / 50 VAL / 51 TEST"
+  SF:
+    dataset: Cabspotting
+    release_id: UNKNOWN
+    grid_ny_nx: [32, 88]
+    cell_size_m: 250
+    dt_min: 60
+    phases_per_day: 24
+    time_window: full day
+    split: "15 dates; five blocked folds of 9 TRAIN / 3 VAL / 3 TEST"
+  Chengdu:
+    dataset: DiDi ride-hailing sample
+    release_id: UNKNOWN
+    grid_ny_nx: [60, 60]
+    cell_size_m: 250
+    dt_min: 60
+    phases_per_day: 18
+    time_window: "06:00-23:59 observed block; no night-time imputation"
+    split: "14 dates; chronological 8 TRAIN / 3 VAL / 3 TEST"
+    matched_capacity_split: "separate chronological 10/4/4 split; four held-out dates 26-29 August 2014"
+notes:
+  - Release identifiers were not recorded in the archived analysis and are marked UNKNOWN rather than inferred.
+  - The Chengdu aligned field used by the final analysis has SHA-256 c9330b54e8fbcf589e8b63d480b4db877b7d48291df941fb1348662a9dfb0289.

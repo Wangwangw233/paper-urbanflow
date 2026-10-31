@@ -1,0 +1,16 @@
+schema_version: 1
+experiment: road_specificity
+description: >-
+  Rank-matched random conservation subspaces in fixed ker D, compared with the
+  real road-induced subspace.
+null:
+  draws: 999
+  ambient_space: ker D
+  rank: road rank
+  construction: "orthonormalised Gaussian basis"
+  seed: 20261031
+reported_statistic: "excess unexplained energy dE = E_null - E_road"
+outputs:
+  topology: results/frozen/anisotropy/partA_topology.json
+  chengdu: results/frozen/anisotropy/partA_chengdu.json
+  pair_table: results/frozen/matched_capacity/domain_rankmatched_results.csv

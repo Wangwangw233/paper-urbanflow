@@ -1,0 +1,10 @@
+city,model,frame,support,pooled_R,n_folds
+Porto,UrbanFlow,P,FACE,0.6072508068,1
+Porto,ridge,P,FACE,0.7005783953,1
+Porto,pod,P,FACE,0.7005783953,1
+SF,UrbanFlow,P,FACE,0.5284697472,5
+SF,ridge,P,FACE,0.6106960365,5
+SF,pod,P,FACE,0.6365680678,5
+Chengdu,UrbanFlow,P,FACE,0.4401121784,1
+Chengdu,ridge,P,FACE,0.5719567035,1
+Chengdu,pod,P,FACE,0.5750129229,1

@@ -1,0 +1,17 @@
+schema_version: 1
+experiment: frequency_response
+description: >-
+  Phase-sensitive evaluation of frozen complex coefficients.  R_m^2 and signed
+  alignment pool date-wise complex inner products; the phase-insensitive
+  magnitude uses TEST-date mean coefficients.
+transform:
+  Porto: {points: 24, observed_block: "00-23 h"}
+  SF: {points: 24, observed_block: "00-23 h"}
+  Chengdu: {points: 18, observed_block: "06-23 h"}
+metrics:
+  - bin_R2
+  - bin_signed_pooled
+  - bin_abs_mean
+outputs:
+  phase_metrics: results/frozen/spectra/phase_metrics.json
+  figure: figures/main/fig03_frequency_response.pdf
