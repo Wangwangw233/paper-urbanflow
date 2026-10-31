@@ -12,7 +12,7 @@
  },
  "export_schema": 1,
  "exported_reference_digest": "b7b85d7864eaf93c7916b1f4dfd24e9d23a4c7c807457c5767558905a9860566",
- "paper_sync": "not asserted by export; rerun after final paper and Fig. 5 synchronization",
+ "paper_sync": "not asserted by export; rerun after final paper and figure synchronization",
  "portability_patch": "URBANFLOW_ROOT or <repo>/external_data; private legacy check made an explicit unsupported option; code and manifest hashes recomputed",
  "source_policy": "explicit allowlist; no source-tree writes; no raw trajectories",
  "upstream_reference_digest": "833a07ff7d5e9adbabef6818f6a36c10a8dfd30f521841eea7c8ffafe7676ceb"

@@ -26,7 +26,16 @@ Structural-axis agreement is the joint-anisotropy estimand
  \qquad \AC(c)\AU(c)>0 ,
  \label{eq:supp-axis-agreement}
 \end{equation}
-on regular interior cells for which both anisotropies are nonzero. On the regular interior grids $\Lc\Lc^\top=2I$, so metric whitening is a no-op and grid anisotropy vanishes there; anisotropic boundary-cell metrics are excluded. An orthogonal road-coordinate rotation leaves the physical tensor unchanged when basis and coefficients are transformed together. Under a rigid physical rotation $Q$,
+on regular interior cells for which both anisotropies are nonzero. Because $\SigC$ uses a unit input metric, we also evaluate the source-covariance-weighted response tensor
+\begin{equation}
+ \Sigma_{\mathrm{response}}(c)=\Lc\CR\Sigma_{xx}\CR^\top\Lc^\top,
+ \label{eq:supp-source-metric}
+\end{equation}
+with $\Sigma_{xx}$ the TRAIN covariance of source departures. Median anisotropies under this metric are 0.766, 0.926 and 0.765 in Porto, San Francisco and Chengdu, compared with 0.635, 0.651 and 0.705 under the unit metric. Strong local anisotropy is therefore not an artefact of the input metric.
+
+Axis agreement is a separate question because $\CR$ and $\UR$ share the road subspace by construction. We write $K_R=Q\Lambda V^\top$ and replace $Q$ by a Haar-random orthonormal frame $Q_0$ in the road output space, $K_0=Q_0\Lambda V^\top$, preserving the spectrum and input directions. Recomputing $G_\theta$ for 999 draws gives null medians of 0.973, 0.911 and 0.808 in Porto, San Francisco and Chengdu. The observed values (0.819, 0.870 and 0.790 in the same control reconstruction) do not exceed these nulls; the one-sided empirical $p$ is 1.0 in all three cities. Axis agreement therefore reflects the shared road subspace and operator spectrum rather than an independently identified road-aligned response. We retain only the anisotropy magnitude as an operator property.
+
+On the regular interior grids $\Lc\Lc^\top=2I$, so metric whitening is a no-op and grid anisotropy vanishes there; anisotropic boundary-cell metrics are excluded. An orthogonal road-coordinate rotation leaves the physical tensor unchanged when basis and coefficients are transformed together. Under a rigid physical rotation $Q$,
 \begin{equation}
  \SigC(c)\mapsto Q\SigC(c)Q^\top,\qquad v_C(c)\mapsto Qv_C(c),
 \end{equation}
@@ -62,4 +71,4 @@ The nested grids are Porto $R=(1,4,16,64,256,1984)$ with block sides $(0,16,8,4,
 \label{fig:supp-5}
 \end{figure}
 
-The definitions above are limited to code and frozen outputs available in the export. The exact construction of every named source pattern and the full field-building implementation are not self-contained; the missing modules, legacy root and unavailable inputs are itemized in Note~\ref{note:reproducibility}. The archived passing-cell record is not a runnable reproduction gate in the present export.
+The matched-capacity modules \texttt{domain\_lib.py} and \texttt{domain\_rankmatched.py} are included in the public export, together with the sweep wrapper. The sweep still requires external aligned fields, date-freeze files and GIS rasters, which are listed with hashes in the data manifest; the archived passing-cell record validates the frozen run and is not a claim that the sweep runs without those inputs.

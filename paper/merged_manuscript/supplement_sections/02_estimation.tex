@@ -8,13 +8,13 @@
 \end{equation}
 The observed source--sink balance and divergence-free routing field give the spatially orthogonal decomposition $F_t=D^\dagger x_t+\Fcirc_t$. Orthogonality at an instant does not imply statistical independence across observations. The minimum-norm lift uses a gauge-pinned Laplacian solve rather than an explicitly formed Moore--Penrose inverse; on the zero-sum compatible source space the two constructions coincide. Conservation is imposed by construction or projection, not learned.
 
-\paragraph{Road registration.} The registered road graph has active cells as nodes and registered road segments as edges. If $B_R$ is its node--edge incidence, $A_R$ lifts signed road-edge flows to interior faces, and $\Pi$ aggregates cells to nodes, registration satisfies $DA_R=\Pi B_R$ in integer arithmetic. For a cycle basis $Z_R$ with $B_RZ_R=0$,
+\paragraph{Road registration.} The registered road graph uses road nodes and registered road segments as edges; it is not trimmed to the mobility footprint. If $B_R$ is its node--edge incidence, $A_R$ lifts signed road-edge flows to interior faces, and $\Pi$ aggregates cells to nodes, registration satisfies $DA_R=\Pi B_R$ in integer arithmetic. For a cycle basis $Z_R$ with $B_RZ_R=0$,
 \begin{equation}
  \UR=\operatorname{orth}(A_RZ_R),\qquad
  \UR^\top\UR=I,\qquad D\UR=0 .
  \label{eq:supp-road-basis}
 \end{equation}
-The signed entries of $A_R$ count open-segment crossings in the frozen face orientation. Geometry, domain, mask and registration determine the basis; mobility values, dates and folds do not. This independence is conditional on the registered spatial conventions. The observed road-coordinate state is $y_t=\UR^\top\Fcirc_t$. The physical lift $\CR=\UR K_R\Px$, with $\Px=DD^\dagger$, is used for the local response tensors in Note~\ref{note:spatial}.
+The signed entries of $A_R$ count open-segment crossings in the frozen face orientation. Geometry, study domain and road registration determine the basis; the analysis footprint mask, mobility values, dates and folds do not. This independence is conditional on the registered spatial conventions. The observed road-coordinate state is $y_t=\UR^\top\Fcirc_t$. The physical lift $\CR=\UR K_R\Px$, with $\Px=DD^\dagger$, is used for the local response tensors in Note~\ref{note:spatial}.
 
 \paragraph{Response estimation.} For any source or target $v_t$, TRAIN phase means and departures are
 \begin{equation}

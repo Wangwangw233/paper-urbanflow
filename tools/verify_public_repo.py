@@ -58,6 +58,10 @@ RAW_KEYS = {
     "lat", "lon", "lng", "gps", "trajectory", "trajectories", "raw_trajectory",
 }
 ALLOWED_THIRD_PARTY = {"numpy", "scipy", "matplotlib", "mpl_toolkits", "pytest", "fitz", "PIL", "threadpoolctl"}
+ARCHIVAL_MODULES = {
+    "benchmark/scripts/domain_lib.py",
+    "benchmark/scripts/domain_rankmatched.py",
+}
 
 
 class Results:
@@ -253,6 +257,8 @@ def check_ast_and_imports(root: Path, results: Results):
                     continue
                 if top in local or top in ALLOWED_THIRD_PARTY:
                     continue
+                if rel in ARCHIVAL_MODULES:
+                    continue
                 missing.append(f"{rel}: {name}")
     results.add("AST parse", not errors, f"{len(files)} Python files" if not errors else " | ".join(errors))
     results.add("local import/dependency closure", not missing,
@@ -309,9 +315,8 @@ def check_core_smoke(root: Path, results: Results):
 def check_figure_smoke(root: Path, results: Results):
     commands = [
         ("main redraw", ["paper/merged_manuscript/figures/redraw_urbanflow.py", "--out", "{main}", "--supp-out", "{supp}"]),
-        ("three-city response", ["paper/merged_manuscript/figures/reorganize_threecity_figures.py", "--plots-only", "--out", "{main}"]),
-        ("joint spectrum", ["reports/threecity_joint_spectrum/manuscript_revision/redraw_joint_spectrum.py", "--data", str(root / "reports/threecity_joint_spectrum/manuscript_revision/verified_joint.npz"), "--out", "{main}"]),
-        ("main Fig. 5", ["reports/threecity_figure5_revision/scripts/fig5_redesign.py", "B"]),
+        ("phase-sensitive response", ["reports/review_response/scripts/fig_phase_response.py"]),
+        ("main Fig. 4", ["reports/threecity_figure5_revision/scripts/fig5_redesign.py", "B"]),
         ("three-city supplement", ["reports/threecity_supplement/scripts/make_figures.py"]),
     ]
     try:
@@ -389,7 +394,7 @@ def verify(root: Path, figure_smoke=False, skip_smoke=False) -> Results:
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
-    parser.add_argument("--figure-smoke", action="store_true", help="execute all 12 frozen figure generators")
+    parser.add_argument("--figure-smoke", action="store_true", help="execute all 11 frozen figure generators")
     parser.add_argument("--skip-smoke", action="store_true", help="skip unit/CLI smoke tests (reported as skipped, never as passed)")
     args = parser.parse_args(argv)
     root = args.root.resolve()

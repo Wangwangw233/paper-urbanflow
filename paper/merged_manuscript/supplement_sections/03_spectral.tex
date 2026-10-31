@@ -27,14 +27,21 @@ Chengdu has ten single-sided bins $m=0,\ldots,9$ at $m/18$ cycles per observed h
 \label{fig:supp-2}
 \end{figure}
 
-\paragraph{Coherent TRAIN/TEST response.} The frozen P-selected operator is applied without refitting a frequency response. Each date is transformed with the same unitary DFT support as the descriptive spectrum: 24 points in Porto and San Francisco and 18 points in Chengdu. Let $a_m^{(\mathcal S)}$ and $b_m^{(\mathcal S)}$ be observed and predicted routing coefficients averaged over dates in split $\mathcal S\in\{\mathrm{TRAIN},\mathrm{TEST}\}$. For each split and single-sided bin $m$,
+\paragraph{Coherent TRAIN/TEST response.} The frozen P-selected operator is applied without refitting a frequency response. Each date is transformed with the same unitary DFT support as the descriptive spectrum: 24 points in Porto and San Francisco and 18 points in Chengdu. Let $a_{d,m}$ and $b_{d,m}$ be observed and predicted routing coefficients on date $d$ at single-sided bin $m$, and let $a_m^{(\mathcal S)}$, $b_m^{(\mathcal S)}$ be their averages over split $\mathcal S\in\{\mathrm{TRAIN},\mathrm{TEST}\}$. The phase-insensitive magnitude and norm ratio are
 \begin{equation}
  \gamma_m^{(\mathcal S)}=\frac{|a_m^{(\mathcal S)*}b_m^{(\mathcal S)}|}{\norm{a_m^{(\mathcal S)}}\norm{b_m^{(\mathcal S)}}},
  \qquad
  \rho_m^{(\mathcal S)}=\frac{\norm{b_m^{(\mathcal S)}}}{\norm{a_m^{(\mathcal S)}}} .
  \label{eq:supp-coherent-response}
 \end{equation}
-The absolute inner product makes $\gamma_m$ insensitive to a common phase rotation. TRAIN values describe the fit sample; TEST values are held-out. San Francisco summaries are fold means and ranges. These coherent averages complement, rather than replace, observation-level P/D scores. Chengdu evaluates all ten bins $m=0,\ldots,9$, exactly as in its joint spectrum. Figure~\ref{fig:supp-3} displays both splits without treating the TRAIN comparison as independent validation.
+The absolute inner product makes $\gamma_m$ insensitive to a common phase rotation, so it cannot by itself validate a complex response. We therefore also report the per-date phase-sensitive score and signed alignment
+\begin{equation}
+ R_m^2=1-\frac{\sum_d\norm{a_{d,m}-b_{d,m}}^2}{\sum_d\norm{a_{d,m}}^2},
+ \qquad
+ \widetilde\gamma_m=\frac{\operatorname{Re}\sum_d a_{d,m}^*b_{d,m}}{\norm{a_m}\norm{b_m}} .
+ \label{eq:supp-phase-sensitive}
+\end{equation}
+TRAIN values describe the fit sample; TEST values are held-out. San Francisco summaries are fold means and ranges. Chengdu evaluates all ten bins $m=0,\ldots,9$. Figure~\ref{fig:supp-3} displays the TRAIN/TEST magnitudes, while the phase-sensitive TEST scores are shown in main Fig.~\MainRef{fig:threecity-response}. Across Porto bins, $R_m^2$ falls from 0.89 at $m=0$ to 0.20 at $m=12$ while $|\gamma_m|$ remains 0.44; San Francisco has negative $R_m^2$ at four bins, and Chengdu at one. The phase-insensitive alignment therefore overstates the agreement between predicted and observed complex responses.
 
 \begin{figure}[!htbp]
 \centering

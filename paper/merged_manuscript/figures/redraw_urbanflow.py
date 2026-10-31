@@ -69,7 +69,10 @@ def threecity():
    for support,dx,fill in [('ROAD',-.11,True),('FACE',.11,False)]:
     r=next(r for r in score if r['object']==city and r['frame']==frame and r['support']==support and r['model']=='OURS')
     val=float(r['pooled_R']);ax.plot(k+dx,val,'o',color=color,mfc=color if fill else 'white',ms=6)
-  ax.set(xticks=[0,1],xticklabels=['P: raw','D: departure'],ylim=(0,.8),xlim=(-.5,1.5),yticks=[0,.2,.4,.6,.8]);ax.set_title(FULL[city],pad=8);tidy(ax);tag(ax,'abc'[j])
+  cl=next(r for r in score if r['object']==city and r['frame']=='P' and r['support']=='ROAD' and r['model']=='CLIM')
+  clim=float(cl['pooled_R']);ax.plot([-0.24],[clim],'D',color='#6d757c',mfc='white',mew=1.0,ms=4.6)
+  summary['threecity'].setdefault(city,{})['CLIM']=clim
+  ax.set(xticks=[0,1],xticklabels=['P: raw','D: departure'],ylim=(0,1.0),xlim=(-.5,1.5),yticks=[0,.2,.4,.6,.8,1.0]);ax.set_title(FULL[city],pad=8);tidy(ax);tag(ax,'abc'[j])
   if j==0: ax.set_ylabel('Held-out routing score')
   else: ax.tick_params(labelleft=False)
   ss=[r for r in sp['rows'] if r['city']==city]; ax=axs[1,j]
@@ -83,7 +86,7 @@ def threecity():
   if j==0: ax.set_ylabel('Routing energy captured')
   else:ax.tick_params(labelleft=False)
   if j==1:ax.legend(frameon=False,loc='lower right')
- fig.legend(handles=[Line2D([],[],marker='o',ls='',color='#333333',label='ROAD'),Line2D([],[],marker='o',ls='',color='#333333',mfc='white',label='FACE')],loc='upper center',bbox_to_anchor=(.52,1.0),ncol=2,frameon=False)
+ fig.legend(handles=[Line2D([],[],marker='o',ls='',color='#333333',label='ROAD'),Line2D([],[],marker='o',ls='',color='#333333',mfc='white',label='FACE'),Line2D([],[],marker='D',ls='',color='#6d757c',mfc='white',label='CLIM (source-free)')],loc='upper center',bbox_to_anchor=(.52,1.0),ncol=3,frameon=False)
  save(fig,'fig02_threecity_coupling')
 
 def reconstruction():

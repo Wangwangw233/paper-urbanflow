@@ -39,6 +39,11 @@ FIGURE_CODE = [
     "reports/threecity_supplement/scripts/make_figures.py",
     "reports/threecity_supplement/scripts/validate_outputs.py",
     "reports/chengdu_nonlinear_exploratory/scripts/run_experiment.py",
+    "reports/review_response/scripts/phase_metrics.py",
+    "reports/review_response/scripts/fig_phase_response.py",
+    "reports/review_response/scripts/anisotropy_null.py",
+    "benchmark/scripts/domain_lib.py",
+    "benchmark/scripts/domain_rankmatched.py",
 ]
 
 # Only aggregate fields, geometry, frozen splits and frozen statistics are
@@ -87,6 +92,8 @@ DATA_FILES = [
     "reports/threecity_redesign/results/chengdu_response18.npz",
     "reports/threecity_redesign/results/chengdu_snapshot18.npz",
     "reports/threecity_supplement/manifest.json",
+    "reports/review_response/results/phase_metrics.json",
+    "reports/review_response/results/anisotropy_null.json",
     "routing_urban_medium_constitutive/results/um_ctx.npz",
 ]
 
@@ -123,9 +130,8 @@ DERIVATION_INPUTS = [
 FIGURES = [
     ("fig01_concept", "main", "paper/merged_manuscript/figures/redraw_urbanflow.py", "concept"),
     ("fig02_threecity_coupling", "main", "paper/merged_manuscript/figures/redraw_urbanflow.py", "threecity"),
-    ("fig03_joint_spectrum", "main", "reports/threecity_joint_spectrum/manuscript_revision/redraw_joint_spectrum.py", "frozen verified_joint.npz"),
-    ("fig04_frequency_response", "main", "paper/merged_manuscript/figures/reorganize_threecity_figures.py", "--plots-only"),
-    ("fig05_anisotropy_threecity", "main", "reports/threecity_figure5_revision/scripts/fig5_redesign.py", "B"),
+    ("fig03_frequency_response", "main", "reports/review_response/scripts/fig_phase_response.py", "phase-sensitive"),
+    ("fig04_anisotropy_road_tests", "main", "reports/threecity_figure5_revision/scripts/fig5_redesign.py", "B"),
     ("figS01_joint_spectrum_2d", "supp", "reports/threecity_supplement/scripts/make_figures.py", "S01"),
     ("figS02_heldout_daily_scores", "supp", "reports/threecity_supplement/scripts/make_figures.py", "S02"),
     ("figS03_coherent_response_train_test", "supp", "reports/threecity_supplement/scripts/make_figures.py", "S03"),
@@ -603,24 +609,23 @@ def package_dir() -> pathlib.Path:
 def make_readme(output_root: Path, digest: str) -> None:
     commands = "\n".join([
         "python paper/merged_manuscript/figures/redraw_urbanflow.py",
-        "python paper/merged_manuscript/figures/reorganize_threecity_figures.py --plots-only",
-        "python reports/threecity_joint_spectrum/manuscript_revision/redraw_joint_spectrum.py",
+        "python reports/review_response/scripts/fig_phase_response.py",
         "python reports/threecity_figure5_revision/scripts/fig5_redesign.py B",
         "python reports/threecity_supplement/scripts/make_figures.py",
     ])
     write_text(output_root / "README.md", f'''# UrbanFlow public-release candidate
 
-Code and small frozen products for **Road-structured constitutive coupling between source--sink patterns and anisotropic urban routing**.
+Code and small frozen products for **Road-supported effective constitutive coupling between source--sink patterns and anisotropic urban routing**.
 
 Repository: https://github.com/Wangwangw233/paper-urbanflow
 
-> **Candidate, not yet an open-source release.** The authors must still choose a license, complete the citation metadata, and supply the repository URL. The current paper and Fig. 5 are synchronized and verified. `LICENSE` intentionally grants no new rights. No DOI, author list, or repository URL is invented here.
+> **Candidate, not yet an open-source release.** The authors must still choose a license, complete the citation metadata, and supply the repository URL. The current paper and figures are synchronized and verified. `LICENSE` intentionally grants no new rights. No DOI, author list, or repository URL is invented here.
 
 ## Three reproduction levels
 
 | level | what is included | inputs and limits |
 |---|---|---|
-| **1. Frozen figure redraw** | Plotting code, 12 reference PDFs, and small aggregate frozen arrays | Runs without raw trajectories or model fitting. `frozen/source_spectra.npz` and `frozen/reconstruction.npz` contain only arrays needed for display; they are not substitutes for the large scientific inputs from which they were derived. PDF metadata and rasterization can differ by environment, so byte-identical PDFs are not claimed. |
+| **1. Frozen figure redraw** | Plotting code, 11 reference PDFs, and small aggregate frozen arrays | Runs without raw trajectories or model fitting. `frozen/source_spectra.npz` and `frozen/reconstruction.npz` contain only arrays needed for display; they are not substitutes for the large scientific inputs from which they were derived. PDF metadata and rasterization can differ by environment, so byte-identical PDFs are not claimed. |
 | **2. Core recomputation** | `urbanflow_ref`: aligned-field loading, geometry, road projection, ridge evaluation, frozen splits and numeric goldens | **Requires external frozen caches, bases, geometry and split files.** They are not bundled. `manifest/data.csv` lists their relative paths, sizes and pinned hashes. A full regression also requires every object in the manifest. |
 | **3. Raw end-to-end rebuild** | Not included in this candidate | Raw trajectory ingestion, registration, road downloading, field construction and model training still require a separate privacy/license review and their original large inputs. No command in this repository claims to perform this level. |
 
@@ -634,7 +639,7 @@ python -m unittest discover -s tests -v
 python tools/verify_public_repo.py --figure-smoke
 ```
 
-The verifier checks the allowlist, file hashes and sizes, text/path/privacy patterns, NPZ safety, local imports, AST parsing and `compileall`. `--figure-smoke` also redraws all 12 figures into a temporary directory and checks that the candidate tree remains unchanged. Passing these tests does **not** mean the external-data core regression or raw end-to-end pipeline has run.
+The verifier checks the allowlist, file hashes and sizes, text/path/privacy patterns, NPZ safety, local imports, AST parsing and `compileall`. `--figure-smoke` also redraws all 11 figures into a temporary directory and checks that the candidate tree remains unchanged. Passing these tests does **not** mean the external-data core regression or raw end-to-end pipeline has run.
 
 ## Frozen figure redraw
 
@@ -647,6 +652,8 @@ From the repository root:
 The scripts write PDFs and PNGs beside the reference PDFs. To avoid overwriting them, use each script's output option where provided, or set `URBANFLOW_FIGURE_OUT`, `URBANFLOW_SUPP_FIGURE_OUT`, and `URBANFLOW_RESULT_OUT` to separate directories. `URBANFLOW_ROOT` defaults to this repository and can point to another release-shaped frozen-data root. The joint-spectrum script additionally accepts `--data` and `--out`.
 
 `reorganize_threecity_figures.py` is restricted to plotting in this public copy; its manuscript-editing section is deliberately removed.
+
+The matched-capacity construction modules `benchmark/scripts/domain_lib.py` and `domain_rankmatched.py` are included as archival code. They import the private `bench_lib`/`de_lib` chain and therefore are not standalone runnable without the external analysis tree; the frozen sweep outputs and their validation are included separately.
 
 ## Core recomputation with external data
 
@@ -682,7 +689,7 @@ python tools/export_public_repo.py --source-root /path/to/private/analysis --out
 python tools/verify_public_repo.py --root /path/to/release/urbanflow --figure-smoke
 ```
 
-The current export has passed the paper/Fig. 5 synchronization checks. If any source changes, rerun both commands and review `manifest/figures.csv` before publishing.
+The current export has passed the paper and figure synchronization checks. If any source changes, rerun both commands and review `manifest/figures.csv` before publishing.
 ''')
 
 
@@ -700,7 +707,7 @@ font, and third-party code terms before public release.
     write_text(output_root / "CITATION", '''CITATION STATUS: PARTIAL METADATA
 
 Work title:
-Road-structured constitutive coupling between source--sink patterns and anisotropic urban routing
+Road-supported effective constitutive coupling between source--sink patterns and anisotropic urban routing
 
 Authors:
 Tiehang Xu; Jiahui Wang; Junyan Yang; Qiao Wang
@@ -1054,7 +1061,7 @@ def export(source_root: Path, output_root: Path) -> None:
     provenance = dict(export_schema=EXPORT_VERSION, **reference,
                       derived_sources=derivation_provenance,
                       source_policy="explicit allowlist; no source-tree writes; no raw trajectories",
-                      paper_sync="not asserted by export; rerun after final paper and Fig. 5 synchronization")
+                      paper_sync="not asserted by export; rerun after final paper and figure synchronization")
     write_manifests(source_root, output_root, provenance)
     files = sum(1 for p in output_root.rglob("*") if p.is_file() and ".git" not in p.relative_to(output_root).parts)
     size = sum(p.stat().st_size for p in output_root.rglob("*") if p.is_file() and ".git" not in p.relative_to(output_root).parts)

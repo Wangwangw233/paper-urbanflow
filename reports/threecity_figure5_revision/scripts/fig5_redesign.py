@@ -80,7 +80,7 @@ ZERO_FACE = "#ffffff"
 ZERO_SLASH = "#b4bac0"
 NORESP_EDGE = "#a7adb2"
 
-GLYPH_HALF = 0.036                         # inches
+GLYPH_HALF = 0.045                         # inches
 GLYPH_PITCH = 0.155                        # inches
 GLYPH_AMIN = 0.02                          # same threshold in all cities
 KM_BAR = 2.0
@@ -203,20 +203,20 @@ def draw_map(ax, z, bm, city, w_in, mode):
         ax.add_collection(lc)
         noresp = int(blk["zr"].sum())
     else:
-        draw_roads(ax, bm[city], to_ax, "minor", ROAD_MINOR, 0.24, 0.45, 1.0)
-        draw_roads(ax, bm[city], to_ax, "major", ROAD_MAJOR, 0.38, 0.80, 1.3)
+        draw_roads(ax, bm[city], to_ax, "minor", ROAD_MINOR, 0.18, 0.30, 1.0)
+        draw_roads(ax, bm[city], to_ax, "major", ROAD_MAJOR, 0.32, 0.85, 1.3)
         seg, val, stride = glyphs(blk, w_in)
-        lc = LineCollection(seg, colors=CMAP(NORM(val)), linewidths=0.85,
+        lc = LineCollection(seg, colors=CMAP(NORM(val)), linewidths=1.05,
                             zorder=3.0, capstyle="round")
-        lc.set_path_effects([pe.withStroke(linewidth=1.5, foreground="white",
-                                           alpha=0.55)])
+        lc.set_path_effects([pe.withStroke(linewidth=1.9, foreground="white",
+                                           alpha=0.60)])
         ax.add_collection(lc)
         if blk["zr"].any():
             ii, jj = np.nonzero(blk["zr"])
             ax.scatter(blk["x0"] + (jj + 0.5) * blk["dx"],
                        blk["y0"] + (ii + 0.5) * blk["dy"],
-                       marker="s", s=2.2, facecolors="none",
-                       edgecolors=NORESP_EDGE, linewidths=0.45, zorder=2.5)
+                       marker="s", s=2.8, facecolors="none",
+                       edgecolors=NORESP_EDGE, linewidths=0.50, zorder=2.5)
         noresp = int(blk["zr"].sum())
 
     ax.set_xlim(blk["x0"], blk["x1"])
@@ -515,6 +515,6 @@ if __name__ == "__main__":
         raise SystemExit(0)
     assert what in ("A", "B"), what
     fig, info = build(what)
-    for p in save(fig, "fig05_anisotropy_threecity"):
+    for p in save(fig, "fig04_anisotropy_road_tests"):
         print("wrote", p)
     print("wrote", write_manifest(info))
