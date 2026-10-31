@@ -163,7 +163,7 @@ where $a_{d,m}$ and $b_{d,m}$ are observed and predicted coefficients on date $d
 \begin{figure}[!t]
 \centering
 \includegraphics[width=\textwidth]{figures/fig03_frequency_response.pdf}
-\caption{\textbf{Phase-sensitive frequency-resolved response.} \textbf{a--c}, Per-bin $R_m^2$ using per-date complex coefficients. \textbf{d--f}, Signed alignment $\widetilde\gamma_m$, which retains phase and direction. The dotted curve in \textbf{a--c} is the phase-insensitive magnitude $|\gamma_m|$ used previously. The frozen P-selected operator is used throughout. San Francisco shows fold means and ranges. Porto and San Francisco use 24-point DFTs; Chengdu uses all ten single-sided bins of its 18-point observed-block DFT.}
+\caption{\textbf{Phase-sensitive frequency-resolved response.} \textbf{a--c}, Per-bin $R_m^2$ using per-date complex coefficients. \textbf{d--f}, Signed alignment $\widetilde\gamma_m$, which pools date-wise complex inner products and retains phase and direction. The dotted curve in \textbf{a--c} is the phase-insensitive magnitude $|\gamma_m|$, computed from TEST-date mean coefficients, used previously. The frozen P-selected operator is used throughout. San Francisco shows fold means and ranges. Porto and San Francisco use 24-point DFTs; Chengdu uses all ten single-sided bins of its 18-point observed-block DFT.}
 \label{fig:threecity-response}
 \end{figure}
 
@@ -353,7 +353,7 @@ For the frequency-resolved response, each TEST date is transformed with the same
  \widetilde\gamma_m=\frac{\sum_d\operatorname{Re}(a_{d,m}^*b_{d,m})}
  {\sqrt{\sum_d\|a_{d,m}\|^2}\sqrt{\sum_d\|b_{d,m}\|^2}},
 \end{equation}
-where the signed alignment pools date-wise complex inner products and energies across TEST dates. $R_m^2$ is phase-sensitive and detects phase or direction errors; $\widetilde\gamma_m$ retains phase and direction. The phase-insensitive magnitude $|\gamma_m|=|a_m^*b_m|/(\|a_m\|\|b_m\|)$ is reported only for comparison. The P-selected operator is fixed. All ten single-sided bins are evaluated in Chengdu.
+where the signed alignment pools date-wise complex inner products and energies across TEST dates. $R_m^2$ is phase-sensitive and detects phase or direction errors; $\widetilde\gamma_m$ retains phase and direction. The phase-insensitive magnitude $|\gamma_m|=|a_m^*b_m|/(\|a_m\|\|b_m\|)$, where $a_m$ and $b_m$ are TEST-date mean coefficients, is reported only for comparison. The P-selected operator is fixed. All ten single-sided bins are evaluated in Chengdu.
 
 \subsection{Baselines and uncertainty}
 
