@@ -29,6 +29,7 @@ REQUIRED = [
     ".gitignore", "docs/ENVIRONMENT.md", "docs/architecture.md",
     "docs/experiment_protocol.md", "docs/reproduction_guide.md",
     "docs/result_provenance.md", "docs/known_limitations.md",
+    "docs/validation_report.md",
     "data_manifest/files.csv", "data_manifest/data.csv",
     "data_manifest/figures.csv", "data_manifest/provenance.json",
     "data_manifest/checksums.sha256", "data_manifest/datasets.md",
