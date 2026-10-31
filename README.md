@@ -63,6 +63,10 @@ Do not expect these commands to work with only the bundled figure products. The 
 - `manifest/files.csv` lists every release file other than itself, with SHA-256. `manifest/data.csv` distinguishes bundled products from required external inputs. `manifest/figures.csv` maps each paper figure to its generator and reference PDF.
 - PDF and NPZ files are deliberately **not** globally ignored. Generated rasters, caches, build products, and `external_data/` are ignored instead.
 
+## Cross-document references
+
+`main_refs.tex` and `supplement_refs.tex` provide the supplementary/main S-number macros without `xr` or any dependency on pre-existing `.aux` files. If labels change, recompile once to regenerate the aux files, run `python tools/sync_crossrefs.py`, then compile again. Fresh Overleaf-style compilation without prior aux files is supported.
+
 ## Repeating the export
 
 The release builder is retained in `tools/export_public_repo.py`. From the original private analysis tree it rebuilds this directory from the explicit allowlist:

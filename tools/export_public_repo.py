@@ -94,6 +94,8 @@ PAPER_FILES = [
     "paper/merged_manuscript/main.tex",
     "paper/merged_manuscript/supplement.tex",
     "paper/merged_manuscript/refs.bib",
+    "paper/merged_manuscript/main_refs.tex",
+    "paper/merged_manuscript/supplement_refs.tex",
     "paper/merged_manuscript/main.pdf",
     "paper/merged_manuscript/supplement.pdf",
     "paper/merged_manuscript/figures_supp/README.md",
@@ -666,6 +668,10 @@ Do not expect these commands to work with only the bundled figure products. The 
 - `manifest/files.csv` lists every release file other than itself, with SHA-256. `manifest/data.csv` distinguishes bundled products from required external inputs. `manifest/figures.csv` maps each paper figure to its generator and reference PDF.
 - PDF and NPZ files are deliberately **not** globally ignored. Generated rasters, caches, build products, and `external_data/` are ignored instead.
 
+## Cross-document references
+
+`main_refs.tex` and `supplement_refs.tex` provide the supplementary/main S-number macros without `xr` or any dependency on pre-existing `.aux` files. If labels change, recompile once to regenerate the aux files, run `python tools/sync_crossrefs.py`, then compile again. Fresh Overleaf-style compilation without prior aux files is supported.
+
 ## Repeating the export
 
 The release builder is retained in `tools/export_public_repo.py`. From the original private analysis tree it rebuilds this directory from the explicit allowlist:
@@ -893,7 +899,7 @@ def write_manifests(source_root: Path, output_root: Path, provenance: dict) -> N
     write_json(output_root / "manifest/provenance.json", provenance)
     file_rows = []
     for p in sorted(output_root.rglob("*")):
-        if not p.is_file() or p.name == "files.csv":
+        if not p.is_file() or p.name == "files.csv" or ".git" in p.relative_to(output_root).parts:
             continue
         rel = p.relative_to(output_root).as_posix()
         if p.stat().st_size > MAX_BYTES:
@@ -981,7 +987,7 @@ def export(source_root: Path, output_root: Path) -> None:
     required += ["urbanflow_ref/goldens/urbanflow_reference_v1.json", "urbanflow_ref/manifest.json",
                  "urbanflow_ref/tests/conftest.py", "urbanflow_ref/tests/test_reference.py",
                  "paper/singlecolumn/figures/style.py", "paper/merged_manuscript/figures/fig2_response.py",
-                 "tools/export_public_repo.py", "tools/verify_public_repo.py"]
+                 "tools/export_public_repo.py", "tools/verify_public_repo.py", "tools/sync_crossrefs.py"]
     required += [f"paper/merged_manuscript/{'figures' if g == 'main' else 'figures_supp'}/{n}.pdf"
                  for n, g, _s, _e in FIGURES]
     for rel in sorted(set(required)):
@@ -989,15 +995,21 @@ def export(source_root: Path, output_root: Path) -> None:
     if output_root.exists():
         if output_root.name != "urbanflow" or output_root.parent.name != "release":
             raise ValueError("refusing to clean a directory not named release/urbanflow")
-        shutil.rmtree(output_root)
-    output_root.mkdir(parents=True)
+        for child in output_root.iterdir():
+            if child.name == ".git":
+                continue
+            if child.is_dir():
+                shutil.rmtree(child)
+            else:
+                child.unlink()
+    output_root.mkdir(parents=True, exist_ok=True)
 
     for rel in FIGURE_CODE + DATA_FILES + PAPER_FILES:
         copy_file(source_root, output_root, rel)
     for name, group, _script, _entry in FIGURES:
         rel = f"paper/merged_manuscript/{'figures' if group == 'main' else 'figures_supp'}/{name}.pdf"
         copy_file(source_root, output_root, rel)
-    for rel in ("tools/export_public_repo.py", "tools/verify_public_repo.py"):
+    for rel in ("tools/export_public_repo.py", "tools/verify_public_repo.py", "tools/sync_crossrefs.py"):
         copy_file(source_root, output_root, rel)
 
     sanitize_frozen_summary(output_root)
@@ -1039,8 +1051,8 @@ def export(source_root: Path, output_root: Path) -> None:
                       source_policy="explicit allowlist; no source-tree writes; no raw trajectories",
                       paper_sync="not asserted by export; rerun after final paper and Fig. 5 synchronization")
     write_manifests(source_root, output_root, provenance)
-    files = sum(1 for p in output_root.rglob("*") if p.is_file())
-    size = sum(p.stat().st_size for p in output_root.rglob("*") if p.is_file())
+    files = sum(1 for p in output_root.rglob("*") if p.is_file() and ".git" not in p.relative_to(output_root).parts)
+    size = sum(p.stat().st_size for p in output_root.rglob("*") if p.is_file() and ".git" not in p.relative_to(output_root).parts)
     print(json.dumps(dict(output=str(output_root), files=files, bytes=size,
                           reference_digest=reference["exported_reference_digest"]), indent=2))
 

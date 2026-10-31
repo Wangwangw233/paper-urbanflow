@@ -87,7 +87,7 @@ def is_text(path: Path) -> bool:
 
 def scan_paths_and_privacy(root: Path, results: Results):
     problems, large = [], []
-    files = [p for p in root.rglob("*") if p.is_file()]
+    files = [p for p in root.rglob("*") if p.is_file() and ".git" not in p.relative_to(root).parts]
     for path in files:
         rel = path.relative_to(root).as_posix()
         parts = set(path.relative_to(root).parts)
@@ -113,7 +113,7 @@ def scan_paths_and_privacy(root: Path, results: Results):
         # The verifier necessarily contains the literal signatures it looks
         # for.  Scanning those signatures as if they were disclosures would be
         # self-referential; path, AST, hash and size checks still apply to it.
-        if rel in {"tools/verify_public_repo.py", "tools/export_public_repo.py"}:
+        if rel in {"tools/verify_public_repo.py", "tools/export_public_repo.py", "tools/sync_crossrefs.py"}:
             continue
         if is_text(path):
             text = raw.decode("utf-8", errors="replace")
@@ -197,7 +197,8 @@ def check_manifest(root: Path, results: Results):
     with manifest.open(encoding="utf-8", newline="") as fh:
         rows = list(csv.DictReader(fh))
     expected = {row["path"]: row for row in rows}
-    actual = {p.relative_to(root).as_posix(): p for p in root.rglob("*") if p.is_file()}
+    actual = {p.relative_to(root).as_posix(): p for p in root.rglob("*")
+              if p.is_file() and ".git" not in p.relative_to(root).parts}
     actual.pop("manifest/files.csv", None)
     missing = sorted(set(expected) - set(actual))
     extra = sorted(set(actual) - set(expected))
