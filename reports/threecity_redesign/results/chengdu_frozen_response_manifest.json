@@ -1,0 +1,28 @@
+{
+ "R_D": 0.11960043023398503,
+ "R_P": 0.6059232745979475,
+ "city": "Chengdu",
+ "expected_basis_sha256": {
+  "road_spatial_transfer/results/road_basis_Chengdu.npz": "be082e6b1854aa2c498fb2c27b8c34910d761ad55f7071c11ff15a06def1d362"
+ },
+ "inputs_sha256": {
+  "project10/outputs/p0_l0/chengdu_aligned_l250_dt60.npz": "c9330b54e8fbcf589e8b63d480b4db877b7d48291df941fb1348662a9dfb0289",
+  "project10/outputs/p0_l0/chengdu_datefreeze.json": "efb42b140d27b7db1fa97777372409d81d57918f5cb305d57ba035c00b2e2916",
+  "road_spatial_transfer/results/road_basis_Chengdu.npz": "be082e6b1854aa2c498fb2c27b8c34910d761ad55f7071c11ff15a06def1d362",
+  "routing_urban_medium_constitutive/results/um_ctx.npz": "8f755fc860c6de1f5b9b6a9c9c6c4174a0f4a2d7e2d46fa5aafc21095acaa772"
+ },
+ "kappa_D": 0.1,
+ "kappa_P": 0.001,
+ "outputs": [
+  "chengdu_snapshot18.npz",
+  "chengdu_response18.npz"
+ ],
+ "response": "P-selected operator; unitary 18-point DFT per TEST date; coherent TEST-date mean coefficients; all ten single-sided bins",
+ "snapshot_rule": "P-frame readout matching the Porto/San Francisco snapshots; TEST date with per-date P error closest to the median; 12:00 (phase 6 of the 06--23 h window)",
+ "status": "pass",
+ "test_dates": [
+  16302,
+  16303,
+  16304
+ ]
+}

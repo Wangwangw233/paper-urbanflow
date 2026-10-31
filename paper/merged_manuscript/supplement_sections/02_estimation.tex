@@ -1,0 +1,56 @@
+\suppnote{Fields, road registration, estimation and uncertainty}{note:estimation}
+
+\paragraph{Discrete fields and conservation.} Let $F_t\in\R^{n_f}$ be the observed signed crossing field on interior faces; a prediction is distinguished by a hat. The cell--face incidence matrix $D\in\R^{n_c\times n_f}$ maps face flux to net cell outflow under the frozen orientation. Thus
+\begin{equation}
+ x_t=DF_t,\qquad P_0=I-D^\dagger D,\qquad
+ \Fcirc_t=P_0F_t,\qquad D\Fcirc_t=0 .
+ \label{eq:supp-field-decomposition}
+\end{equation}
+The observed source--sink balance and divergence-free routing field give the spatially orthogonal decomposition $F_t=D^\dagger x_t+\Fcirc_t$. Orthogonality at an instant does not imply statistical independence across observations. The minimum-norm lift uses a gauge-pinned Laplacian solve rather than an explicitly formed Moore--Penrose inverse; on the zero-sum compatible source space the two constructions coincide. Conservation is imposed by construction or projection, not learned.
+
+\paragraph{Road registration.} The registered road graph has active cells as nodes and registered road segments as edges. If $B_R$ is its node--edge incidence, $A_R$ lifts signed road-edge flows to interior faces, and $\Pi$ aggregates cells to nodes, registration satisfies $DA_R=\Pi B_R$ in integer arithmetic. For a cycle basis $Z_R$ with $B_RZ_R=0$,
+\begin{equation}
+ \UR=\operatorname{orth}(A_RZ_R),\qquad
+ \UR^\top\UR=I,\qquad D\UR=0 .
+ \label{eq:supp-road-basis}
+\end{equation}
+The signed entries of $A_R$ count open-segment crossings in the frozen face orientation. Geometry, domain, mask and registration determine the basis; mobility values, dates and folds do not. This independence is conditional on the registered spatial conventions. The observed road-coordinate state is $y_t=\UR^\top\Fcirc_t$. The physical lift $\CR=\UR K_R\Px$, with $\Px=DD^\dagger$, is used for the local response tensors in Note~\ref{note:spatial}.
+
+\paragraph{Response estimation.} For any source or target $v_t$, TRAIN phase means and departures are
+\begin{equation}
+ \bar v_\phi=\frac{1}{n_{\mathrm{tr},\phi}}
+ \sum_{t\in\mathrm{TRAIN}:\phi(t)=\phi}v_t,
+ \qquad \delta v_t=v_t-\bar v_{\phi(t)} .
+ \label{eq:supp-phase-centre}
+\end{equation}
+Stack $\delta x_t^\top$ and $\delta y_t^\top$ as rows of $X$ and $Z$. The road-coordinate ridge response is
+\begin{equation}
+ K_R^\star=\argmin_K\{\norm{Z-XK^\top}_F^2+\lambda\norm{K}_F^2\}
+ =Z^\top X(X^\top X+\lambda I)^{-1},
+ \label{eq:supp-ridge}
+\end{equation}
+with $\lambda=\kappa s_{\max}(XX^\top)$ and
+$\kappa\in\{10^{-10},10^{-8},10^{-6},10^{-5},10^{-4},10^{-3},10^{-2},10^{-1},1,10,100\}$.
+Validation selects $\kappa$ in the scoring frame of each comparison arm. The structural-characterization estimators use $\kappa=0.01$ in Porto, $0.1$ in San Francisco, $0.1$ in Chengdu's D frame, and $0.001$ for Chengdu's P-frame sensitivity. Each city is fitted separately; these settings are not a cross-city transfer rule.
+
+\paragraph{P, D and CLIM scores.} Let $T_t=\UR^\top\Fcirc_t$ on ROAD support and $T_t=\Fcirc_t$ on FACE support. ROAD scoring projects full-face predictions into road coordinates; FACE scoring lifts road predictions to the complete routing field, so their denominators differ. Both fitted maps use TRAIN departures. P selects on raw VAL inputs and targets and predicts $B_{\mathrm P}x_t$ without a fitted intercept; D centres VAL/TEST with TRAIN phase means and predicts $B_{\mathrm D}\delta x_t$:
+\begin{equation}
+\begin{aligned}
+ R_{\mathrm P}^2&=1-\frac{\sum_{t\in\mathrm{TEST}}\norm{T_t-B_{\mathrm P}x_t}^2}{\sum_{t\in\mathrm{TEST}}\norm{T_t}^2},\\
+ R_{\mathrm D}^2&=1-\frac{\sum_{t\in\mathrm{TEST}}\norm{\delta T_t-B_{\mathrm D}\delta x_t}^2}{\sum_{t\in\mathrm{TEST}}\norm{\delta T_t}^2}.
+\end{aligned}
+\label{eq:supp-pd-scores}
+\end{equation}
+Numerators and denominators are pooled over TEST observations and folds within each city. The denominator is target energy, not variance about a TEST mean. CLIM is the source-free prediction $\bar T_{\phi(t)}$ on the same support and samples. For the P-frame physical display in Figure~\ref{fig:supp-6}, the observed field is $\UR T_t$ and the prediction is $\UR B_{\mathrm P}x_t$, using raw TEST inputs and targets without adding a phase climatology or substituting a D departure.
+
+Full-face ridge fits $\Fcirc_t$ and projects its predictions with $P_0$. POD regression estimates its output basis from TRAIN departures only and selects rank and regularization on VAL in the common FACE metric. No TEST observation selects a basis, rank or regularization. These linear controls and the matched-capacity protocol in Note~\ref{note:spatial} are distinct experiments.
+
+\paragraph{Nulls and uncertainty.} The rank-matched structural null fixes the ambient space and basis rank but not the subspace. Let $K_D$ be an orthonormal basis of $\ker D$. Each draw uses $G_{ij}\overset{\mathrm{iid}}{\sim}N(0,1)$, $Q=\operatorname{orth}(G)$ and $U_b=K_DQ$ at $\rank(\UR)$. The statistic is
+\begin{equation}
+ E(U)=1-\frac{\sum_t\norm{U^\top\Fcirc_t}^2}{\sum_t\norm{\Fcirc_t}^2},
+ \qquad \Delta E_b=E(U_b)-E(\UR),
+ \label{eq:supp-rank-null}
+\end{equation}
+evaluated on each city's full aligned observation pool without a source-response fit. It tests representation specificity, not source-based prediction.
+
+The primary three-city D scores in Table~\ref{tab:crosscity} have no reported paired-date interval or pairing-null result. Per-date displays do not supply that missing uncertainty quantification. The neural paired-date contrast uses 9,999 bootstrap resamples, seed 20261003, dates resampled within folds and Holm adjustment within city/support. The matched-capacity implementation uses 10,000 multinomial paired-date resamples with seed 23 and summarizes the date-mean contrast. Faces are not resampled. Chengdu's matched-capacity interval resamples only four alternate-hour TEST dates and is a small-sample descriptive interval.

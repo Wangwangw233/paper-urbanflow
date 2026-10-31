@@ -1,0 +1,97 @@
+{
+ "coverage_pool": 0.7314312815696645,
+ "coverage_test": 0.7263496829757873,
+ "dates": {
+  "eligible": [
+   16285,
+   16286,
+   16287,
+   16288,
+   16290,
+   16293,
+   16294,
+   16296,
+   16297,
+   16300,
+   16301,
+   16302,
+   16303,
+   16304
+  ],
+  "hours": [
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19,
+   20,
+   21,
+   22,
+   23
+  ],
+  "test": [
+   16302,
+   16303,
+   16304
+  ],
+  "train": [
+   16285,
+   16286,
+   16287,
+   16288,
+   16290,
+   16293,
+   16294,
+   16296
+  ],
+  "val": [
+   16297,
+   16300,
+   16301
+  ]
+ },
+ "frames": {
+  "D": {
+   "axis_agreement_response_anisotropy_weighted": 0.2630868322764046,
+   "fraction_AC_gt_AU": 0.7238406658739596,
+   "median_A_C": 0.7047919950145336,
+   "median_A_U": 0.2803527394300078,
+   "nematic_unweighted": 0.05713308609307802,
+   "score_road": 0.11960043023398481,
+   "tensor_check_relative_error": 4.722935480387434e-16,
+   "zero_response_cells": 165
+  },
+  "P": {
+   "axis_agreement_response_anisotropy_weighted": 0.2585152175743854,
+   "fraction_AC_gt_AU": 0.7223543400713437,
+   "median_A_C": 0.7036188507737464,
+   "median_A_U": 0.2803527394300078,
+   "nematic_unweighted": 0.057476513317073485,
+   "score_road": 0.6059232745979479,
+   "tensor_check_relative_error": 3.2135869483394325e-16,
+   "zero_response_cells": 165
+  }
+ },
+ "inputs_sha256": {
+  "project10/outputs/p0_l0/chengdu_aligned_l250_dt60.npz": "c9330b54e8fbcf589e8b63d480b4db877b7d48291df941fb1348662a9dfb0289",
+  "road_spatial_transfer/results/road_basis_Chengdu.npz": "be082e6b1854aa2c498fb2c27b8c34910d761ad55f7071c11ff15a06def1d362",
+  "urbanflow_ref/geometry.py": "91870d4dcf3284afa74e2181705404de3e26dba3dd0264dfd2e5e0f1881a53f5",
+  "urbanflow_ref/registry.py": "d0920917b04b19f92f235c5c0b0e4b3a5e5f4a6d42474096acbefd023f91d516"
+ },
+ "interior_cells": 3364,
+ "primary_frame": "D",
+ "primary_kappa": 0.1,
+ "road_rank": 2119,
+ "sensitivity_frame": "P",
+ "sensitivity_kappa": 0.001,
+ "source_rank": 126
+}

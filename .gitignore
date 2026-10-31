@@ -1,0 +1,37 @@
+# Python and test caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environments and external scientific inputs
+.venv/
+venv/
+external_data/
+
+# Editors and OS metadata
+.DS_Store
+Thumbs.db
+*.swp
+
+# Temporary/build residue
+_tmp*/
+scratch/
+build/
+dist/
+*.new
+*.tmp
+*.bak
+*.aux
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.toc
+
+# Generated rasters (reference vector PDFs and frozen NPZ remain trackable)
+paper/merged_manuscript/figures/*.png
+paper/merged_manuscript/figures_supp/*.png
+reports/threecity_figure5_revision/figures/*.png
+reports/threecity_joint_spectrum/manuscript_revision/*.png

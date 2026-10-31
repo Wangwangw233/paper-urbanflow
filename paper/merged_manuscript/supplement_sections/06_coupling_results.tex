@@ -1,0 +1,42 @@
+\suppnote{Held-out coupling and baseline results}{note:coupling-results}
+
+\begin{table}[!htbp]
+\centering\footnotesize
+\caption{\textbf{Three-city P/D/CLIM scores.} P scores the raw target; D scores TRAIN-centred departures; CLIM is the source-free P/ROAD phase clock. Cov.\ is raw routing energy captured by roads. Errors pool held-out observations within each city.}
+\label{tab:crosscity}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrrrrrrr@{}}
+\toprule
+ & & & \multicolumn{4}{c}{P} & \multicolumn{3}{c}{D} \\
+\cmidrule(lr){4-7}\cmidrule(lr){8-10}
+City & Cov. & CLIM & \multicolumn{2}{c}{UrbanFlow} & Ridge & POD & \multicolumn{2}{c}{UrbanFlow} & Ridge \\
+\cmidrule(lr){4-5}\cmidrule(lr){8-9}
+ & & ROAD & ROAD & FACE & FACE & FACE & ROAD & FACE & FACE \\
+\midrule
+Porto & 0.904 & 0.472 & 0.682 & 0.607 & 0.701 & 0.701 & 0.468 & 0.411 & 0.504 \\
+San Francisco & 0.886 & 0.727 & 0.597 & 0.528 & 0.611 & 0.637 & 0.240 & 0.209 & 0.262 \\
+Chengdu & 0.731 & 0.931 & 0.606 & 0.440 & 0.572 & 0.575 & 0.120 & 0.085 & 0.126 \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+The three focal cities replicate a procedure, not a single operator transferred between cities. Porto has the strongest departure coupling. San Francisco retains positive D scores despite a raw climatology stronger than raw operator reconstruction. Chengdu separates a highly recurrent raw field from weak departure prediction: P/ROAD is 0.606, CLIM is 0.931, and D/ROAD is 0.120. Raw reproduction therefore cannot be read as source-specific information without the D comparison. The primary D entries have no reported paired interval or pairing-null result; Figure~\ref{fig:supp-2} shows their date-resolved values without supplying such an interval.
+
+Full-face ridge and TRAIN-only POD equal or outperform the road restriction on FACE targets. D/FACE ridge scores are 0.504, 0.262 and 0.126, against road-restricted 0.411, 0.209 and 0.085. Roads therefore supply independently specified, interpretable support rather than the highest linear reconstruction accuracy. Interior-face counts in Porto, San Francisco and Chengdu are 1,984, 5,512 and 7,080; D-frame selected POD ranks are 958, 16 and 64. Table~\ref{tab:crosscity} consistently pools errors rather than averaging fold scores.
+
+\paragraph{Three-city P-frame physical reconstruction.} Figure~\ref{fig:supp-6} visualizes observed and predicted road-supported routing fields using the frozen P estimator with raw TEST inputs and targets. No phase climatology is added and no D departure is substituted. Porto and San Francisco preserve their archived \texttt{picked\_i}/\texttt{picked\_phase} snapshots. Chengdu selects the TEST date whose daily P error is closest to the median daily P error: \texttt{picked\_i=2}, \texttt{picked\_phase=6} (12:00 in the 06--23\,h window), \texttt{picked\_date=16304}. Its pinned-basis export is checked against the frozen $R_{\mathrm P}$. These snapshots are qualitative complements to the complete pooled scores, not additional independent experiments.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figures_supp/figS06_heldout_reconstruction.pdf}
+\caption{\textbf{Three-city held-out physical reconstruction in the P frame.} Observed and reconstructed road-supported routing fields for Porto, San Francisco and Chengdu, using the frozen P estimator with raw TEST inputs and targets; no phase climatology is added. Porto and San Francisco preserve their archived picked indices and phases. Chengdu uses the TEST date with daily P error closest to the median daily P error, specifically \texttt{picked\_i=2}, \texttt{picked\_phase=6} (12:00), \texttt{picked\_date=16304}, and passes the pinned-basis/frozen-$R_{\mathrm P}$ export check. Observed and predicted panels within a city use identical glyph sites and the observed field's 99th-percentile magnitude scale, with saturation above it; colour scales are city-specific. The maps are qualitative, whereas Table~\ref{tab:crosscity} uses every held-out observation.}
+\label{fig:supp-6}
+\end{figure}
+
+\paragraph{Neural initialization and aggregation.} Sealing initialization before network construction gives Graph WaveNet P/FACE means 0.548 in Porto (range 0.515--0.588), 0.221 in San Francisco (0.096--0.279) and 0.315 in Chengdu (0.260--0.350). Configuration choice is itself seed-dependent: Chengdu selects configurations $2,0,0,0,1$, Porto selects configuration 1 at four seeds and 0 at one, and San Francisco varies by fold and seed. Fifteen of the 100 San Francisco grid runs collapse to a zero field with VAL error exactly one; the minimum-VAL rule cannot select such a run when a non-collapsed alternative exists.
+
+Define the Porto contrast as Graph WaveNet minus UrbanFlow. The paired-date value on the uncontrolled archived draw is $-0.1102$ (95\% interval $[-0.1762,-0.0268]$, Holm-adjusted $p=0.0088$). Under the sealed protocol the corresponding differences are $-0.059$ on the seed mean and $-0.019$ at the worst seed; the interval is not recomputed because sealed outputs retain pooled rather than per-date errors. UrbanFlow leads every realised seed in Porto and Chengdu by at least 0.019 and 0.090. San Francisco's sealed 0.221 is a fold-mean-of-$R^2$ summary, while UrbanFlow's 0.528 pools TEST errors; their difference is descriptive and is not used for a pooled like-for-like ranking. These results concern this completed adaptation and P/FACE protocol, not deep learning generally or a D-frame result.
+
+\paragraph{Gravity and loading diagnostics.} Native gravity CPC values are 0.525, 0.464 and 0.555. TEST-scaled gravity loading gives 0.136, 0.270 and $8.3\times10^{-5}$; exact-TEST-OD AON gives 0.172, 0.336 and 0.002, with fixed-amplitude values 0.126, $-0.533$ and $-0.565$. These tasks use different inputs and are not source-only accuracy rankings.
+
+Chengdu's OD table contains 1.64\,M TEST trips, of which 1.28\,M remain after snapping. Its strong OD overlap but near-zero loading score is therefore not a ranking of demand quality. The loaded field has cosine 0.04 with the observed field, and destination permutation leaves the loaded field almost unchanged (cosine 0.93--0.94), showing that this pipeline resolves a largely margin-driven pattern. Rebuilding the observed three TEST dates from all fixes reproduces the frozen field at pooled cosine 0.999999. Using occupied runs alone removes 16.3\% of absolute flux, leaves 76\% of energy, and gives pooled cosine 0.929 with the all-fix field. Thus the activity-set difference is real and bounded, but by itself is unlikely to account for the loading mismatch. All loading rows diagnose the implemented demand--registration--loading pipeline rather than attainable performance of traffic assignment as a paradigm.

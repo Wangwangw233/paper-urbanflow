@@ -1,0 +1,40 @@
+{
+ "Chengdu": {
+  "routing": {
+   "DC": 0.811280709451781,
+   "kept": 1.0000000000000002
+  },
+  "source": {
+   "DC": 0.6679022378452887,
+   "kept": 0.9999999999999998
+  }
+ },
+ "Porto": {
+  "routing": {
+   "DC": 0.5103170716916253,
+   "kept": 0.7989001235376568,
+   "parseval_error": 6.661338147750939e-16
+  },
+  "routing_archive_error_unweighted": 1.1102230246251565e-16,
+  "routing_archive_error_weighted": 0.15899088172788112,
+  "source": {
+   "DC": 0.3048878532842847,
+   "kept": 0.6342923789075025,
+   "parseval_error": 2.220446049250313e-16
+  }
+ },
+ "SF": {
+  "routing": {
+   "DC": 0.3508188204864337,
+   "kept": 0.9892257313408045,
+   "parseval_error": 4.440892098500626e-16
+  },
+  "routing_archive_error_unweighted": 1.942890293094024e-16,
+  "routing_archive_error_weighted": 0.16594564744914825,
+  "source": {
+   "DC": 0.18756325564122325,
+   "kept": 0.9656278250285815,
+   "parseval_error": 2.220446049250313e-16
+  }
+ }
+}

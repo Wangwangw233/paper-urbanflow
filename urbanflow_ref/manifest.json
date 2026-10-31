@@ -1,0 +1,2216 @@
+{
+ "digest": "b7b85d7864eaf93c7916b1f4dfd24e9d23a4c7c807457c5767558905a9860566",
+ "payload": {
+  "code": {
+   "digest": "93e5cfe6bf7022786f6c0017a2ac51ab8357dea5871b2944de75cb8f29a1e802",
+   "excluded": [
+    "_version.py"
+   ],
+   "files": {
+    "__init__.py": "e80926f31346f1f564781c6f2bb228485a61ceb10d0f2b7148b057667ea167ea",
+    "__main__.py": "13a1a5b340cdcfc1902b62be90e508c7c71886000d5bf087e7854aadf09fb35e",
+    "cli.py": "c533ac63149601c03c172ff8b2ef7c65d37fc005212b691870414b37cefaa79c",
+    "fields.py": "2c5a4073c20e4a31d1776e2b1a2d850e58f885ce355d695d2775b79afb214d37",
+    "frames.py": "fd1e9988416f4261607436c8d8d66964bbc4804a966919bdd28d354b1a62c8a1",
+    "geometry.py": "91870d4dcf3284afa74e2181705404de3e26dba3dd0264dfd2e5e0f1881a53f5",
+    "manifest.py": "7197ecdbae30760f2ad3909c53f0454f3be68e42665d748d5758b2791ae81b3d",
+    "metrics.py": "6349110e7a67e4a8a04dbfbfba0577ac594db3d69381b0171cd3e46fffaef50b",
+    "paths.py": "2fb93ec3d102fb70ced21b85d1c975fb6d21ad654995796eb3bbfd8ed0aeaf6a",
+    "reference.py": "569792009bf8c7a55e6802bd6f682750279708546e602c7cb82c2110557cf4d4",
+    "registry.py": "d0920917b04b19f92f235c5c0b0e4b3a5e5f4a6d42474096acbefd023f91d516",
+    "selfcheck.py": "58c7a55315671a4951e85afc7434a821102d9c2bab89d7759b42e7cdaa7d3739",
+    "splits.py": "8bbb4d752d6bbad27617642d605702d8e0f51219e9bcc34846ef4edbd9765c53"
+   }
+  },
+  "created_utc": "2026-10-28T06:50:05Z",
+  "data": {
+   "objects": {
+    "Chengdu": {
+     "cache": {
+      "bytes": 4555722,
+      "cell_m": 250.0,
+      "date_first": 16285,
+      "date_last": 16312,
+      "dt_min": 60,
+      "gauge_m": 250.0,
+      "grid": [
+       60,
+       60
+      ],
+      "n_dates": 28,
+      "n_windows": 671,
+      "path": "project10/outputs/p0_l0/chengdu_aligned_l250_dt60.npz",
+      "phases_per_day": 24,
+      "sha256": "c9330b54e8fbcf589e8b63d480b4db877b7d48291df941fb1348662a9dfb0289",
+      "udates_index": true
+     },
+     "family": "trajectory",
+     "folds": 1,
+     "freeze": {
+      "bytes": 3218,
+      "has_folds": false,
+      "n_eligible": 18,
+      "n_folds": 1,
+      "path": "project10/outputs/p0_l0/chengdu_datefreeze.json",
+      "sha256": "efb42b140d27b7db1fa97777372409d81d57918f5cb305d57ba035c00b2e2916"
+     },
+     "geometry": "Chengdu",
+     "hours": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+     ],
+     "phases": 18,
+     "splits": [
+      "window"
+     ]
+    },
+    "Chongqing": {
+     "cache": {
+      "bytes": 1371044,
+      "cell_m": 250.0,
+      "date_first": 19072,
+      "date_last": 19102,
+      "dt_min": 60,
+      "gauge_m": 250.0,
+      "grid": [
+       140,
+       140
+      ],
+      "n_dates": 31,
+      "n_windows": 743,
+      "path": "project10/outputs/p0_l0/chongqing_aligned_l250_dt60.npz",
+      "phases_per_day": 24,
+      "sha256": "bd980efa0ef02bd7bd69b9ccbdfc6e631bd4482fd16535d84627bb57fb24ad22",
+      "udates_index": true
+     },
+     "family": "courier_gps",
+     "folds": 1,
+     "freeze": {
+      "bytes": 3592,
+      "has_folds": false,
+      "n_eligible": 20,
+      "n_folds": 1,
+      "path": "project10/outputs/p0_l0/chongqing_datefreeze.json",
+      "sha256": "46252e623a96ce1b5fbee88c84db457f60411a00e6b18427b8f05be8be42d93b"
+     },
+     "geometry": "Chongqing",
+     "hours": null,
+     "phases": 24,
+     "splits": [
+      "frozen",
+      "refrozen"
+     ]
+    },
+    "Chongqing@15": {
+     "cache": {
+      "bytes": 3361606,
+      "cell_m": 250.0,
+      "date_first": 19072,
+      "date_last": 19102,
+      "dt_min": 15,
+      "gauge_m": 250.0,
+      "grid": [
+       140,
+       140
+      ],
+      "n_dates": 31,
+      "n_windows": 2975,
+      "path": "reports/lade_temporal_scale_and_conditional_gain/aligned/chongqing_aligned_l250_dt15.npz",
+      "phases_per_day": 96,
+      "sha256": "69fb09c050f5e10dfcc40a17cc5abd8293eb8e00791f87eab0dcb4a43f8d46fe",
+      "udates_index": true
+     },
+     "family": "courier_gps",
+     "folds": 1,
+     "freeze": {
+      "bytes": 3592,
+      "has_folds": false,
+      "n_eligible": 20,
+      "n_folds": 1,
+      "path": "project10/outputs/p0_l0/chongqing_datefreeze.json",
+      "sha256": "46252e623a96ce1b5fbee88c84db457f60411a00e6b18427b8f05be8be42d93b"
+     },
+     "geometry": "Chongqing",
+     "hours": null,
+     "phases": 96,
+     "splits": [
+      "frozen",
+      "refrozen"
+     ]
+    },
+    "Chongqing@30": {
+     "cache": {
+      "bytes": 2089231,
+      "cell_m": 250.0,
+      "date_first": 19072,
+      "date_last": 19102,
+      "dt_min": 30,
+      "gauge_m": 250.0,
+      "grid": [
+       140,
+       140
+      ],
+      "n_dates": 31,
+      "n_windows": 1487,
+      "path": "reports/lade_temporal_scale_and_conditional_gain/aligned/chongqing_aligned_l250_dt30.npz",
+      "phases_per_day": 48,
+      "sha256": "167d7febfc2e8b7d10fdc162df0fef8c859825746aba9f665f49b13d93ca8d23",
+      "udates_index": true
+     },
+     "family": "courier_gps",
+     "folds": 1,
+     "freeze": {
+      "bytes": 3592,
+      "has_folds": false,
+      "n_eligible": 20,
+      "n_folds": 1,
+      "path": "project10/outputs/p0_l0/chongqing_datefreeze.json",
+      "sha256": "46252e623a96ce1b5fbee88c84db457f60411a00e6b18427b8f05be8be42d93b"
+     },
+     "geometry": "Chongqing",
+     "hours": null,
+     "phases": 48,
+     "splits": [
+      "frozen",
+      "refrozen"
+     ]
+    },
+    "Hangzhou": {
+     "cache": {
+      "bytes": 1681963,
+      "cell_m": 250.0,
+      "date_first": 19072,
+      "date_last": 19102,
+      "dt_min": 60,
+      "gauge_m": 250.0,
+      "grid": [
+       140,
+       140
+      ],
+      "n_dates": 31,
+      "n_windows": 743,
+      "path": "project10/outputs/p0_l0/hangzhou_aligned_l250_dt60.npz",
+      "phases_per_day": 24,
+      "sha256": "c7f5795e5aafa06f86227e952008e97997dc1e5054e78ae1fa07333ecf55021e",
+      "udates_index": true
+     },
+     "family": "courier_gps",
+     "folds": 1,
+     "freeze": {
+      "bytes": 3590,
+      "has_folds": false,
+      "n_eligible": 20,
+      "n_folds": 1,
+      "path": "project10/outputs/p0_l0/hangzhou_datefreeze.json",
+      "sha256": "7dc353efa85f2a5a4f9ae0b77ab67d389f322b7b50bcbbb69169d521a481b332"
+     },
+     "geometry": "Hangzhou",
+     "hours": null,
+     "phases": 24,
+     "splits": [
+      "frozen",
+      "refrozen"
+     ]
+    },
+    "Hangzhou@15": {
+     "cache": {
+      "bytes": 3975563,
+      "cell_m": 250.0,
+      "date_first": 19072,
+      "date_last": 19102,
+      "dt_min": 15,
+      "gauge_m": 250.0,
+      "grid": [
+       140,
+       140
+      ],
+      "n_dates": 31,
+      "n_windows": 2975,
+      "path": "reports/lade_temporal_scale_and_conditional_gain/aligned/hangzhou_aligned_l250_dt15.npz",
+      "phases_per_day": 96,
+      "sha256": "67084feab1ea5934c764bf1289aa93cd0aa3f57b54e7de993f5c6394ed07abeb",
+      "udates_index": true
+     },
+     "family": "courier_gps",
+     "folds": 1,
+     "freeze": {
+      "bytes": 3590,
+      "has_folds": false,
+      "n_eligible": 20,
+      "n_folds": 1,
+      "path": "project10/outputs/p0_l0/hangzhou_datefreeze.json",
+      "sha256": "7dc353efa85f2a5a4f9ae0b77ab67d389f322b7b50bcbbb69169d521a481b332"
+     },
+     "geometry": "Hangzhou",
+     "hours": null,
+     "phases": 96,
+     "splits": [
+      "frozen",
+      "refrozen"
+     ]
+    },
+    "Hangzhou@30": {
+     "cache": {
+      "bytes": 2527964,
+      "cell_m": 250.0,
+      "date_first": 19072,
+      "date_last": 19102,
+      "dt_min": 30,
+      "gauge_m": 250.0,
+      "grid": [
+       140,
+       140
+      ],
+      "n_dates": 31,
+      "n_windows": 1487,
+      "path": "reports/lade_temporal_scale_and_conditional_gain/aligned/hangzhou_aligned_l250_dt30.npz",
+      "phases_per_day": 48,
+      "sha256": "1fd0351c6ba06f75d0ae537c9dfb7803ad6de7ab2088b254b40311fceda7843e",
+      "udates_index": true
+     },
+     "family": "courier_gps",
+     "folds": 1,
+     "freeze": {
+      "bytes": 3590,
+      "has_folds": false,
+      "n_eligible": 20,
+      "n_folds": 1,
+      "path": "project10/outputs/p0_l0/hangzhou_datefreeze.json",
+      "sha256": "7dc353efa85f2a5a4f9ae0b77ab67d389f322b7b50bcbbb69169d521a481b332"
+     },
+     "geometry": "Hangzhou",
+     "hours": null,
+     "phases": 48,
+     "splits": [
+      "frozen",
+      "refrozen"
+     ]
+    },
+    "Jilin": {
+     "cache": {
+      "bytes": 791532,
+      "cell_m": 250.0,
+      "date_first": 19072,
+      "date_last": 19102,
+      "dt_min": 60,
+      "gauge_m": 250.0,
+      "grid": [
+       140,
+       140
+      ],
+      "n_dates": 31,
+      "n_windows": 743,
+      "path": "project10/outputs/p0_l0/jilin_aligned_l250_dt60.npz",
+      "phases_per_day": 24,
+      "sha256": "6f4a15201a64801b8fa66b5ee53d283696ac0b75d22da05e97426a881e64913d",
+      "udates_index": true
+     },
+     "family": "courier_gps",
+     "folds": 1,
+     "freeze": {
+      "bytes": 3584,
+      "has_folds": false,
+      "n_eligible": 20,
+      "n_folds": 1,
+      "path": "project10/outputs/p0_l0/jilin_datefreeze.json",
+      "sha256": "a1f4274f22fa0ba6ac55915478996d0bb895d2a5ff31253853cea7609dd78a5c"
+     },
+     "geometry": "Jilin",
+     "hours": null,
+     "phases": 24,
+     "splits": [
+      "frozen",
+      "refrozen"
+     ]
+    },
+    "Jilin@15": {
+     "cache": {
+      "bytes": 2305730,
+      "cell_m": 250.0,
+      "date_first": 19072,
+      "date_last": 19102,
+      "dt_min": 15,
+      "gauge_m": 250.0,
+      "grid": [
+       140,
+       140
+      ],
+      "n_dates": 31,
+      "n_windows": 2975,
+      "path": "reports/lade_temporal_scale_and_conditional_gain/aligned/jilin_aligned_l250_dt15.npz",
+      "phases_per_day": 96,
+      "sha256": "13096cdc45ed8994a7b4c6024411d3dc394df0fa2c54a2fbaf592d5f8f30524a",
+      "udates_index": true
+     },
+     "family": "courier_gps",
+     "folds": 1,
+     "freeze": {
+      "bytes": 3584,
+      "has_folds": false,
+      "n_eligible": 20,
+      "n_folds": 1,
+      "path": "project10/outputs/p0_l0/jilin_datefreeze.json",
+      "sha256": "a1f4274f22fa0ba6ac55915478996d0bb895d2a5ff31253853cea7609dd78a5c"
+     },
+     "geometry": "Jilin",
+     "hours": null,
+     "phases": 96,
+     "splits": [
+      "frozen",
+      "refrozen"
+     ]
+    },
+    "Jilin@30": {
+     "cache": {
+      "bytes": 1321937,
+      "cell_m": 250.0,
+      "date_first": 19072,
+      "date_last": 19102,
+      "dt_min": 30,
+      "gauge_m": 250.0,
+      "grid": [
+       140,
+       140
+      ],
+      "n_dates": 31,
+      "n_windows": 1487,
+      "path": "reports/lade_temporal_scale_and_conditional_gain/aligned/jilin_aligned_l250_dt30.npz",
+      "phases_per_day": 48,
+      "sha256": "bd1be607211bf6471b527b036010b516984ebd1df1174cf8738df305902bc925",
+      "udates_index": true
+     },
+     "family": "courier_gps",
+     "folds": 1,
+     "freeze": {
+      "bytes": 3584,
+      "has_folds": false,
+      "n_eligible": 20,
+      "n_folds": 1,
+      "path": "project10/outputs/p0_l0/jilin_datefreeze.json",
+      "sha256": "a1f4274f22fa0ba6ac55915478996d0bb895d2a5ff31253853cea7609dd78a5c"
+     },
+     "geometry": "Jilin",
+     "hours": null,
+     "phases": 48,
+     "splits": [
+      "frozen",
+      "refrozen"
+     ]
+    },
+    "Porto": {
+     "cache": {
+      "bytes": 12797209,
+      "cell_m": 250.0,
+      "date_first": 15887,
+      "date_last": 16251,
+      "dt_min": 60,
+      "gauge_m": 500.0,
+      "grid": [
+       32,
+       32
+      ],
+      "n_dates": 363,
+      "n_windows": 8759,
+      "path": "project10/outputs/p0_l0/porto_aligned_l250_dt60.npz",
+      "phases_per_day": 24,
+      "sha256": "4053915d9ac4f887596848faefb7c7f168b4572cbc703d59e1dad569433478e1",
+      "udates_index": true
+     },
+     "family": "trajectory",
+     "folds": 1,
+     "freeze": {
+      "bytes": 11145,
+      "has_folds": false,
+      "n_eligible": 252,
+      "n_folds": 1,
+      "path": "project10/outputs/p0_l0/porto_datefreeze.json",
+      "sha256": "6cb8e04de2ce20ce97e6cd33f53b1aaaaa9b1c1305aaf0b129f3392868e42349"
+     },
+     "geometry": "Porto",
+     "hours": null,
+     "phases": 24,
+     "splits": [
+      "frozen"
+     ]
+    },
+    "Rome": {
+     "cache": {
+      "bytes": 1612773,
+      "cell_m": 250.0,
+      "date_first": 16102,
+      "date_last": 16131,
+      "dt_min": 60,
+      "gauge_m": 1000.0,
+      "grid": [
+       64,
+       96
+      ],
+      "n_dates": 30,
+      "n_windows": 719,
+      "path": "project10/outputs/p0_l0/rome_aligned_l250_dt60.npz",
+      "phases_per_day": 24,
+      "sha256": "3ef140a1236398a3aa6d27876b1b789eb7eaf0567444b59afb1f737f8f4d188b",
+      "udates_index": true
+     },
+     "family": "trajectory",
+     "folds": 1,
+     "freeze": {
+      "bytes": 2952,
+      "has_folds": false,
+      "n_eligible": 20,
+      "n_folds": 1,
+      "path": "project10/outputs/round3/rome3a_datefreeze.json",
+      "sha256": "79ea0664e0f2df75270191a6a9eee189bbc0d90d73aa6109f8ce344c79f80788"
+     },
+     "geometry": "Rome",
+     "hours": null,
+     "phases": 24,
+     "splits": [
+      "frozen"
+     ]
+    },
+    "SF": {
+     "cache": {
+      "bytes": 2558545,
+      "cell_m": 250.0,
+      "date_first": 14016,
+      "date_last": 14040,
+      "dt_min": 60,
+      "gauge_m": 500.0,
+      "grid": [
+       88,
+       32
+      ],
+      "n_dates": 25,
+      "n_windows": 575,
+      "path": "project10/outputs/round6/sf_passenger_aligned_250m60m.npz",
+      "phases_per_day": 24,
+      "sha256": "f64b0a8c6d20492ece22aafd550c1601ab84e7c1c991547b7de66d6f1f9f2fac",
+      "udates_index": true
+     },
+     "family": "trajectory",
+     "folds": 5,
+     "freeze": {
+      "bytes": 2509,
+      "has_folds": true,
+      "n_eligible": 15,
+      "n_folds": 5,
+      "path": "project10/outputs/p0_l0/cabspotting_datefreeze.json",
+      "sha256": "7204d3701737c34a852cc7d1a2cd31d52526dd4d207fcf25a80fec4ee9122f18"
+     },
+     "geometry": "SF",
+     "hours": null,
+     "phases": 24,
+     "splits": [
+      "frozen"
+     ]
+    },
+    "Shanghai": {
+     "cache": {
+      "bytes": 1268620,
+      "cell_m": 250.0,
+      "date_first": 19072,
+      "date_last": 19102,
+      "dt_min": 60,
+      "gauge_m": 250.0,
+      "grid": [
+       140,
+       140
+      ],
+      "n_dates": 31,
+      "n_windows": 743,
+      "path": "project10/outputs/p0_l0/shanghai_aligned_l250_dt60.npz",
+      "phases_per_day": 24,
+      "sha256": "46cce156ca85b1b75025ec8e32f37d3fc73163e287bb85ab7935e96bfd297bd7",
+      "udates_index": true
+     },
+     "family": "courier_gps",
+     "folds": 1,
+     "freeze": {
+      "bytes": 3590,
+      "has_folds": false,
+      "n_eligible": 20,
+      "n_folds": 1,
+      "path": "project10/outputs/p0_l0/shanghai_datefreeze.json",
+      "sha256": "6c589c3999edc7fbd21a065d6330c8fcca08e762e7b8efc92bd5aaecdaad2b48"
+     },
+     "geometry": "Shanghai",
+     "hours": null,
+     "phases": 24,
+     "splits": [
+      "frozen",
+      "refrozen"
+     ]
+    },
+    "Shanghai@15": {
+     "cache": {
+      "bytes": 3169056,
+      "cell_m": 250.0,
+      "date_first": 19072,
+      "date_last": 19102,
+      "dt_min": 15,
+      "gauge_m": 250.0,
+      "grid": [
+       140,
+       140
+      ],
+      "n_dates": 31,
+      "n_windows": 2975,
+      "path": "reports/lade_temporal_scale_and_conditional_gain/aligned/shanghai_aligned_l250_dt15.npz",
+      "phases_per_day": 96,
+      "sha256": "cbe9ee67ed774b654cbe3a62e016f8a7af23d6c9039c9e4c6e561b36a3907cd3",
+      "udates_index": true
+     },
+     "family": "courier_gps",
+     "folds": 1,
+     "freeze": {
+      "bytes": 3590,
+      "has_folds": false,
+      "n_eligible": 20,
+      "n_folds": 1,
+      "path": "project10/outputs/p0_l0/shanghai_datefreeze.json",
+      "sha256": "6c589c3999edc7fbd21a065d6330c8fcca08e762e7b8efc92bd5aaecdaad2b48"
+     },
+     "geometry": "Shanghai",
+     "hours": null,
+     "phases": 96,
+     "splits": [
+      "frozen",
+      "refrozen"
+     ]
+    },
+    "Shanghai@30": {
+     "cache": {
+      "bytes": 1955474,
+      "cell_m": 250.0,
+      "date_first": 19072,
+      "date_last": 19102,
+      "dt_min": 30,
+      "gauge_m": 250.0,
+      "grid": [
+       140,
+       140
+      ],
+      "n_dates": 31,
+      "n_windows": 1487,
+      "path": "reports/lade_temporal_scale_and_conditional_gain/aligned/shanghai_aligned_l250_dt30.npz",
+      "phases_per_day": 48,
+      "sha256": "15c03f2ecbc2f256bfc231e462357eb086a045e293713bb770240dbfb42f9cb9",
+      "udates_index": true
+     },
+     "family": "courier_gps",
+     "folds": 1,
+     "freeze": {
+      "bytes": 3590,
+      "has_folds": false,
+      "n_eligible": 20,
+      "n_folds": 1,
+      "path": "project10/outputs/p0_l0/shanghai_datefreeze.json",
+      "sha256": "6c589c3999edc7fbd21a065d6330c8fcca08e762e7b8efc92bd5aaecdaad2b48"
+     },
+     "geometry": "Shanghai",
+     "hours": null,
+     "phases": 48,
+     "splits": [
+      "frozen",
+      "refrozen"
+     ]
+    },
+    "Yantai": {
+     "cache": {
+      "bytes": 890779,
+      "cell_m": 250.0,
+      "date_first": 19072,
+      "date_last": 19102,
+      "dt_min": 60,
+      "gauge_m": 250.0,
+      "grid": [
+       140,
+       140
+      ],
+      "n_dates": 31,
+      "n_windows": 743,
+      "path": "project10/outputs/p0_l0/yantai_aligned_l250_dt60.npz",
+      "phases_per_day": 24,
+      "sha256": "bc59e28791051a9b1827d3544ba4c9ef7f8472703a8128c90084c6f4cb39189b",
+      "udates_index": true
+     },
+     "family": "courier_gps",
+     "folds": 1,
+     "freeze": {
+      "bytes": 3586,
+      "has_folds": false,
+      "n_eligible": 20,
+      "n_folds": 1,
+      "path": "project10/outputs/p0_l0/yantai_datefreeze.json",
+      "sha256": "4623eabf8a817570c0b36c8b2d47aac2f78feaa94f51dbfbf58c880c11e75931"
+     },
+     "geometry": "Yantai",
+     "hours": null,
+     "phases": 24,
+     "splits": [
+      "frozen",
+      "refrozen"
+     ]
+    },
+    "Yantai@15": {
+     "cache": {
+      "bytes": 2451374,
+      "cell_m": 250.0,
+      "date_first": 19072,
+      "date_last": 19102,
+      "dt_min": 15,
+      "gauge_m": 250.0,
+      "grid": [
+       140,
+       140
+      ],
+      "n_dates": 31,
+      "n_windows": 2975,
+      "path": "reports/lade_temporal_scale_and_conditional_gain/aligned/yantai_aligned_l250_dt15.npz",
+      "phases_per_day": 96,
+      "sha256": "5400e6951f880d339937cad3a58547a0dbd23d7ea3eb75f965bddc9c7e41dbe3",
+      "udates_index": true
+     },
+     "family": "courier_gps",
+     "folds": 1,
+     "freeze": {
+      "bytes": 3586,
+      "has_folds": false,
+      "n_eligible": 20,
+      "n_folds": 1,
+      "path": "project10/outputs/p0_l0/yantai_datefreeze.json",
+      "sha256": "4623eabf8a817570c0b36c8b2d47aac2f78feaa94f51dbfbf58c880c11e75931"
+     },
+     "geometry": "Yantai",
+     "hours": null,
+     "phases": 96,
+     "splits": [
+      "frozen",
+      "refrozen"
+     ]
+    },
+    "Yantai@30": {
+     "cache": {
+      "bytes": 1438113,
+      "cell_m": 250.0,
+      "date_first": 19072,
+      "date_last": 19102,
+      "dt_min": 30,
+      "gauge_m": 250.0,
+      "grid": [
+       140,
+       140
+      ],
+      "n_dates": 31,
+      "n_windows": 1487,
+      "path": "reports/lade_temporal_scale_and_conditional_gain/aligned/yantai_aligned_l250_dt30.npz",
+      "phases_per_day": 48,
+      "sha256": "658e86a96c6cff920d81ac9108d5ff42e2b35b5203614421f3f5b8e5c6fb79c0",
+      "udates_index": true
+     },
+     "family": "courier_gps",
+     "folds": 1,
+     "freeze": {
+      "bytes": 3586,
+      "has_folds": false,
+      "n_eligible": 20,
+      "n_folds": 1,
+      "path": "project10/outputs/p0_l0/yantai_datefreeze.json",
+      "sha256": "4623eabf8a817570c0b36c8b2d47aac2f78feaa94f51dbfbf58c880c11e75931"
+     },
+     "geometry": "Yantai",
+     "hours": null,
+     "phases": 48,
+     "splits": [
+      "frozen",
+      "refrozen"
+     ]
+    }
+   }
+  },
+  "env": {
+   "blas_threads": 1,
+   "numpy": "1.26.4",
+   "platform": "Linux-5.15.0-185-generic-x86_64-with-glibc2.27",
+   "python": "3.10.9",
+   "scipy": "1.15.3"
+  },
+  "field": {
+   "definition": "F_t: observed face flux, one scalar per interior edge; missing (date, phase) pairs contribute no row, never a zero",
+   "missing": "absent pair -> no row; N == 0 is not imputed",
+   "phase": "the scale's own clock phase: 24 per day at dt=60 min, 96 at dt=15 min",
+   "row": "(date, clock phase), date-major, phase ascending"
+  },
+  "geometry": {
+   "face_order": "row-major, east faces first, then north; rebuilt from the grid mask and asserted equal to um_ctx p0/p1 on every load",
+   "grids": {
+    "Chengdu": {
+     "NC": 3600,
+     "n_int": 7080,
+     "nx": 60,
+     "ny": 60
+    },
+    "Chongqing": {
+     "NC": 19600,
+     "n_int": 38920,
+     "nx": 140,
+     "ny": 140
+    },
+    "Hangzhou": {
+     "NC": 19600,
+     "n_int": 38920,
+     "nx": 140,
+     "ny": 140
+    },
+    "Jilin": {
+     "NC": 19600,
+     "n_int": 38920,
+     "nx": 140,
+     "ny": 140
+    },
+    "Porto": {
+     "NC": 1024,
+     "n_int": 1984,
+     "nx": 32,
+     "ny": 32
+    },
+    "Rome": {
+     "NC": 6144,
+     "n_int": 12128,
+     "nx": 96,
+     "ny": 64
+    },
+    "SF": {
+     "NC": 2816,
+     "n_int": 5512,
+     "nx": 32,
+     "ny": 88
+    },
+    "Shanghai": {
+     "NC": 19600,
+     "n_int": 38920,
+     "nx": 140,
+     "ny": 140
+    },
+    "Yantai": {
+     "NC": 19600,
+     "n_int": 38920,
+     "nx": 140,
+     "ny": 140
+    }
+   },
+   "source": {
+    "bytes": 1288337,
+    "path": "routing_urban_medium_constitutive/results/um_ctx.npz",
+    "sha256": "8f755fc860c6de1f5b9b6a9c9c6c4174a0f4a2d7e2d46fa5aafc21095acaa772"
+   }
+  },
+  "metrics": {
+   "E": "E(v, v_hat) = sum ||v - v_hat||^2 / sum ||v||^2 over rows of the evaluation block",
+   "bootstrap": "unit = independent TEST date; percentile 2.5/97.5; n=10000, seed=20261028",
+   "frames": {
+    "CLIM": "TRAIN phase mean alone; denominator ||y||^2",
+    "D": "centre every row with TRAIN phase means; score the anomaly z; denominator ||z||^2",
+    "I": "D's prediction plus TRAIN phase mean; denominator ||y||^2",
+    "P": "centre FIT rows only; predict from raw TEST x; score raw TEST y; denominator ||y||^2  (the manuscript's 1 - E)"
+   },
+   "identity": "R_I - R_CLIM = (1 - R_CLIM) R_D holds by construction for D/I/CLIM; checked every run against 1e-12",
+   "score": "1 - E, reported as R"
+  },
+  "operators": {
+   "complexity": "one eigendecomposition per split; no kernel, no nonlinearity, no per-object tuning beyond kappa",
+   "estimator": "ridge in dual form: a = V ((V^T T) / (s + lam)), pred = (X_pred X_fit^T) a, s eig(X_fit X_fit^T)",
+   "field": "F_t: observed face flux, one scalar per interior edge; missing (date, phase) pairs contribute no row, never a zero",
+   "projector": "P_0 = I - D^+ D, gauge cell 0 pinned; D^+ from a sparse LU of D D^T with row/column 0 removed",
+   "regularisation": "relative: lam = kappa * s_max(X_fit X_fit^T); kappa chosen on VAL only, grid fixed in metrics.KAPPA",
+   "source": "x_t = D F_t, D the NC x n_int face-to-cell incidence matrix (+1 head cell, -1 tail cell), row-major east/north face order",
+   "target": "y_t = U^T (P_0 F_t), U the r-column orthonormal road-response basis of the object"
+  },
+  "reference_id": "urbanflow-reference-v1",
+  "road_basis": {
+   "Chengdu": {
+    "bytes": 101180746,
+    "columns": "orthonormal",
+    "n_int": 7080,
+    "path": "road_spatial_transfer/results/road_basis_Chengdu.npz",
+    "r": 2119,
+    "sha256": "be082e6b1854aa2c498fb2c27b8c34910d761ad55f7071c11ff15a06def1d362"
+   },
+   "Chongqing": {
+    "bytes": 566955501,
+    "columns": "orthonormal",
+    "n_int": 38920,
+    "path": "road_spatial_transfer/results/road_basis_Chongqing.npz",
+    "r": 3761,
+    "sha256": "9332e943579c5143159e0af35836d97b063f38445503d31c9dbc72ede9a25441"
+   },
+   "Chongqing@15": {
+    "bytes": 566955501,
+    "columns": "orthonormal",
+    "n_int": 38920,
+    "path": "road_spatial_transfer/results/road_basis_Chongqing.npz",
+    "r": 3761,
+    "sha256": "9332e943579c5143159e0af35836d97b063f38445503d31c9dbc72ede9a25441"
+   },
+   "Chongqing@30": {
+    "bytes": 566955501,
+    "columns": "orthonormal",
+    "n_int": 38920,
+    "path": "road_spatial_transfer/results/road_basis_Chongqing.npz",
+    "r": 3761,
+    "sha256": "9332e943579c5143159e0af35836d97b063f38445503d31c9dbc72ede9a25441"
+   },
+   "Hangzhou": {
+    "bytes": 1050055443,
+    "columns": "orthonormal",
+    "n_int": 38920,
+    "path": "road_spatial_transfer/results/road_basis_Hangzhou.npz",
+    "r": 5562,
+    "sha256": "230c439f5aa8f382295c068de251d8a394510a8d442a63fb1673df48e65c0fe2"
+   },
+   "Hangzhou@15": {
+    "bytes": 1050055443,
+    "columns": "orthonormal",
+    "n_int": 38920,
+    "path": "road_spatial_transfer/results/road_basis_Hangzhou.npz",
+    "r": 5562,
+    "sha256": "230c439f5aa8f382295c068de251d8a394510a8d442a63fb1673df48e65c0fe2"
+   },
+   "Hangzhou@30": {
+    "bytes": 1050055443,
+    "columns": "orthonormal",
+    "n_int": 38920,
+    "path": "road_spatial_transfer/results/road_basis_Hangzhou.npz",
+    "r": 5562,
+    "sha256": "230c439f5aa8f382295c068de251d8a394510a8d442a63fb1673df48e65c0fe2"
+   },
+   "Jilin": {
+    "bytes": 28254949,
+    "columns": "orthonormal",
+    "n_int": 38920,
+    "path": "road_spatial_transfer/results/road_basis_Jilin.npz",
+    "r": 618,
+    "sha256": "8204520555e988303735c1bff1d060af22a67abb9d296da9be1d868dcb3c0829"
+   },
+   "Jilin@15": {
+    "bytes": 28254949,
+    "columns": "orthonormal",
+    "n_int": 38920,
+    "path": "road_spatial_transfer/results/road_basis_Jilin.npz",
+    "r": 618,
+    "sha256": "8204520555e988303735c1bff1d060af22a67abb9d296da9be1d868dcb3c0829"
+   },
+   "Jilin@30": {
+    "bytes": 28254949,
+    "columns": "orthonormal",
+    "n_int": 38920,
+    "path": "road_spatial_transfer/results/road_basis_Jilin.npz",
+    "r": 618,
+    "sha256": "8204520555e988303735c1bff1d060af22a67abb9d296da9be1d868dcb3c0829"
+   },
+   "Porto": {
+    "bytes": 7462030,
+    "columns": "orthonormal",
+    "n_int": 1984,
+    "path": "road_allocation_manifold/artifacts/UR_exact.npz",
+    "r": 607,
+    "sha256": "e062afe5b6065dabb7b53dd543554c27e89581614cec506e47331da32d4c8294"
+   },
+   "Rome": {
+    "bytes": 109937152,
+    "columns": "orthonormal",
+    "n_int": 12128,
+    "path": "road_spatial_transfer/results/road_basis_Rome.npz",
+    "r": 1821,
+    "sha256": "4596f4aa47331404acf63a616dd7f8bbd7c4115357279b7a85891ebe876b3750"
+   },
+   "SF": {
+    "bytes": 55755971,
+    "columns": "orthonormal",
+    "n_int": 5512,
+    "path": "road_spatial_transfer/results/road_basis_SF.npz",
+    "r": 1608,
+    "sha256": "fc98028cc7f49deba5d78996eeaed0e40d45e932b5fe5f3be289e8761f3cf673"
+   },
+   "Shanghai": {
+    "bytes": 1314500861,
+    "columns": "orthonormal",
+    "n_int": 38920,
+    "path": "road_spatial_transfer/results/road_basis_Shanghai.npz",
+    "r": 6283,
+    "sha256": "b8edc7d6148b10512298c8b23bb1508777eb90983b7197df625508d72647dd20"
+   },
+   "Shanghai@15": {
+    "bytes": 1314500861,
+    "columns": "orthonormal",
+    "n_int": 38920,
+    "path": "road_spatial_transfer/results/road_basis_Shanghai.npz",
+    "r": 6283,
+    "sha256": "b8edc7d6148b10512298c8b23bb1508777eb90983b7197df625508d72647dd20"
+   },
+   "Shanghai@30": {
+    "bytes": 1314500861,
+    "columns": "orthonormal",
+    "n_int": 38920,
+    "path": "road_spatial_transfer/results/road_basis_Shanghai.npz",
+    "r": 6283,
+    "sha256": "b8edc7d6148b10512298c8b23bb1508777eb90983b7197df625508d72647dd20"
+   },
+   "Yantai": {
+    "bytes": 262239992,
+    "columns": "orthonormal",
+    "n_int": 38920,
+    "path": "road_spatial_transfer/results/road_basis_Yantai.npz",
+    "r": 2328,
+    "sha256": "0ced13ca012f142d4690cee97abb57433234f4a803e4a76619cbf28decccee67"
+   },
+   "Yantai@15": {
+    "bytes": 262239992,
+    "columns": "orthonormal",
+    "n_int": 38920,
+    "path": "road_spatial_transfer/results/road_basis_Yantai.npz",
+    "r": 2328,
+    "sha256": "0ced13ca012f142d4690cee97abb57433234f4a803e4a76619cbf28decccee67"
+   },
+   "Yantai@30": {
+    "bytes": 262239992,
+    "columns": "orthonormal",
+    "n_int": 38920,
+    "path": "road_spatial_transfer/results/road_basis_Yantai.npz",
+    "r": 2328,
+    "sha256": "0ced13ca012f142d4690cee97abb57433234f4a803e4a76619cbf28decccee67"
+   }
+  },
+  "schema": 1,
+  "splits": {
+   "Chengdu": {
+    "window": {
+     "0": {
+      "fold": 0,
+      "hours": [
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15,
+       16,
+       17,
+       18,
+       19,
+       20,
+       21,
+       22,
+       23
+      ],
+      "n_eligible": 14,
+      "n_test": 3,
+      "n_train": 8,
+      "n_val": 3,
+      "test": {
+       "sha256": "9bb0b459686caa405620326f3d8f99d5ffd492513b693a69ca4188e43604ffd6",
+       "values": [
+        16302,
+        16303,
+        16304
+       ]
+      },
+      "train_sha256": "b368583990c57d216e52b62603b7ba94449cf48892fc81ea26a2308175798c20",
+      "val": {
+       "sha256": "d63c7960066cad92a642dfb1308ad7174aa88d1cf311f5bd4b030f4202659492",
+       "values": [
+        16297,
+        16300,
+        16301
+       ]
+      }
+     }
+    }
+   },
+   "Chongqing": {
+    "frozen": {
+     "0": {
+      "fold": 0,
+      "n_eligible": 20,
+      "n_test": 4,
+      "n_train": 12,
+      "n_val": 4,
+      "test": {
+       "sha256": "29bb9f98a67a27d4e048c9e3dd8486a2959abda8c06a47e5175cd0b7dab618c5",
+       "values": [
+        19096,
+        19097,
+        19100,
+        19101
+       ]
+      },
+      "train_sha256": "f84e3b42e395cf715cbb20116f2b376753624f22268113aee81d4c7b674e315a",
+      "val": {
+       "sha256": "3ab1a0ffe57b695eeff93c322eb48129847b929c20c12db2a99b5f67bbf61852",
+       "values": [
+        19090,
+        19093,
+        19094,
+        19095
+       ]
+      }
+     }
+    },
+    "refrozen": {
+     "0": {
+      "fold": 0,
+      "n_eligible": 22,
+      "n_test": 5,
+      "n_train": 13,
+      "n_val": 4,
+      "test": {
+       "sha256": "ee0e7e7ff2bb7c01d6e6f3591dc2c16e4e5003aff0872b0ca4e1a52b1b0c1d8f",
+       "values": [
+        19095,
+        19096,
+        19097,
+        19100,
+        19101
+       ]
+      },
+      "train_sha256": "87624177479e8d8bed52b0dff97f422c7058257cbdd90356d6eff31f968612b8",
+      "val": {
+       "sha256": "fafc10748a5069aac6ce32d8b3bea2a1339872cd080f93ec0b3d544cf4070d67",
+       "values": [
+        19089,
+        19090,
+        19093,
+        19094
+       ]
+      }
+     }
+    }
+   },
+   "Chongqing@15": {
+    "frozen": {
+     "0": {
+      "fold": 0,
+      "n_eligible": 20,
+      "n_test": 4,
+      "n_train": 12,
+      "n_val": 4,
+      "test": {
+       "sha256": "29bb9f98a67a27d4e048c9e3dd8486a2959abda8c06a47e5175cd0b7dab618c5",
+       "values": [
+        19096,
+        19097,
+        19100,
+        19101
+       ]
+      },
+      "train_sha256": "f84e3b42e395cf715cbb20116f2b376753624f22268113aee81d4c7b674e315a",
+      "val": {
+       "sha256": "3ab1a0ffe57b695eeff93c322eb48129847b929c20c12db2a99b5f67bbf61852",
+       "values": [
+        19090,
+        19093,
+        19094,
+        19095
+       ]
+      }
+     }
+    },
+    "refrozen": {
+     "0": {
+      "fold": 0,
+      "n_eligible": 22,
+      "n_test": 5,
+      "n_train": 13,
+      "n_val": 4,
+      "test": {
+       "sha256": "ee0e7e7ff2bb7c01d6e6f3591dc2c16e4e5003aff0872b0ca4e1a52b1b0c1d8f",
+       "values": [
+        19095,
+        19096,
+        19097,
+        19100,
+        19101
+       ]
+      },
+      "train_sha256": "87624177479e8d8bed52b0dff97f422c7058257cbdd90356d6eff31f968612b8",
+      "val": {
+       "sha256": "fafc10748a5069aac6ce32d8b3bea2a1339872cd080f93ec0b3d544cf4070d67",
+       "values": [
+        19089,
+        19090,
+        19093,
+        19094
+       ]
+      }
+     }
+    }
+   },
+   "Chongqing@30": {
+    "frozen": {
+     "0": {
+      "fold": 0,
+      "n_eligible": 20,
+      "n_test": 4,
+      "n_train": 12,
+      "n_val": 4,
+      "test": {
+       "sha256": "29bb9f98a67a27d4e048c9e3dd8486a2959abda8c06a47e5175cd0b7dab618c5",
+       "values": [
+        19096,
+        19097,
+        19100,
+        19101
+       ]
+      },
+      "train_sha256": "f84e3b42e395cf715cbb20116f2b376753624f22268113aee81d4c7b674e315a",
+      "val": {
+       "sha256": "3ab1a0ffe57b695eeff93c322eb48129847b929c20c12db2a99b5f67bbf61852",
+       "values": [
+        19090,
+        19093,
+        19094,
+        19095
+       ]
+      }
+     }
+    },
+    "refrozen": {
+     "0": {
+      "fold": 0,
+      "n_eligible": 22,
+      "n_test": 5,
+      "n_train": 13,
+      "n_val": 4,
+      "test": {
+       "sha256": "ee0e7e7ff2bb7c01d6e6f3591dc2c16e4e5003aff0872b0ca4e1a52b1b0c1d8f",
+       "values": [
+        19095,
+        19096,
+        19097,
+        19100,
+        19101
+       ]
+      },
+      "train_sha256": "87624177479e8d8bed52b0dff97f422c7058257cbdd90356d6eff31f968612b8",
+      "val": {
+       "sha256": "fafc10748a5069aac6ce32d8b3bea2a1339872cd080f93ec0b3d544cf4070d67",
+       "values": [
+        19089,
+        19090,
+        19093,
+        19094
+       ]
+      }
+     }
+    }
+   },
+   "Hangzhou": {
+    "frozen": {
+     "0": {
+      "fold": 0,
+      "n_eligible": 20,
+      "n_test": 4,
+      "n_train": 12,
+      "n_val": 4,
+      "test": {
+       "sha256": "29bb9f98a67a27d4e048c9e3dd8486a2959abda8c06a47e5175cd0b7dab618c5",
+       "values": [
+        19096,
+        19097,
+        19100,
+        19101
+       ]
+      },
+      "train_sha256": "f84e3b42e395cf715cbb20116f2b376753624f22268113aee81d4c7b674e315a",
+      "val": {
+       "sha256": "3ab1a0ffe57b695eeff93c322eb48129847b929c20c12db2a99b5f67bbf61852",
+       "values": [
+        19090,
+        19093,
+        19094,
+        19095
+       ]
+      }
+     }
+    },
+    "refrozen": {
+     "0": {
+      "fold": 0,
+      "n_eligible": 22,
+      "n_test": 5,
+      "n_train": 13,
+      "n_val": 4,
+      "test": {
+       "sha256": "ee0e7e7ff2bb7c01d6e6f3591dc2c16e4e5003aff0872b0ca4e1a52b1b0c1d8f",
+       "values": [
+        19095,
+        19096,
+        19097,
+        19100,
+        19101
+       ]
+      },
+      "train_sha256": "87624177479e8d8bed52b0dff97f422c7058257cbdd90356d6eff31f968612b8",
+      "val": {
+       "sha256": "fafc10748a5069aac6ce32d8b3bea2a1339872cd080f93ec0b3d544cf4070d67",
+       "values": [
+        19089,
+        19090,
+        19093,
+        19094
+       ]
+      }
+     }
+    }
+   },
+   "Hangzhou@15": {
+    "frozen": {
+     "0": {
+      "fold": 0,
+      "n_eligible": 20,
+      "n_test": 4,
+      "n_train": 12,
+      "n_val": 4,
+      "test": {
+       "sha256": "29bb9f98a67a27d4e048c9e3dd8486a2959abda8c06a47e5175cd0b7dab618c5",
+       "values": [
+        19096,
+        19097,
+        19100,
+        19101
+       ]
+      },
+      "train_sha256": "f84e3b42e395cf715cbb20116f2b376753624f22268113aee81d4c7b674e315a",
+      "val": {
+       "sha256": "3ab1a0ffe57b695eeff93c322eb48129847b929c20c12db2a99b5f67bbf61852",
+       "values": [
+        19090,
+        19093,
+        19094,
+        19095
+       ]
+      }
+     }
+    },
+    "refrozen": {
+     "0": {
+      "fold": 0,
+      "n_eligible": 22,
+      "n_test": 5,
+      "n_train": 13,
+      "n_val": 4,
+      "test": {
+       "sha256": "ee0e7e7ff2bb7c01d6e6f3591dc2c16e4e5003aff0872b0ca4e1a52b1b0c1d8f",
+       "values": [
+        19095,
+        19096,
+        19097,
+        19100,
+        19101
+       ]
+      },
+      "train_sha256": "87624177479e8d8bed52b0dff97f422c7058257cbdd90356d6eff31f968612b8",
+      "val": {
+       "sha256": "fafc10748a5069aac6ce32d8b3bea2a1339872cd080f93ec0b3d544cf4070d67",
+       "values": [
+        19089,
+        19090,
+        19093,
+        19094
+       ]
+      }
+     }
+    }
+   },
+   "Hangzhou@30": {
+    "frozen": {
+     "0": {
+      "fold": 0,
+      "n_eligible": 20,
+      "n_test": 4,
+      "n_train": 12,
+      "n_val": 4,
+      "test": {
+       "sha256": "29bb9f98a67a27d4e048c9e3dd8486a2959abda8c06a47e5175cd0b7dab618c5",
+       "values": [
+        19096,
+        19097,
+        19100,
+        19101
+       ]
+      },
+      "train_sha256": "f84e3b42e395cf715cbb20116f2b376753624f22268113aee81d4c7b674e315a",
+      "val": {
+       "sha256": "3ab1a0ffe57b695eeff93c322eb48129847b929c20c12db2a99b5f67bbf61852",
+       "values": [
+        19090,
+        19093,
+        19094,
+        19095
+       ]
+      }
+     }
+    },
+    "refrozen": {
+     "0": {
+      "fold": 0,
+      "n_eligible": 22,
+      "n_test": 5,
+      "n_train": 13,
+      "n_val": 4,
+      "test": {
+       "sha256": "ee0e7e7ff2bb7c01d6e6f3591dc2c16e4e5003aff0872b0ca4e1a52b1b0c1d8f",
+       "values": [
+        19095,
+        19096,
+        19097,
+        19100,
+        19101
+       ]
+      },
+      "train_sha256": "87624177479e8d8bed52b0dff97f422c7058257cbdd90356d6eff31f968612b8",
+      "val": {
+       "sha256": "fafc10748a5069aac6ce32d8b3bea2a1339872cd080f93ec0b3d544cf4070d67",
+       "values": [
+        19089,
+        19090,
+        19093,
+        19094
+       ]
+      }
+     }
+    }
+   },
+   "Jilin": {
+    "frozen": {
+     "0": {
+      "fold": 0,
+      "n_eligible": 20,
+      "n_test": 4,
+      "n_train": 12,
+      "n_val": 4,
+      "test": {
+       "sha256": "29bb9f98a67a27d4e048c9e3dd8486a2959abda8c06a47e5175cd0b7dab618c5",
+       "values": [
+        19096,
+        19097,
+        19100,
+        19101
+       ]
+      },
+      "train_sha256": "f84e3b42e395cf715cbb20116f2b376753624f22268113aee81d4c7b674e315a",
+      "val": {
+       "sha256": "3ab1a0ffe57b695eeff93c322eb48129847b929c20c12db2a99b5f67bbf61852",
+       "values": [
+        19090,
+        19093,
+        19094,
+        19095
+       ]
+      }
+     }
+    },
+    "refrozen": {
+     "0": {
+      "fold": 0,
+      "n_eligible": 22,
+      "n_test": 5,
+      "n_train": 13,
+      "n_val": 4,
+      "test": {
+       "sha256": "ee0e7e7ff2bb7c01d6e6f3591dc2c16e4e5003aff0872b0ca4e1a52b1b0c1d8f",
+       "values": [
+        19095,
+        19096,
+        19097,
+        19100,
+        19101
+       ]
+      },
+      "train_sha256": "87624177479e8d8bed52b0dff97f422c7058257cbdd90356d6eff31f968612b8",
+      "val": {
+       "sha256": "fafc10748a5069aac6ce32d8b3bea2a1339872cd080f93ec0b3d544cf4070d67",
+       "values": [
+        19089,
+        19090,
+        19093,
+        19094
+       ]
+      }
+     }
+    }
+   },
+   "Jilin@15": {
+    "frozen": {
+     "0": {
+      "fold": 0,
+      "n_eligible": 20,
+      "n_test": 4,
+      "n_train": 12,
+      "n_val": 4,
+      "test": {
+       "sha256": "29bb9f98a67a27d4e048c9e3dd8486a2959abda8c06a47e5175cd0b7dab618c5",
+       "values": [
+        19096,
+        19097,
+        19100,
+        19101
+       ]
+      },
+      "train_sha256": "f84e3b42e395cf715cbb20116f2b376753624f22268113aee81d4c7b674e315a",
+      "val": {
+       "sha256": "3ab1a0ffe57b695eeff93c322eb48129847b929c20c12db2a99b5f67bbf61852",
+       "values": [
+        19090,
+        19093,
+        19094,
+        19095
+       ]
+      }
+     }
+    },
+    "refrozen": {
+     "0": {
+      "fold": 0,
+      "n_eligible": 22,
+      "n_test": 5,
+      "n_train": 13,
+      "n_val": 4,
+      "test": {
+       "sha256": "ee0e7e7ff2bb7c01d6e6f3591dc2c16e4e5003aff0872b0ca4e1a52b1b0c1d8f",
+       "values": [
+        19095,
+        19096,
+        19097,
+        19100,
+        19101
+       ]
+      },
+      "train_sha256": "87624177479e8d8bed52b0dff97f422c7058257cbdd90356d6eff31f968612b8",
+      "val": {
+       "sha256": "fafc10748a5069aac6ce32d8b3bea2a1339872cd080f93ec0b3d544cf4070d67",
+       "values": [
+        19089,
+        19090,
+        19093,
+        19094
+       ]
+      }
+     }
+    }
+   },
+   "Jilin@30": {
+    "frozen": {
+     "0": {
+      "fold": 0,
+      "n_eligible": 20,
+      "n_test": 4,
+      "n_train": 12,
+      "n_val": 4,
+      "test": {
+       "sha256": "29bb9f98a67a27d4e048c9e3dd8486a2959abda8c06a47e5175cd0b7dab618c5",
+       "values": [
+        19096,
+        19097,
+        19100,
+        19101
+       ]
+      },
+      "train_sha256": "f84e3b42e395cf715cbb20116f2b376753624f22268113aee81d4c7b674e315a",
+      "val": {
+       "sha256": "3ab1a0ffe57b695eeff93c322eb48129847b929c20c12db2a99b5f67bbf61852",
+       "values": [
+        19090,
+        19093,
+        19094,
+        19095
+       ]
+      }
+     }
+    },
+    "refrozen": {
+     "0": {
+      "fold": 0,
+      "n_eligible": 22,
+      "n_test": 5,
+      "n_train": 13,
+      "n_val": 4,
+      "test": {
+       "sha256": "ee0e7e7ff2bb7c01d6e6f3591dc2c16e4e5003aff0872b0ca4e1a52b1b0c1d8f",
+       "values": [
+        19095,
+        19096,
+        19097,
+        19100,
+        19101
+       ]
+      },
+      "train_sha256": "87624177479e8d8bed52b0dff97f422c7058257cbdd90356d6eff31f968612b8",
+      "val": {
+       "sha256": "fafc10748a5069aac6ce32d8b3bea2a1339872cd080f93ec0b3d544cf4070d67",
+       "values": [
+        19089,
+        19090,
+        19093,
+        19094
+       ]
+      }
+     }
+    }
+   },
+   "Porto": {
+    "frozen": {
+     "0": {
+      "fold": 0,
+      "n_eligible": 252,
+      "n_test": 51,
+      "n_train": 151,
+      "n_val": 50,
+      "test": {
+       "sha256": "be54c44b5981d042d301a85b57aba8439b48e6d4ce79830c5af543f072ebe2da",
+       "values": [
+        16171,
+        16174,
+        16175,
+        16176,
+        16177,
+        16181,
+        16182,
+        16183,
+        16184,
+        16188,
+        16189,
+        16190,
+        16192,
+        16195,
+        16196,
+        16197,
+        16198,
+        16199,
+        16202,
+        16203,
+        16204,
+        16205,
+        16206,
+        16209,
+        16210,
+        16211,
+        16212,
+        16213,
+        16216,
+        16217,
+        16218,
+        16219,
+        16220,
+        16223,
+        16224,
+        16225,
+        16226,
+        16227,
+        16230,
+        16232,
+        16233,
+        16234,
+        16237,
+        16238,
+        16239,
+        16240,
+        16241,
+        16244,
+        16246,
+        16247,
+        16248
+       ]
+      },
+      "train_sha256": "6d90dee528a01a5de449f81c7fe9998f12b6059785a59d1931d79e967964a53e",
+      "val": {
+       "sha256": "fe9560d81e3c1c412c79c74d77caf9be5d67f3a93fb84ee7116794743ed3d548",
+       "values": [
+        16101,
+        16104,
+        16105,
+        16106,
+        16107,
+        16108,
+        16111,
+        16112,
+        16113,
+        16114,
+        16115,
+        16118,
+        16119,
+        16120,
+        16121,
+        16122,
+        16125,
+        16126,
+        16127,
+        16128,
+        16129,
+        16132,
+        16133,
+        16134,
+        16135,
+        16136,
+        16139,
+        16140,
+        16141,
+        16142,
+        16143,
+        16146,
+        16147,
+        16148,
+        16149,
+        16150,
+        16153,
+        16154,
+        16155,
+        16156,
+        16157,
+        16160,
+        16161,
+        16162,
+        16163,
+        16164,
+        16167,
+        16168,
+        16169,
+        16170
+       ]
+      }
+     }
+    }
+   },
+   "Rome": {
+    "frozen": {
+     "0": {
+      "fold": 0,
+      "n_eligible": 20,
+      "n_test": 4,
+      "n_train": 12,
+      "n_val": 4,
+      "test": {
+       "sha256": "0c0f81e5158bab6d121ddd218e54a6af3627727da19f85a2e3a38938c059e537",
+       "values": [
+        16126,
+        16127,
+        16128,
+        16129
+       ]
+      },
+      "train_sha256": "9669db44ae6a7c57dc5b7c76e2ec1c1ccd572e2216543654d6506c9e0094d7e2",
+      "val": {
+       "sha256": "8b6c651c36a2b701741b5ebbde3672c9a5eef84a6d92f75c859eec6202a93823",
+       "values": [
+        16120,
+        16121,
+        16122,
+        16125
+       ]
+      }
+     }
+    }
+   },
+   "SF": {
+    "frozen": {
+     "0": {
+      "fold": 0,
+      "n_eligible": 15,
+      "n_test": 3,
+      "n_train": 9,
+      "n_val": 3,
+      "test": {
+       "sha256": "24eab837654160ce5357116092dc521fbb0b37044e837da0fd7c9e68f56162d0",
+       "values": [
+        14018,
+        14019,
+        14020
+       ]
+      },
+      "train_sha256": "4c87d2815cf0bd15c3bdb36168eb6a55103241bb07b1ae86df82c482b60ab1b7",
+      "val": {
+       "sha256": "d87c4522c972ed7604764cec456d0b0952234dea98002bd6c1f89ae84d86714b",
+       "values": [
+        14021,
+        14022,
+        14026
+       ]
+      }
+     },
+     "1": {
+      "fold": 1,
+      "n_eligible": 15,
+      "n_test": 3,
+      "n_train": 9,
+      "n_val": 3,
+      "test": {
+       "sha256": "d87c4522c972ed7604764cec456d0b0952234dea98002bd6c1f89ae84d86714b",
+       "values": [
+        14021,
+        14022,
+        14026
+       ]
+      },
+      "train_sha256": "bb0ce0eb5ee2885e5afb0266a0064369bbf52cdd36677f1c27d01d71b7fa42b0",
+      "val": {
+       "sha256": "b89b7183a8b3a6f4a79743a2afe62582348e63fe69f97b9f2c548518f7b93f2f",
+       "values": [
+        14027,
+        14028,
+        14029
+       ]
+      }
+     },
+     "2": {
+      "fold": 2,
+      "n_eligible": 15,
+      "n_test": 3,
+      "n_train": 9,
+      "n_val": 3,
+      "test": {
+       "sha256": "b89b7183a8b3a6f4a79743a2afe62582348e63fe69f97b9f2c548518f7b93f2f",
+       "values": [
+        14027,
+        14028,
+        14029
+       ]
+      },
+      "train_sha256": "a5f4d4e5154c3409a3f49a4d34e10ce983fcd647f77d1f9c89b35b2d613275b2",
+      "val": {
+       "sha256": "1f6b1a8f6df36da72602eddb194bce9145140bdfa079e15fffc5491205560896",
+       "values": [
+        14032,
+        14033,
+        14034
+       ]
+      }
+     },
+     "3": {
+      "fold": 3,
+      "n_eligible": 15,
+      "n_test": 3,
+      "n_train": 9,
+      "n_val": 3,
+      "test": {
+       "sha256": "1f6b1a8f6df36da72602eddb194bce9145140bdfa079e15fffc5491205560896",
+       "values": [
+        14032,
+        14033,
+        14034
+       ]
+      },
+      "train_sha256": "f0026b56a291df4577b3220f62f3e09302cfc9e54a5d071a2f2408e088424596",
+      "val": {
+       "sha256": "f17ef91b109b115042adbd6d8e32efdb561e70f0c433788b4bb1a5eb8dcf3b1e",
+       "values": [
+        14035,
+        14036,
+        14039
+       ]
+      }
+     },
+     "4": {
+      "fold": 4,
+      "n_eligible": 15,
+      "n_test": 3,
+      "n_train": 9,
+      "n_val": 3,
+      "test": {
+       "sha256": "f17ef91b109b115042adbd6d8e32efdb561e70f0c433788b4bb1a5eb8dcf3b1e",
+       "values": [
+        14035,
+        14036,
+        14039
+       ]
+      },
+      "train_sha256": "6d8b4dfc6c2d0c584a2dc31552b5bb049a7d849bc76f781fe55aa517fec37d76",
+      "val": {
+       "sha256": "24eab837654160ce5357116092dc521fbb0b37044e837da0fd7c9e68f56162d0",
+       "values": [
+        14018,
+        14019,
+        14020
+       ]
+      }
+     }
+    }
+   },
+   "Shanghai": {
+    "frozen": {
+     "0": {
+      "fold": 0,
+      "n_eligible": 20,
+      "n_test": 4,
+      "n_train": 12,
+      "n_val": 4,
+      "test": {
+       "sha256": "29bb9f98a67a27d4e048c9e3dd8486a2959abda8c06a47e5175cd0b7dab618c5",
+       "values": [
+        19096,
+        19097,
+        19100,
+        19101
+       ]
+      },
+      "train_sha256": "f84e3b42e395cf715cbb20116f2b376753624f22268113aee81d4c7b674e315a",
+      "val": {
+       "sha256": "3ab1a0ffe57b695eeff93c322eb48129847b929c20c12db2a99b5f67bbf61852",
+       "values": [
+        19090,
+        19093,
+        19094,
+        19095
+       ]
+      }
+     }
+    },
+    "refrozen": {
+     "0": {
+      "fold": 0,
+      "n_eligible": 22,
+      "n_test": 5,
+      "n_train": 13,
+      "n_val": 4,
+      "test": {
+       "sha256": "ee0e7e7ff2bb7c01d6e6f3591dc2c16e4e5003aff0872b0ca4e1a52b1b0c1d8f",
+       "values": [
+        19095,
+        19096,
+        19097,
+        19100,
+        19101
+       ]
+      },
+      "train_sha256": "87624177479e8d8bed52b0dff97f422c7058257cbdd90356d6eff31f968612b8",
+      "val": {
+       "sha256": "fafc10748a5069aac6ce32d8b3bea2a1339872cd080f93ec0b3d544cf4070d67",
+       "values": [
+        19089,
+        19090,
+        19093,
+        19094
+       ]
+      }
+     }
+    }
+   },
+   "Shanghai@15": {
+    "frozen": {
+     "0": {
+      "fold": 0,
+      "n_eligible": 20,
+      "n_test": 4,
+      "n_train": 12,
+      "n_val": 4,
+      "test": {
+       "sha256": "29bb9f98a67a27d4e048c9e3dd8486a2959abda8c06a47e5175cd0b7dab618c5",
+       "values": [
+        19096,
+        19097,
+        19100,
+        19101
+       ]
+      },
+      "train_sha256": "f84e3b42e395cf715cbb20116f2b376753624f22268113aee81d4c7b674e315a",
+      "val": {
+       "sha256": "3ab1a0ffe57b695eeff93c322eb48129847b929c20c12db2a99b5f67bbf61852",
+       "values": [
+        19090,
+        19093,
+        19094,
+        19095
+       ]
+      }
+     }
+    },
+    "refrozen": {
+     "0": {
+      "fold": 0,
+      "n_eligible": 22,
+      "n_test": 5,
+      "n_train": 13,
+      "n_val": 4,
+      "test": {
+       "sha256": "ee0e7e7ff2bb7c01d6e6f3591dc2c16e4e5003aff0872b0ca4e1a52b1b0c1d8f",
+       "values": [
+        19095,
+        19096,
+        19097,
+        19100,
+        19101
+       ]
+      },
+      "train_sha256": "87624177479e8d8bed52b0dff97f422c7058257cbdd90356d6eff31f968612b8",
+      "val": {
+       "sha256": "fafc10748a5069aac6ce32d8b3bea2a1339872cd080f93ec0b3d544cf4070d67",
+       "values": [
+        19089,
+        19090,
+        19093,
+        19094
+       ]
+      }
+     }
+    }
+   },
+   "Shanghai@30": {
+    "frozen": {
+     "0": {
+      "fold": 0,
+      "n_eligible": 20,
+      "n_test": 4,
+      "n_train": 12,
+      "n_val": 4,
+      "test": {
+       "sha256": "29bb9f98a67a27d4e048c9e3dd8486a2959abda8c06a47e5175cd0b7dab618c5",
+       "values": [
+        19096,
+        19097,
+        19100,
+        19101
+       ]
+      },
+      "train_sha256": "f84e3b42e395cf715cbb20116f2b376753624f22268113aee81d4c7b674e315a",
+      "val": {
+       "sha256": "3ab1a0ffe57b695eeff93c322eb48129847b929c20c12db2a99b5f67bbf61852",
+       "values": [
+        19090,
+        19093,
+        19094,
+        19095
+       ]
+      }
+     }
+    },
+    "refrozen": {
+     "0": {
+      "fold": 0,
+      "n_eligible": 22,
+      "n_test": 5,
+      "n_train": 13,
+      "n_val": 4,
+      "test": {
+       "sha256": "ee0e7e7ff2bb7c01d6e6f3591dc2c16e4e5003aff0872b0ca4e1a52b1b0c1d8f",
+       "values": [
+        19095,
+        19096,
+        19097,
+        19100,
+        19101
+       ]
+      },
+      "train_sha256": "87624177479e8d8bed52b0dff97f422c7058257cbdd90356d6eff31f968612b8",
+      "val": {
+       "sha256": "fafc10748a5069aac6ce32d8b3bea2a1339872cd080f93ec0b3d544cf4070d67",
+       "values": [
+        19089,
+        19090,
+        19093,
+        19094
+       ]
+      }
+     }
+    }
+   },
+   "Yantai": {
+    "frozen": {
+     "0": {
+      "fold": 0,
+      "n_eligible": 20,
+      "n_test": 4,
+      "n_train": 12,
+      "n_val": 4,
+      "test": {
+       "sha256": "29bb9f98a67a27d4e048c9e3dd8486a2959abda8c06a47e5175cd0b7dab618c5",
+       "values": [
+        19096,
+        19097,
+        19100,
+        19101
+       ]
+      },
+      "train_sha256": "f84e3b42e395cf715cbb20116f2b376753624f22268113aee81d4c7b674e315a",
+      "val": {
+       "sha256": "3ab1a0ffe57b695eeff93c322eb48129847b929c20c12db2a99b5f67bbf61852",
+       "values": [
+        19090,
+        19093,
+        19094,
+        19095
+       ]
+      }
+     }
+    },
+    "refrozen": {
+     "0": {
+      "fold": 0,
+      "n_eligible": 22,
+      "n_test": 5,
+      "n_train": 13,
+      "n_val": 4,
+      "test": {
+       "sha256": "ee0e7e7ff2bb7c01d6e6f3591dc2c16e4e5003aff0872b0ca4e1a52b1b0c1d8f",
+       "values": [
+        19095,
+        19096,
+        19097,
+        19100,
+        19101
+       ]
+      },
+      "train_sha256": "87624177479e8d8bed52b0dff97f422c7058257cbdd90356d6eff31f968612b8",
+      "val": {
+       "sha256": "fafc10748a5069aac6ce32d8b3bea2a1339872cd080f93ec0b3d544cf4070d67",
+       "values": [
+        19089,
+        19090,
+        19093,
+        19094
+       ]
+      }
+     }
+    }
+   },
+   "Yantai@15": {
+    "frozen": {
+     "0": {
+      "fold": 0,
+      "n_eligible": 20,
+      "n_test": 4,
+      "n_train": 12,
+      "n_val": 4,
+      "test": {
+       "sha256": "29bb9f98a67a27d4e048c9e3dd8486a2959abda8c06a47e5175cd0b7dab618c5",
+       "values": [
+        19096,
+        19097,
+        19100,
+        19101
+       ]
+      },
+      "train_sha256": "f84e3b42e395cf715cbb20116f2b376753624f22268113aee81d4c7b674e315a",
+      "val": {
+       "sha256": "3ab1a0ffe57b695eeff93c322eb48129847b929c20c12db2a99b5f67bbf61852",
+       "values": [
+        19090,
+        19093,
+        19094,
+        19095
+       ]
+      }
+     }
+    },
+    "refrozen": {
+     "0": {
+      "fold": 0,
+      "n_eligible": 22,
+      "n_test": 5,
+      "n_train": 13,
+      "n_val": 4,
+      "test": {
+       "sha256": "ee0e7e7ff2bb7c01d6e6f3591dc2c16e4e5003aff0872b0ca4e1a52b1b0c1d8f",
+       "values": [
+        19095,
+        19096,
+        19097,
+        19100,
+        19101
+       ]
+      },
+      "train_sha256": "87624177479e8d8bed52b0dff97f422c7058257cbdd90356d6eff31f968612b8",
+      "val": {
+       "sha256": "fafc10748a5069aac6ce32d8b3bea2a1339872cd080f93ec0b3d544cf4070d67",
+       "values": [
+        19089,
+        19090,
+        19093,
+        19094
+       ]
+      }
+     }
+    }
+   },
+   "Yantai@30": {
+    "frozen": {
+     "0": {
+      "fold": 0,
+      "n_eligible": 20,
+      "n_test": 4,
+      "n_train": 12,
+      "n_val": 4,
+      "test": {
+       "sha256": "29bb9f98a67a27d4e048c9e3dd8486a2959abda8c06a47e5175cd0b7dab618c5",
+       "values": [
+        19096,
+        19097,
+        19100,
+        19101
+       ]
+      },
+      "train_sha256": "f84e3b42e395cf715cbb20116f2b376753624f22268113aee81d4c7b674e315a",
+      "val": {
+       "sha256": "3ab1a0ffe57b695eeff93c322eb48129847b929c20c12db2a99b5f67bbf61852",
+       "values": [
+        19090,
+        19093,
+        19094,
+        19095
+       ]
+      }
+     }
+    },
+    "refrozen": {
+     "0": {
+      "fold": 0,
+      "n_eligible": 22,
+      "n_test": 5,
+      "n_train": 13,
+      "n_val": 4,
+      "test": {
+       "sha256": "ee0e7e7ff2bb7c01d6e6f3591dc2c16e4e5003aff0872b0ca4e1a52b1b0c1d8f",
+       "values": [
+        19095,
+        19096,
+        19097,
+        19100,
+        19101
+       ]
+      },
+      "train_sha256": "87624177479e8d8bed52b0dff97f422c7058257cbdd90356d6eff31f968612b8",
+      "val": {
+       "sha256": "fafc10748a5069aac6ce32d8b3bea2a1339872cd080f93ec0b3d544cf4070d67",
+       "values": [
+        19089,
+        19090,
+        19093,
+        19094
+       ]
+      }
+     }
+    }
+   }
+  },
+  "version": "1.0.0"
+ }
+}

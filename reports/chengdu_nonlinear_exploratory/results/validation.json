@@ -1,0 +1,167 @@
+{
+ "all_pass": true,
+ "checks": {
+  "A_rank_selected_on_VAL": {
+   "detail": {
+    "rx": 16,
+    "ry": 4,
+    "selection": "minimum M_pool VAL"
+   },
+   "pass": true
+  },
+  "A_zero_reference": {
+   "detail": {
+    "full_face": 1.0000000000000002,
+    "inside": 1.0
+   },
+   "pass": true
+  },
+  "D_rank_selected_on_VAL_and_ry_from_A": {
+   "detail": {
+    "rx": 8,
+    "ry": 4,
+    "selection": "minimum linF VAL; ry inherited from A"
+   },
+   "pass": true
+  },
+  "D_summary_recomputed_from_per_date": {
+   "detail": {
+    "max_abs": 1.734723475976807e-18
+   },
+   "pass": true
+  },
+  "complete_14_by_18_window": {
+   "detail": {
+    "R": [
+     14,
+     18,
+     7080
+    ],
+    "X": [
+     14,
+     18,
+     3600
+    ]
+   },
+   "pass": true
+  },
+  "continuity_decomposition": {
+   "detail": {
+    "max_abs": 7.123901468730764e-11,
+    "tolerance": 1.0440000000000001e-07
+   },
+   "pass": true
+  },
+  "dc_and_nyquist_real": {
+   "detail": {
+    "dc_imag_max": 0.0,
+    "nyquist_imag_max": 8.038873388460929e-14
+   },
+   "pass": true
+  },
+  "hermitian_idft_reconstruction": {
+   "detail": {
+    "max_abs": 3.410605131648481e-13
+   },
+   "pass": true
+  },
+  "input_sha256": {
+   "detail": {
+    "project10/outputs/p0_l0/chengdu_aligned_l250_dt60.npz": "c9330b54e8fbcf589e8b63d480b4db877b7d48291df941fb1348662a9dfb0289",
+    "routing_urban_medium_constitutive/results/um_ctx.npz": "8f755fc860c6de1f5b9b6a9c9c6c4174a0f4a2d7e2d46fa5aafc21095acaa772"
+   },
+   "pass": true
+  },
+  "nyquist_sine_column_removed": {
+   "detail": {
+    "compact_blocks_per_source_coordinate": 18,
+    "expanded_blocks_including_zero_sine": 19,
+    "max_abs_compact_vs_expanded": 0.0
+   },
+   "pass": true
+  },
+  "one_sided_weights": {
+   "detail": [
+    1.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    1.0
+   ],
+   "pass": true
+  },
+  "parseval_X_and_Fcirc": {
+   "detail": {
+    "Fcirc": 1.1677293466493617e-16,
+    "X": 1.5239726968172578e-16
+   },
+   "pass": true
+  },
+  "routing_in_ker_D": {
+   "detail": {
+    "max_abs": 7.123901468730764e-11,
+    "tolerance": 1.044e-05
+   },
+   "pass": true
+  },
+  "split_8_3_3_disjoint": {
+   "detail": {
+    "test": [
+     16302,
+     16303,
+     16304
+    ],
+    "train": [
+     16285,
+     16286,
+     16287,
+     16288,
+     16290,
+     16293,
+     16294,
+     16296
+    ],
+    "val": [
+     16297,
+     16300,
+     16301
+    ]
+   },
+   "pass": true
+  },
+  "three_test_dates_explicitly_underpowered": {
+   "detail": {
+    "decision": "UNDERPOWERED_EXPLORATORY",
+    "n_test": 3,
+    "no_absence_claim": true
+   },
+   "pass": true
+  },
+  "train_pod_orthonormal": {
+   "detail": {
+    "max_abs": 1.0805152887878589e-12
+   },
+   "pass": true
+  }
+ },
+ "config_sha256": "e8250eb65d0cb1f2c32665a94586854ad5ee4009258db58a678dfe724c3bea3a",
+ "created_utc": "2026-10-31T09:39:17.644548+00:00",
+ "result_file": ".//reports/chengdu_nonlinear_exploratory/results/chengdu_nonlinear_exploratory.json",
+ "result_sha256": "73ada3350c69d1403d2ddb580e1d72d88a8ec18f91443b4d9157eef0d69d6393",
+ "schema": "chengdu_nonlinear_exploratory_validation_v1",
+ "script_sha256": "7179bf03bc34d5a6693638733a337095c314c6303ae34670be050d356258708b",
+ "statistical_limitation": {
+  "absence_of_nonlinearity_supported": false,
+  "bootstrap_draws": 9999,
+  "confirmatory_frequency_flatness_supported": false,
+  "n_test_dates": 3,
+  "note": "9999 bootstrap draws do not create independent information; with three dates there are only 27 ordered resamples. CIs are descriptive reference-defined intervals.",
+  "possible_ordered_date_resamples": 27,
+  "status": "UNDERPOWERED"
+ }
+}

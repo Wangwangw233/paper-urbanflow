@@ -1,0 +1,377 @@
+% ===========================================================================
+
+% ===========================================================================
+\documentclass[11pt]{article}
+\usepackage[margin=1in,top=1.1in,bottom=1.1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{makecell}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage{multicol}
+\usepackage{xr}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\externaldocument[sup-]{supplement}
+\hypersetup{pdftitle={Road-structured constitutive coupling between source--sink patterns and anisotropic urban routing},pdfauthor={UrbanFlow manuscript authors},pdfsubject={Urban mobility and constitutive coupling},pdfkeywords={urban mobility, Hodge decomposition, road networks, anisotropy}}
+\newcommand{\repositorylocation}{\url{https://github.com/Wangwangw233/paper-urbanflow}}
+
+\captionsetup{font=small,labelfont=bf,width=0.95\textwidth}
+\graphicspath{{figures/}}
+\setlength{\emergencystretch}{2em}
+
+% --- notation --------------------------------------------------------------
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Cov}{\operatorname{Cov}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\argmin}{\operatorname*{arg\,min}}
+\newcommand{\Prj}{P_{\mathrm{r}}}
+\newcommand{\Psir}{\Psi_{\mathrm{r}}}
+\newcommand{\PsirS}{\Psi_{\mathrm{r},S}}
+\newcommand{\GS}{G_{S}}
+\newcommand{\DS}{\mathcal{D}_{S}}
+\newcommand{\Fcirc}{F^{\circ}}
+\newcommand{\Fcond}{F^{\mathrm{cond}}}
+\newcommand{\Rcond}{R^{2}_{\mathrm{cond}}}
+\newcommand{\Rrouting}{R^{2}_{\mathrm{routing}}}
+\newcommand{\Fbar}{\bar{F}_{\phi(t)}}
+\newcommand{\xbar}{\bar{x}_{\phi(t)}}
+\newcommand{\dx}{\delta x}
+\newcommand{\dxt}{\delta x_{t}}
+\newcommand{\Aw}{A_{W}}
+\newcommand{\Tzero}{T_{0}}
+\newcommand{\Gr}{G_{\mathrm{r}}}
+\newcommand{\Dr}{D_{\mathrm{r}}}
+\newcommand{\T}{\mathsf{T}}
+\newcommand{\phim}{\varphi(t)}
+\newcommand{\norm}[1]{\lVert #1 \rVert}
+\newcommand{\ones}{\mathbf{1}}
+\newcommand{\bOne}{b_{1,t}}
+\newcommand{\eps}{\varepsilon_{t}}
+\newcommand{\Fhat}[1]{\widehat{#1}}
+\newcommand{\Rdep}{R^{2}_{\mathrm{dep}}}
+\newcommand{\Rclock}{R^{2}_{\mathrm{clock}}}
+\newcommand{\UR}{U_{R}}
+\newcommand{\deff}{d_{\mathrm{eff}}}
+\newcommand{\Efull}{E_{\mathrm{full}}}
+\newcommand{\Rr}{\mathcal{R}_{R}}
+\newcommand{\CR}{C_{R}}
+\newcommand{\Ccal}{\mathcal{C}}
+\newcommand{\Px}{P_{x}}
+\newcommand{\Ptr}{P_{\mathrm{tr}}}
+\newcommand{\Gh}{G_{h}}
+\newcommand{\Gl}{g_{\ell}}
+\newcommand{\Esh}{E_{\mathrm{shared}}}
+\newcommand{\Etem}{E_{\mathrm{tem}}}
+\newcommand{\Lcoh}{\Lambda_{h}}
+\newcommand{\SigC}{\Sigma_{C}}
+\newcommand{\SigU}{\Sigma_{U}}
+\newcommand{\AC}{A_{C}}
+\newcommand{\AU}{A_{U}}
+\newcommand{\Lc}{L_{c}}
+
+
+\title{Road-structured constitutive coupling between source--sink patterns and anisotropic urban routing}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+How urban movement is routed is not determined by the balance entering and leaving a neighbourhood. Using a Hodge decomposition, we identify an effective constitutive relation between source--sink patterns and anisotropic urban routing. UrbanFlow uses registered roads to define a spatial medium and learns its response from trajectories in Porto, San Francisco and Chengdu. Held-out raw road-coordinate scores are 0.682, 0.597 and 0.606, while departure scores are 0.468, 0.240 and 0.120. Source-free climatologies attain 0.472, 0.727 and 0.931, making departures essential for interpreting source-specific information. The response is strongly anisotropic in all three cities and retains measurable coherent structure across temporal frequencies. Comparisons with linear, neural and transport baselines reveal an interpretable link between urban structure and collective movement while delimiting source-only description.
+\end{abstract}
+
+% Nature Cities Article: introduction without a heading.
+\label{sec:intro}
+Cities organize movement as well as activities. The location of homes, jobs and services determines where journeys begin and end, while the arrangement of streets shapes the spaces through which those journeys pass. This distinction matters because neighbourhoods with similar net inflows can experience different through-movement, and a redistribution of activity need not produce a proportional redistribution of traffic across the city. Studies of natural movement and urban configuration have long connected street structure to observed flows \cite{hillier1993,penn1998}; analyses of road usage and congestion show that infrastructure and demand jointly shape transport patterns \cite{wang2012,colak2016congested}. Understanding their relationship is therefore a central problem of urban science: how does a city's spatial structure translate distributed activity into collective movement?
+
+Existing mobility models illuminate different parts of this relationship. Gravity, radiation and other spatial-interaction models describe flows between places \cite{simini2012universal,lenormand2016systematic,rong2024survey}, with recent data-driven work identifying compact gravity-like relations and richer geographical dependencies \cite{cabanastirapu2025gravity,guo2025symbolic,simini2021deepgravity}. Traffic assignment links demand to network routes through travel costs and behavioural rules \cite{wardrop1952,morandi2024assignment}, while graph-based learning offers flexible descriptions of traffic and assignment \cite{wu2019graphwavenet,liu2024endtoend}. Between aggregate interaction and individual routes lies a useful urban-scale object: the local direction and intensity of collective movement. Its organization can reveal how different parts of a city participate in transport, rather than only how many trips connect them.
+
+Field descriptions have made this intermediate scale accessible. Recurrent commuting can be represented by a vector field whose potential identifies mobility basins \cite{mazzoli2019field}; trajectory-based formulations extend the approach beyond commuting \cite{liu2024generalized}. Laplacian evolution has also been used to identify urban source--sink patterns \cite{zhang2024laplacian}. Hodge decomposition gives this perspective a particularly revealing urban interpretation. It separates a potential-driven component, associated with the imbalance between arrivals and departures, from circulation that can redistribute movement without changing that balance. Applied to urban OD networks, it exposes potential landscapes and a circulation sector \cite{aoki2022hodge}; recent work follows changes in those landscapes across time \cite{du2026landscapes}. Related field studies identify scaling, temporal response, directional organization and anomalous movement \cite{shida2020scaling,shida2022potential,zhao2024directionality,yang2023vector}. Together, these approaches provide a language for distinguishing where activity attracts or releases movement from how movement is organized across urban space.
+
+The important next question is whether these two aspects are related. A decomposition separates them within an observed field, but does not tell us whether changes in one systematically accompany changes in the other. If they are reproducibly coupled, the directional organization of a city is partly inferable from its source--sink pattern; if they vary independently, information about routes or additional urban states is indispensable. Establishing this relationship would turn a descriptive separation into a quantitative account of how urban movement is organized. It would also distinguish patterns that merely satisfy balance from patterns that express the response of a particular city.
+
+We approach this question through an effective constitutive relation: a response connecting source--sink organization to the routing component left undetermined by balance. Roads provide its spatial medium. Their geometry can be measured independently of the mobility values used to estimate the response, and encodes the connectivity, alternative paths and orientations through which vehicle movement takes place \cite{barthelemy2011,kirkley2018,boeing2019}. This choice connects the field approach to research on urban form and travel \cite{ewing2010travel,sharmin2018}, while keeping the independently specified structure distinct from the response learned from movement. A constitutive description asks how that structure is used under varying activity, rather than treating a road map as sufficient to determine flow.
+
+Here we identify this response from trajectories in Porto, San Francisco and Chengdu. UrbanFlow constructs a road-based routing space, estimates a linear source--routing operator and tests it on held-out dates. We examine both its predictive content and its physical organization, including directional selectivity and frequency-resolved response. Three-city evidence and comparisons with modern neural, spatial-interaction and traffic-assignment approaches place the result in context. The central finding is a measurable, structured coupling between the source-determined and divergence-free components of urban movement, whose strength depends on the city and the observed variation.
+
+\section{Results}\label{sec:results}
+\subsection{From flow decomposition to a constitutive response}\label{sec:formulation}
+
+We represent hourly movement as signed crossings of the faces between spatial cells. For a flux field \(F_t\), its discrete divergence \(x_t=DF_t\) records the cellwise source--sink balance. The field separates into a minimum-norm component fixed by that balance and a divergence-free routing component,
+\begin{equation}\label{eq:f-decomposition}
+ F_t=D^\dagger x_t+F_t^\circ,\qquad DF_t^\circ=0.
+\end{equation}
+Figure~\ref{fig:concept} illustrates the physical freedom: different directional configurations can carry the same source and sink. The two components are spatially orthogonal, but their organization can covary across observations. Predicting the routing component from the source therefore tests a statistical relationship between the irrotational and divergence-free sectors of the measured flow.
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig01_concept.pdf}
+\caption{\textbf{Routing freedom under conservation.} \textbf{a,b}, Two routes share a source and sink. \textbf{c}, Their difference has zero divergence. Balance fixes the source--sink pattern but leaves routing undetermined.}
+\label{fig:concept}
+\end{figure}
+
+Road geometry defines an orthonormal basis \(U_R\) within the divergence-free space. The road-coordinate state is \(y_t=U_R^\top F_t^\circ\); a fitted response \(K_R\) relates this state to the source. The corresponding operator in physical space is
+\begin{equation}\label{eq:f-reduced}
+ \widehat F_t^\circ=C_Rx_t,\qquad C_R=U_RK_RP_x,
+\end{equation}
+where \(P_x\) restricts inputs to conservation-compatible source patterns. Roads supply the structural support; dated mobility observations determine the response within it. This separation makes the operator interpretable as an effective property of movement in a given urban medium.
+
+The road space captures 0.904, 0.886 and 0.731 of the observed routing energy in the P/D-aligned observation pools for Porto, San Francisco and Chengdu, respectively (Supplementary Table~\ref{sup-tab:crosscity}). Whether that support is specific to the road-induced subspace, rather than a generic conservation-compatible subspace of the same rank, is tested below.
+
+\subsection{Constitutive coupling across three cities}\label{sec:recon}
+
+Operators are estimated on training dates and evaluated on dates excluded from fitting and model selection. Two evaluations distinguish reproduction of the observed field from prediction of its day-specific variation: P scores the raw field, whereas D removes the training-estimated recurrent hourly pattern from both source and target (Methods). Figure~\ref{fig:threecity-evidence}a--c and Supplementary Table~\ref{sup-tab:crosscity} report both on a common pooled-error convention (Supplementary Note~\ref{sup-note:coupling-results}).
+
+
+
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig02_threecity_coupling.pdf}
+\caption{\textbf{Coupling and spatial organization.} \textbf{a--c}, P/D prediction scores on ROAD (filled) and FACE (open) support, pooling TEST errors. \textbf{d--f}, Energy captured by TRAIN-derived spatial POD modes on TRAIN (dashed) and TEST (solid); mode count is logarithmic. San Francisco curves show fold means and ranges. Chengdu uses the 14-date, 06--23\,h window. POD capture measures representation, not source-based prediction.}
+\label{fig:threecity-evidence}
+\end{figure}
+
+The raw ROAD scores are 0.682 in Porto, 0.597 in San Francisco and 0.606 in Chengdu, whereas the corresponding source-free climatologies score 0.472, 0.727 and 0.931. Raw-field reproduction therefore cannot by itself be read as source-specific information, particularly in San Francisco and Chengdu. Prediction of departures remains positive in all three cities, with ROAD scores of 0.468, 0.240 and 0.120. These held-out results are consistent with a source--routing association beyond a fixed daily pattern, strongest in Porto; they do not by themselves establish closure or provide a date-level uncertainty estimate. Chengdu extends the evidence to ride-hailing movement with only three TEST dates in this protocol; its lower departure score locates the scale of the observed association rather than supporting complete source-only closure. Representative physical reconstructions for all three cities are retained in Supplementary Fig.~\ref{sup-fig:supp-6}.
+
+
+
+The three cities also differ in the spatial concentration of routing (Fig.~\ref{fig:threecity-evidence}d--f). A single TRAIN-derived spatial mode captures 0.433 of held-out routing energy in Porto, 0.468 in San Francisco (fold mean) and 0.810 in Chengdu; eight modes capture 0.616, 0.853 and 0.946. Chengdu thus exhibits a compact, reproducible spatial organization. This descriptive concentration and the source-based prediction above characterize different properties of the same field: a compact set of observed patterns does not by itself determine their response to changing sources.
+
+The road restriction is informative but incomplete. Full-face ridge and a training-only POD representation equal or outperform it on the same target (Supplementary Table~\ref{sup-tab:crosscity}); D/FACE ridge scores are 0.504, 0.262 and 0.126. Roads therefore provide an independently specified, interpretable medium rather than the highest attainable linear reconstruction accuracy.
+
+\subsection{Spatiotemporal spectra of source and routing}\label{sec:spectra}
+
+The joint spectra show how temporal rhythms organize spatial patterns of mobility (Fig.~\ref{fig:threecity-spectrum}). At each temporal frequency, source and routing fields are resolved into spatial modes across training dates. Routing has a larger time-independent energy fraction than its source in all three cities, consistent with persistent circulation patterns superposed on changing local balances. The spatial axis ranks these patterns within each frequency; it measures concentration across modes rather than geographical wavelength.
+
+Chengdu's time-independent component carries 0.668 of source energy and 0.811 of full-face routing energy. Its 18-point transform resolves the observed 06--23\,h block, while Porto and San Francisco use complete 24-hour days. All three spectra retain the raw-field mean and use the same energy normalization. The temporal and spatial concentration describes the organization available to a constitutive response; its predictive strength is established separately by the held-out P and D comparisons.
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig03_joint_spectrum.pdf}
+\caption{\textbf{Joint source and routing spectra.} \textbf{a--c}, Sources; \textbf{d--f}, full-face routing. Columns show Porto, San Francisco and Chengdu. Height and colour give energy share on a common log scale; $k$ ranks spatial modes within each frequency. Labels report energy in the first eight modes. TRAIN spectra use 24-point DFTs in Porto/San Francisco and an 18-point observed-block DFT in Chengdu, with single-sided energy weights. Chengdu's eight TRAIN dates cap rank at eight. Fold aggregation and normalization are specified in Methods.}
+\label{fig:threecity-spectrum}
+\end{figure}
+
+The frozen constitutive operator can also be examined frequency by frequency without fitting a new temporal response (Fig.~\ref{fig:threecity-response}). Chengdu now uses the same 18-point DFT support as its descriptive spectrum, with all ten single-sided bins evaluated. Its phase-independent bin has alignment 0.821 and predicted-to-observed norm ratio 0.709; the first nonzero bin gives 0.628 and 0.596. Across all ten bins, alignment ranges from 0.474 to 0.821 and norm ratio from 0.596 to 0.747. These coherent TEST-date averages complement, rather than replace, observation-level P and D scores (Supplementary Note~\ref{sup-note:spectral-results}).
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig04_frequency_response.pdf}
+\caption{\textbf{Frequency-resolved constitutive response.} \textbf{a--c}, Coherent TEST alignment $\gamma$; \textbf{d--f}, predicted-to-observed norm ratio $\rho$ (Methods). The frozen P-selected operator is used throughout. San Francisco shows fold means and ranges. Chengdu uses all ten single-sided bins $m=0,\ldots,9$ of its 18-point DFT, matching Fig.~\ref{fig:threecity-spectrum}; no bin is omitted. Alignment is insensitive to a common phase rotation.}
+\label{fig:threecity-response}
+\end{figure}
+
+\subsection{Directional organization and the limits of the road medium}\label{sec:structure}
+
+Response anisotropy exceeds road-support anisotropy in all three cities (Fig.~\ref{fig:road-tests}a--c; full distributions in Supplementary Fig.~\ref{sup-fig:supp-4}). Median response values are 0.635, 0.651 and 0.705 in Porto, San Francisco and Chengdu, against structural-tensor values 0.144, 0.057 and 0.280. Preferred axes vary across space but remain broadly aligned with the structural axes, with joint-anisotropy-weighted similarity 0.79, 0.79 and 0.76. San Francisco's map is stable across date folds (mean pairwise spatial correlation 0.984; Supplementary Note~\ref{sup-note:anisotropy-results}).
+
+
+
+Road capture is 0.90, 0.89 and 0.73 in the P/D-aligned pools, but capture alone does not establish specificity. Against 999 rank-matched random subspaces of $\ker D$, evaluated on the separate full aligned pools (road capture 0.900, 0.900 and 0.731), every random basis leaves more energy uncaptured than the road-induced basis (Fig.~\ref{fig:road-tests}d). Excess $\Delta E$ spans 0.23--0.30, 0.28--0.33 and 0.09--0.15 across the cities. The ambient space and rank are fixed, but each random basis spans a different subspace. This test concerns representation specificity, not all alternative road structures or source-based prediction.
+
+The matched-capacity test asks whether the road medium is sufficient (Fig.~\ref{fig:road-tests}e). At $R=n_{\rm int}$ (1984, 5512 and 7080 nominal pre-normalization block values), road gains over the constant medium are 0.009, 0.010 and $-0.001$, compared with mobility-inferred gains of 0.092, 0.085 and 0.036. The paired mobility-minus-road differences are 0.083 (95\% interval 0.060--0.109), 0.075 (0.062--0.091) and 0.038 (0.035--0.040). Permuting the mobility medium removes its gain ($-0.047$, $-0.052$ and $-0.016$). Road patterns come from an external GIS raster, whereas mobility patterns are learned from TRAIN observations; equal $R$ matches nominal capacity and estimator, not information. The score uses the raw routing target with each TEST date's own mean as reference, not D's TRAIN-phase departure target. Chengdu's four alternate-hour dates make its interval a small-sample descriptive summary. Thus the road-induced subspace is specific under the stated null, while the road-only medium is not sufficient under this estimator and information regime (Supplementary Note~\ref{sup-note:structural-results}).
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig05_anisotropy_threecity.pdf}
+\caption{\textbf{Road specificity without constitutive sufficiency.} \textbf{a--c}, Response anisotropy $A_C$ on complete 250\,m regular interior lattices at true aspect (San Francisco: five-fold consensus). Colour shares 0--1; segments show axial directions for $A_C>0.02$ and hollow squares mark zero anisotropy. Streets are \textcopyright~OpenStreetMap contributors. \textbf{d}, $\Delta E$ for 999 rank-matched random subspaces in fixed $\ker D$. Thick/thin marks show 1--99\%/full null ranges, not confidence intervals; 0/999 nulls are at least as good as roads, empirical $p=1/1000$. \textbf{e}, Paired mobility-minus-road $\Delta R^2$ at $R=n_{\rm int}$ with 95\% paired-date intervals. Scores use raw routing against each TEST-date mean, not P or D. GIS roads and TRAIN-derived mobility match capacity, not information. Chengdu has four alternate-hour TEST dates, so its interval is descriptive. Media: Supplementary Fig.~\ref{sup-fig:supp-5}.}
+\label{fig:road-tests}
+\end{figure}
+\FloatBarrier
+
+\subsection{Comparison with mobility modelling approaches}\label{sec:comparison}
+
+Table~\ref{tab:mainstream-main} separates source-to-routing inference, OD estimation and network-loading diagnostics. Only inference rows with matching inputs, targets and aggregation support direct accuracy ranking. The sealed San Francisco Graph WaveNet value is a fold mean and is excluded from such ranking until per-date errors are restored. Loading rows use different information, including TRAIN margins or exact TEST OD, and diagnose the implemented pipelines rather than modelling paradigms.
+
+On the inference task, full-face ridge and POD exceed the road-restricted operator, while UrbanFlow exceeds the completed Graph WaveNet adaptation. Archived neural cells were uncontrolled draws because seeding followed weight construction. Sealing seeds before construction gives 0.548, 0.221 and 0.315, against archived 0.497, 0.254 and 0.275. UrbanFlow leads every realised seed in Porto and Chengdu by at least 0.019 and 0.090. San Francisco's sealed value averages fold $R^2$ values, unlike UrbanFlow's pooled 0.528, so their difference is descriptive only. The archived Porto contrast (Graph WaveNet minus UrbanFlow) is $-0.1102$ (95\% interval $[-0.1762,-0.0268]$); sealed values are $-0.059$ at the seed mean and $-0.019$ at the worst seed. These results concern the registered 300-epoch adaptation and its validation rule, not neural models generally.
+
+\begin{table}[!htbp]
+\centering\small
+\caption{\textbf{Mobility model comparisons.}}
+\label{tab:mainstream-main}
+\setlength{\tabcolsep}{7pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llrrr@{}}
+\toprule
+Model & Metric & Porto & San Francisco & Chengdu \\
+\midrule
+\multicolumn{5}{@{}l}{\emph{Source-to-routing inference}}\\
+UrbanFlow & $R_{\rm P,FACE}^2$ & 0.607 & 0.528 & 0.440 \\
+Full-face ridge & $R_{\rm P,FACE}^2$ & 0.701 & 0.611 & 0.572 \\
+POD regression & $R_{\rm P,FACE}^2$ & 0.701 & 0.637 & 0.575 \\
+Graph WaveNet & $R_{\rm P,FACE}^2$ & 0.548 & 0.221\textsuperscript{c} & 0.315 \\
+\midrule
+\multicolumn{5}{@{}l}{\emph{OD estimation}}\\
+Gravity & CPC & 0.525 & 0.464 & 0.555 \\
+\midrule
+\multicolumn{5}{@{}l}{\emph{Network-loading diagnostics}}\\
+Gravity + AON & $R_{\rm FACE}^2$\textsuperscript{a} & 0.136 & 0.270 & $<0.001$ \\
+TEST OD + AON & $R_{\rm FACE}^2$\textsuperscript{a} & 0.172 & 0.336 & 0.002 \\
+TEST OD + AON & $R_{\rm FACE}^2$\textsuperscript{b} & 0.126 & $-0.533$ & $-0.565$ \\
+\bottomrule
+\end{tabular*}
+\par\smallskip
+\parbox{\textwidth}{\footnotesize Inference rows share sources, splits and targets; TEST errors are pooled except in \textsuperscript{c}. Gravity uses TRAIN OD margins; AON denotes all-or-nothing assignment. \textsuperscript{a}Amplitude fitted on TEST. \textsuperscript{b}Fixed amplitude, $\alpha=1$. \textsuperscript{c}The sealed San Francisco value averages fold $R^2$ within each seed and is not comparable with pooled rows until per-date errors are restored. Graph WaveNet scores are averaged over runs whose seeds are declared before weight construction. CPC and loading are separate tasks. Chengdu loading is margin-dominated (destination-permutation cosine 0.93--0.94), so its loading cells do not rank demand models. Full protocols and exclusions: Methods and Supplementary Notes~\ref{sup-note:baselines} and \ref{sup-note:reproducibility}.}
+\end{table}
+
+
+
+Gravity attains native OD-overlap scores of 0.525, 0.464 and 0.555, but its loading rows and exact-TEST-OD AON rows are not deployable source-only predictions: they use TEST-fitted amplitudes or additional TEST demand. Chengdu has the highest gravity CPC yet near-zero loading scores. Destination permutation leaves its loaded field almost unchanged (cosine 0.93--0.94), indicating a largely margin-driven pattern that does not match observations (cosine 0.04). Rebuilding from occupied runs alone retains 84\% of absolute flux and gives 0.929 cosine with the all-fix field, so this population mismatch alone is insufficient to explain the loading failure. These rows diagnose the implemented demand--registration--loading pipeline, not traffic assignment as a paradigm. Radiation, user equilibrium and Deep Gravity were not run; Graphormer's reduced-budget result is excluded. Detailed protocols are in Supplementary Notes~\ref{sup-note:baselines} and \ref{sup-note:reproducibility}.
+
+\section{Discussion}\label{sec:disc}
+\subsection{A constitutive description of urban movement}
+
+The identified operator connects two aspects of urban mobility that conservation alone leaves unrelated: source--sink organization and divergence-free routing. Hodge-based descriptions expose potential landscapes and circulation \cite{aoki2022hodge,du2026landscapes}; the constitutive step measures how these sectors covary across observations. Spatial orthogonality at one instant does not imply statistical independence across dates. A reproducible map between the sectors therefore adds empirical information to the decomposition, rather than restating balance.
+
+The physical object is the lifted operator $C_R$, which maps a distributed source pattern to a directional routing response. Its columns describe responses to compatible source perturbations, and its local tensors describe directional selectivity. These properties turn a prediction matrix into a description of urban organization at the observation scale. Three-city anisotropy and coherent frequency response then measure different aspects of the same operator without equating predictive accuracy with a complete account of the city.
+
+\subsection{Urban anisotropy and the role of roads}
+
+Anisotropy distinguishes the geometry available to movement from the directional response expressed through it. Strong local selectivity varies across space rather than defining one city-wide axis. The three-city tensors describe how sampled urban activity reweights available road geometry, connecting street configuration \cite{hillier1993,penn1998,wang2012} to a response measured from repeated flows.
+
+Roads therefore act as a testable structural hypothesis. The rank-matched null supports road-induced subspace specificity, while matched-capacity and unrestricted controls show that the road-only medium is not sufficient under this estimator and information regime. Independent geometry separates these questions, but does not make the estimated response independent of activity, scale or observation regime.
+
+\subsection{Scope and further tests}
+
+The three cities establish a measurable but partial source--routing relation. Their different departure scores quantify how much day-specific organization is resolved by the selected input; substantial residuals remain. Signed source balance compresses movement: different OD pairings and opposing flows can produce the same net balance. Sampling and excitation also limit identification, particularly for Chengdu's short date window and San Francisco's restricted source span. These mechanisms cannot be separated by the present comparisons. Additional state variables, nonlinear responses and more general memory remain testable extensions.
+
+The operator is an effective description of the sampled city, not an intervention model. Sources and targets come from the same trajectories, and each city's operator is fitted separately. Forecasting from independently available demand, transfer between cities and responses to infrastructure changes require further validation. The present contribution is the identifiable constitutive object itself: a relation whose structural support, directional organization and unexplained variation can be measured and challenged separately. This makes it possible to ask how urban form and activity jointly organize movement without equating a road map, conservation or predictive accuracy with a complete account of the city.
+
+\section{Methods}\label{sec:methods}
+\subsection{Data and discrete fields}\label{sec:d-data}
+
+Porto uses ECML/PKDD taxi trajectories \cite{ucitaxi2015}: 252 dates, a chronological TRAIN/VAL/TEST split of 151/50/51 dates and a $32\times32$ lattice. San Francisco uses Cabspotting \cite{cabspotting2009}: 15 dates, five blocked folds of 9/3/3 dates and a $32\times88$ lattice. Chengdu uses DiDi ride-hailing trajectories \cite{didi2014chengdu} with 30-second sampled fixes and a $60\times60$ lattice. Its P/D, coherent-response, anisotropy and spectral analyses use a 14-date 8/3/3 subset from the continuous-observation regime. The matched-capacity medium sweep uses a separate chronological 10/4/4 split whose four held-out dates are 26--29 August 2014; these dates belong to the alternate-hour delivery phase, with nine alternating recorded hours per date. The structural null is evaluated on the 19 valid dates of the aligned grid. These protocols are related but not interchangeable. The hourly phase sets are 00--23\,h for Porto/San Francisco and 06--23\,h for Chengdu. Each city is estimated separately. Observation regimes and frozen date lists are specified in Supplementary Note~\ref{sup-note:data} and Supplementary Table~\ref{sup-tab:observation-regimes}.
+
+Successive trajectory segments are walked through the aligned nominal 250\,m cells. Signed crossings of each interior face are accumulated in 60-minute windows to form $F_t\in\mathbb R^{n_f}$. Boundary faces are excluded and the archived activity mask is fixed. The present archive does not establish a TRAIN-only provenance for that mask, so the registered support is treated as a fixed transductive spatial convention rather than as demonstrably TEST-independent. No map matching is applied. For the cell--face incidence matrix $D\in\mathbb R^{n_c\times n_f}$,
+\begin{equation}\label{eq:m-project}
+ x_t=DF_t,\quad P_0=I-D^\dagger D,\quad F_t^\circ=P_0F_t,
+ \quad P_x=DD^\dagger .
+\end{equation}
+The source $x_t$ is calculated from the same crossing field as the routing target. The Laplacian solve is gauge-pinned.
+
+\subsection{Road space and response estimation}\label{sec:m-cons}
+
+The drivable OpenStreetMap layer \cite{haklay2008} is registered to the masked complex. Let $B_R$ be its node--edge incidence, $A_R$ the edge-to-face lift and $\Pi$ the registration map satisfying $DA_R=\Pi B_R$. A cycle basis $Z_R$ satisfies $B_RZ_R=0$. The Gram eigendecomposition of $A_RZ_R$ gives
+\begin{equation}\label{eq:m-roadbasis}
+ U_R=\operatorname{orth}(A_RZ_R),\qquad U_R^\top U_R=I,
+ \qquad DU_R=0,\qquad y_t=U_R^\top F_t^\circ .
+\end{equation}
+Geometry, domain and mask determine $U_R$; no mobility flux values enter its construction. Supplementary Note~\ref{sup-note:estimation} gives the registration conventions.
+
+For any source or target $v_t$, TRAIN phase means and departures are
+\begin{equation}\label{eq:m-centre}
+ \bar v_\phi=\frac{1}{n_{\mathrm{tr},\phi}}
+ \sum_{t\in\mathrm{TRAIN}:\phi(t)=\phi}v_t,
+ \qquad \delta v_t=v_t-\bar v_{\phi(t)} .
+\end{equation}
+Stack $\delta x_t^\top$ and $\delta y_t^\top$ as the rows of $X$ and $Z$. Ridge estimation yields
+\begin{equation}\label{eq:m-fit}
+ \begin{aligned}
+ K_R^\star&=\argmin_K\{\|Z-XK^\top\|_F^2+\lambda\|K\|_F^2\}\\
+ &=Z^\top X(X^\top X+\lambda I)^{-1},\qquad
+ C_R=U_RK_R^\star P_x .
+ \end{aligned}
+\end{equation}
+We use $\lambda=\kappa s_{\max}(XX^\top)$ and select $\kappa$ on VAL from the grid specified in Supplementary Note~\ref{sup-note:estimation}. The archived structural-characterization estimators use $\kappa=0.01$ in Porto, $0.1$ in San Francisco and $0.1$ in Chengdu's D frame; the archived Chengdu P-frame sensitivity uses $\kappa=0.001$. Comparison arms select their own regularization in the specified scoring frame. Full-face ridge fits $F_t^\circ$ and projects predictions with $P_0$. POD estimates its output basis from TRAIN departures and selects rank and regularization using FACE validation error. Since $K_RP_x=K_R$, $C_R$ and $K_R$ have the same nonzero singular values.
+
+\subsection{Scoring}\label{sec:m-frames}
+
+Define $T_t=U_R^\top F_t^\circ$ on ROAD support and $T_t=F_t^\circ$ on FACE support. Let $B_{\mathrm P}$ and $B_{\mathrm D}$ denote the fitted maps on that support. Both use TRAIN departures; P selects on raw VAL inputs/targets, while D selects on VAL departures using TRAIN means. Predictions have no fitted intercept:
+\begin{equation}\label{eq:m-scores}
+ \begin{aligned}
+ R_{\mathrm P}^2&=1-\frac{\sum_{t\in\mathrm{TEST}}\|T_t-B_{\mathrm P}x_t\|^2}
+ {\sum_{t\in\mathrm{TEST}}\|T_t\|^2},\\
+ R_{\mathrm D}^2&=1-\frac{\sum_{t\in\mathrm{TEST}}\|\delta T_t-B_{\mathrm D}\delta x_t\|^2}
+ {\sum_{t\in\mathrm{TEST}}\|\delta T_t\|^2}.
+ \end{aligned}
+\end{equation}
+Numerators and denominators are pooled across TEST observations and folds within each city. The denominators are target energies, not variances about a TEST mean. The source-free reference is $\bar T_{\phi(t)}$, reported in Supplementary Table~\ref{sup-tab:crosscity}.
+
+\subsection{Structural tests}
+
+For any orthonormal routing basis $U$, the uncaptured-energy statistic is
+\begin{equation}\label{eq:m-null}
+ E(U)=1-\frac{\sum_t\|U^\top F_t^\circ\|^2}{\sum_t\|F_t^\circ\|^2},
+ \qquad \Delta E_b=E(U_b)-E(U_R).
+\end{equation}
+Let $K_D$ be an orthonormal basis of $\ker D$. Each null draw uses $G_{ij}\overset{\mathrm{iid}}{\sim}N(0,1)$, $Q=\operatorname{orth}(G)$ and $U_b=K_DQ$ at rank $\operatorname{rank}(U_R)$; thus the subspace distribution does not depend on a non-orthogonal factorization of $\ker D$. The test uses the full observation pool of each city's aligned grid and involves no source-response fit; these pools differ from the frozen three-city P/D comparison.
+
+The second test compares road, mobility-inferred and spatially permuted mobility media at equal capacity. Each per-face medium is reduced to the same nominal block capacity $R$ on nested spatial partitions before mean-1/floor normalization; $R$ is not the effective degrees of freedom after that normalization. $R=1$ gives the constant-medium reference. Permutation preserves the values, partition and nominal block count. The archived statistic is the equal-date mean of
+\begin{equation}\label{eq:m-conditional}
+ R_{\mathrm{cond},d}^2=1-
+ \frac{\sum_{t\in d}\|T_t-\widehat T_t\|^2}
+ {\sum_{t\in d}\|T_t-\langle T\rangle_d\|^2}.
+\end{equation}
+Figure~\ref{fig:road-tests}e reports the paired-date interval for mobility minus road at the largest archived capacity, $R=n_{\rm int}$, the number of interior faces (1984, 5512 and 7080); Supplementary Fig.~\ref{sup-fig:supp-5} reports each medium's gain over the constant medium at that capacity. Chengdu archives a single mobility channel (all motion), so its sweep uses that channel on the frozen per-fold basis, where San Francisco's uses the occupancy-defined channel; its interval resamples four held-out dates. This date-centred statistic is separate from Eq.~\ref{eq:m-scores}. Source files and partitions are specified in Supplementary Note~\ref{sup-note:spatial}.
+
+\subsection{Anisotropy}
+
+For each regular interior cell, $L_c$ sums signed face flux into two physical components. Define
+\begin{equation}\label{eq:m-tensors}
+\begin{aligned}
+ \Sigma_C(c)&=L_cC_RC_R^\top L_c^\top,\\
+ \Sigma_U(c)&=L_cU_RU_R^\top L_c^\top,\\
+ A(c)&=\begin{cases}
+ (\lambda_1(c)-\lambda_2(c))/(\lambda_1(c)+\lambda_2(c)),&\lambda_1(c)+\lambda_2(c)>0,\\
+ 0,&\lambda_1(c)+\lambda_2(c)=0 .
+ \end{cases}
+\end{aligned}
+\end{equation}
+Here $\lambda_1\geq\lambda_2$ are the eigenvalues of the relevant tensor. The principal eigenvector defines an axial orientation $\theta$ modulo $\pi$. San Francisco uses the per-cell mean anisotropy and nematic mean orientation over five folds. Structural-axis agreement is evaluated on regular interior cells for which both anisotropies are nonzero, using the frozen joint-anisotropy weighting
+\begin{equation}\label{eq:axis-agreement}
+ G_{\theta}=\frac{\sum_c A_C(c)A_U(c)\cos[2(\theta_C(c)-\theta_U(c))]}
+ {\sum_c A_C(c)A_U(c)} .
+\end{equation}
+Only regular interior cells enter the anisotropy statistics; their metric $L_cL_c^\top=2I$ is isotropic. Metric whitening, orthogonal changes of road coordinates and rigid physical rotations are checked as in Supplementary Note~\ref{sup-note:spatial}.
+
+\subsection{Spectra and coherent response}
+
+For Fig.~\ref{fig:threecity-spectrum}, each TRAIN date is transformed separately, retaining its mean. For field $v_{d,j}$ and observed block length $N$,
+\begin{equation}\label{eq:m-spectrum}
+ \begin{aligned}
+ Z_{d,m}&=N^{-1/2}\sum_{j=0}^{N-1}v_{d,j}e^{-2\pi imj/N},\qquad f_m=m/N,\\
+ P_m&=w_m\langle\|Z_{d,m}\|^2\rangle_d,\qquad
+ J_{m,k}=\frac{P_m}{\sum_lP_l}\frac{s_{m,k}^2}{\sum_a s_{m,a}^2}.
+ \end{aligned}
+\end{equation}
+$s_{m,k}$ are singular values of the date-by-space coefficient matrix. The weights are $w_0=w_{N/2}=1$ and $w_m=2$ otherwise. Porto/San Francisco use $N=24$; Chengdu uses $N=18$ with no night-time imputation. Frequencies are cycles per observed hour. San Francisco averages $P_m$ and within-frequency mode shares separately across folds before multiplication. The first eight modes are displayed after full-spectrum normalization. Spatial POD curves in Fig.~\ref{fig:threecity-evidence} use a raw TRAIN routing basis and evaluate projection energy on TRAIN/TEST.
+
+For coherent response, each TEST date is transformed with the same unitary DFT used for the descriptive spectrum: 24 points in Porto/San Francisco and 18 points in Chengdu. If $a_m$ and $b_m$ are TEST-date mean observed and predicted routing coefficients,
+\begin{equation}\label{eq:m-coherent}
+ \gamma_m=\frac{|a_m^*b_m|}{\|a_m\|\|b_m\|},\qquad
+ \rho_m=\frac{\|b_m\|}{\|a_m\|}.
+\end{equation}
+The P-selected operator is fixed. The absolute inner product makes $\gamma_m$ insensitive to a common phase rotation. All ten single-sided bins are evaluated in Chengdu.
+
+\subsection{Baselines and uncertainty}
+
+Graph WaveNet uses the frozen splits, a 300-epoch budget and four-point VAL-selected grid, with phase-centred TRAIN data and raw VAL/TEST data (P/FACE). Archived cells are single draws with pooled per-date errors; sealed cells repeat construction and VAL selection at each declared seed. San Francisco's sealed summary instead averages fold $R^2$ values and is labelled separately in Table~\ref{tab:mainstream-main}. Graphormer's 60-epoch run is excluded. Configurations and outputs are indexed in Supplementary Note~\ref{sup-note:reproducibility}.
+
+Gravity estimates OD flows from TRAIN margins and distance, selecting friction on VAL. Its native overlap is $\mathrm{CPC}=2\sum_{ij}\min(\widehat Q_{ij},Q_{ij})/(\sum_{ij}\widehat Q_{ij}+\sum_{ij}Q_{ij})$ at $4\times4$-cell aggregation. AON uses time-shortest paths, road costs and a 150\,m snap threshold; gravity loading retains the top 150,000 zone pairs. Scaled diagnostics fit $\alpha^*$ on TEST, while the fixed-amplitude arm uses $\alpha=1$. Registration drops 27.7\%/8.9\%/22.3\% of Porto/San Francisco/Chengdu trips. Chengdu OD uses maximal occupied runs under the frozen cleaning rules. Its observed field counts crossings within each hour, whereas loading routes trips by origin window; it also uses all fixes, whereas OD uses occupied runs only. Rebuilding from occupied runs removes 16.3\% of absolute flux and gives 0.93 pooled cosine with the all-fix field. This is one reconstruction, not a universal upper bound for every loader, and does not by itself explain the loading failure. No radiation or user-equilibrium score is estimated (Supplementary Note~\ref{sup-note:baselines}).
+
+Paired bootstrap intervals use held-out dates and the 2.5/97.5 percentiles; faces are not resampled. Neural contrasts use 9,999 resamples within folds with seed 20261003 and Holm adjustment within city/support, whereas the matched-capacity mobility-minus-road contrast uses 10,000 paired-date resamples. Structural nulls use 999 draws; the Chengdu null uses the same seed range and pool rule, checked against a Porto control re-run to machine precision. Uncertainty follows each archived experiment's estimator, so the Chengdu equal-capacity interval resamples its four held-out dates.
+
+\section*{Data availability}
+Porto and San Francisco use the cited public datasets; Chengdu uses the archived DiDi ride-hailing sample \cite{didi2014chengdu}; its exact release version is not recorded. Road data derive from OpenStreetMap and retain the OpenStreetMap contributors attribution. Frozen splits and observation regimes are tabulated in the supplementary material. The public export contains no individual-level trajectory records; redistribution status and any external-data requirements for derived fields are recorded in its data manifest.
+\section*{Code availability}
+The prepared analysis repository separates figure rebuilding from frozen products, core-score recomputation and end-to-end raw-trajectory reconstruction. Large prediction files and unavailable original training artifacts are not represented as included. The matched-capacity wrapper is an archival record, not a runnable entry point in the present export: it retains a legacy absolute root and requires unavailable modules, aligned fields, date-freeze files and GIS rasters. Execution requirements, relative-path configuration for supported entry points and checksums are documented in the repository manifest. Public repository location: \repositorylocation.
+
+% Reference list: compact spacing keeps the bibliography from leaving a
+% short trailing page without changing the body text layout.
+{\scriptsize\makeatletter\def\@listi{\leftmargin\leftmargini \parsep 0\p@ \topsep 2\p@ \itemsep 0\p@}\let\@listI\@listi\makeatother
+\begin{multicols}{2}
+\bibliographystyle{unsrt}
+\bibliography{refs}
+\end{multicols}
+}
+\end{document}

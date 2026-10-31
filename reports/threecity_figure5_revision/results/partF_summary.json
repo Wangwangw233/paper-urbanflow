@@ -1,0 +1,1509 @@
+{
+ "Chengdu": {
+  "D0_R2": -0.029687030734837527,
+  "R_sweep": [
+   1,
+   4,
+   16,
+   64,
+   225,
+   900,
+   7080
+  ],
+  "anchors_R_eq_n_int": {
+   "mobility": 0.0067309666039608584,
+   "mobility_bin": -0.02272185068043528,
+   "mobility_shuf": -0.04551350216590211,
+   "road": -0.03081614032655175,
+   "road_shuf": -0.030804270964904568
+  },
+  "block_sizes": [
+   0,
+   32,
+   16,
+   8,
+   4,
+   2,
+   1
+  ],
+  "city": "Chengdu",
+  "frozen_label": "Chengdu",
+  "frozen_registry": {
+   "basis": "perfold",
+   "channel": "default",
+   "run": "Chengdu_allmotion"
+  },
+  "n_folds": 1,
+  "n_int": 7080,
+  "n_test_dates": 4,
+  "nx": 60,
+  "ny": 60,
+  "pairwise": [
+   {
+    "R": 1,
+    "ci95_hi": 0.0,
+    "ci95_lo": 0.0,
+    "city": "Chengdu",
+    "contrast": "mobility - road",
+    "delta_mean": 0.0,
+    "frac_dates_A_gt_B": 0.0,
+    "n_boot": 10000,
+    "n_dates": 4,
+    "p_one_sided": 1.0
+   },
+   {
+    "R": 1,
+    "ci95_hi": 2.220446049250313e-16,
+    "ci95_lo": 0.0,
+    "city": "Chengdu",
+    "contrast": "mobility - mobility_shuf",
+    "delta_mean": 1.1102230246251565e-16,
+    "frac_dates_A_gt_B": 0.5,
+    "n_boot": 10000,
+    "n_dates": 4,
+    "p_one_sided": 0.0672
+   },
+   {
+    "R": 4,
+    "ci95_hi": 0.00013931535233147052,
+    "ci95_lo": -0.00013440860536562127,
+    "city": "Chengdu",
+    "contrast": "mobility - road",
+    "delta_mean": 2.4533734829246256e-06,
+    "frac_dates_A_gt_B": 0.5,
+    "n_boot": 10000,
+    "n_dates": 4,
+    "p_one_sided": 0.4217
+   },
+   {
+    "R": 4,
+    "ci95_hi": 0.00015906698428413968,
+    "ci95_lo": -0.00014705840738754583,
+    "city": "Chengdu",
+    "contrast": "mobility - mobility_shuf",
+    "delta_mean": 6.004288448296924e-06,
+    "frac_dates_A_gt_B": 0.5,
+    "n_boot": 10000,
+    "n_dates": 4,
+    "p_one_sided": 0.3074
+   },
+   {
+    "R": 16,
+    "ci95_hi": 0.0002777961363750192,
+    "ci95_lo": -0.00011610612975365697,
+    "city": "Chengdu",
+    "contrast": "mobility - road",
+    "delta_mean": 8.084500331068112e-05,
+    "frac_dates_A_gt_B": 0.5,
+    "n_boot": 10000,
+    "n_dates": 4,
+    "p_one_sided": 0.3074
+   },
+   {
+    "R": 16,
+    "ci95_hi": 0.00046213825735663683,
+    "ci95_lo": -8.491121131382062e-05,
+    "city": "Chengdu",
+    "contrast": "mobility - mobility_shuf",
+    "delta_mean": 0.0001886135230214081,
+    "frac_dates_A_gt_B": 0.5,
+    "n_boot": 10000,
+    "n_dates": 4,
+    "p_one_sided": 0.0623
+   },
+   {
+    "R": 64,
+    "ci95_hi": 0.0005794525139835582,
+    "ci95_lo": 0.000414798548998091,
+    "city": "Chengdu",
+    "contrast": "mobility - road",
+    "delta_mean": 0.0004964390139700348,
+    "frac_dates_A_gt_B": 1.0,
+    "n_boot": 10000,
+    "n_dates": 4,
+    "p_one_sided": 0.0
+   },
+   {
+    "R": 64,
+    "ci95_hi": 0.0007999834192618516,
+    "ci95_lo": 0.0005547296288294645,
+    "city": "Chengdu",
+    "contrast": "mobility - mobility_shuf",
+    "delta_mean": 0.0006701398072176679,
+    "frac_dates_A_gt_B": 1.0,
+    "n_boot": 10000,
+    "n_dates": 4,
+    "p_one_sided": 0.0
+   },
+   {
+    "R": 225,
+    "ci95_hi": 0.002137826207717519,
+    "ci95_lo": 0.001815797400384761,
+    "city": "Chengdu",
+    "contrast": "mobility - road",
+    "delta_mean": 0.0019718821419190957,
+    "frac_dates_A_gt_B": 1.0,
+    "n_boot": 10000,
+    "n_dates": 4,
+    "p_one_sided": 0.0
+   },
+   {
+    "R": 225,
+    "ci95_hi": 0.0017964275312504219,
+    "ci95_lo": 0.001578100120216197,
+    "city": "Chengdu",
+    "contrast": "mobility - mobility_shuf",
+    "delta_mean": 0.0016872638257333095,
+    "frac_dates_A_gt_B": 1.0,
+    "n_boot": 10000,
+    "n_dates": 4,
+    "p_one_sided": 0.0
+   },
+   {
+    "R": 900,
+    "ci95_hi": 0.007580057284442554,
+    "ci95_lo": 0.006990698486370961,
+    "city": "Chengdu",
+    "contrast": "mobility - road",
+    "delta_mean": 0.0072853778854067575,
+    "frac_dates_A_gt_B": 1.0,
+    "n_boot": 10000,
+    "n_dates": 4,
+    "p_one_sided": 0.0
+   },
+   {
+    "R": 900,
+    "ci95_hi": 0.007466382350239109,
+    "ci95_lo": 0.006585640505098106,
+    "city": "Chengdu",
+    "contrast": "mobility - mobility_shuf",
+    "delta_mean": 0.006938518645222463,
+    "frac_dates_A_gt_B": 1.0,
+    "n_boot": 10000,
+    "n_dates": 4,
+    "p_one_sided": 0.0
+   },
+   {
+    "R": 7080,
+    "ci95_hi": 0.040230020339701966,
+    "ci95_lo": 0.03536106973070774,
+    "city": "Chengdu",
+    "contrast": "mobility - road",
+    "delta_mean": 0.03754710693051261,
+    "frac_dates_A_gt_B": 1.0,
+    "n_boot": 10000,
+    "n_dates": 4,
+    "p_one_sided": 0.0
+   },
+   {
+    "R": 7080,
+    "ci95_hi": 0.056094098268687886,
+    "ci95_lo": 0.049047112957900624,
+    "city": "Chengdu",
+    "contrast": "mobility - mobility_shuf",
+    "delta_mean": 0.05224446876986297,
+    "frac_dates_A_gt_B": 1.0,
+    "n_boot": 10000,
+    "n_dates": 4,
+    "p_one_sided": 0.0
+   }
+  ],
+  "results": [
+   {
+    "R": 1,
+    "R2_cond": -0.029687030734837527,
+    "block_size": 0,
+    "city": "Chengdu",
+    "medium_dof": 1,
+    "source": "road"
+   },
+   {
+    "R": 1,
+    "R2_cond": -0.029687030734837527,
+    "block_size": 0,
+    "city": "Chengdu",
+    "medium_dof": 1,
+    "source": "mobility"
+   },
+   {
+    "R": 1,
+    "R2_cond": -0.02968703073483764,
+    "block_size": 0,
+    "city": "Chengdu",
+    "medium_dof": 1,
+    "source": "mobility_bin"
+   },
+   {
+    "R": 1,
+    "R2_cond": -0.029687030734837527,
+    "block_size": 0,
+    "city": "Chengdu",
+    "medium_dof": 1,
+    "source": "road_shuf"
+   },
+   {
+    "R": 1,
+    "R2_cond": -0.02968703073483764,
+    "block_size": 0,
+    "city": "Chengdu",
+    "medium_dof": 1,
+    "source": "mobility_shuf"
+   },
+   {
+    "R": 4,
+    "R2_cond": -0.029708179902592752,
+    "block_size": 32,
+    "city": "Chengdu",
+    "medium_dof": 4,
+    "source": "road"
+   },
+   {
+    "R": 4,
+    "R2_cond": -0.029705726529109827,
+    "block_size": 32,
+    "city": "Chengdu",
+    "medium_dof": 4,
+    "source": "mobility"
+   },
+   {
+    "R": 4,
+    "R2_cond": -0.029704973704268695,
+    "block_size": 32,
+    "city": "Chengdu",
+    "medium_dof": 4,
+    "source": "mobility_bin"
+   },
+   {
+    "R": 4,
+    "R2_cond": -0.02969953847546769,
+    "block_size": 32,
+    "city": "Chengdu",
+    "medium_dof": 4,
+    "source": "road_shuf"
+   },
+   {
+    "R": 4,
+    "R2_cond": -0.029711730817558124,
+    "block_size": 32,
+    "city": "Chengdu",
+    "medium_dof": 4,
+    "source": "mobility_shuf"
+   },
+   {
+    "R": 16,
+    "R2_cond": -0.02964713737206079,
+    "block_size": 16,
+    "city": "Chengdu",
+    "medium_dof": 16,
+    "source": "road"
+   },
+   {
+    "R": 16,
+    "R2_cond": -0.029566292368750108,
+    "block_size": 16,
+    "city": "Chengdu",
+    "medium_dof": 16,
+    "source": "mobility"
+   },
+   {
+    "R": 16,
+    "R2_cond": -0.029527677421529397,
+    "block_size": 16,
+    "city": "Chengdu",
+    "medium_dof": 16,
+    "source": "mobility_bin"
+   },
+   {
+    "R": 16,
+    "R2_cond": -0.02969877759982198,
+    "block_size": 16,
+    "city": "Chengdu",
+    "medium_dof": 16,
+    "source": "road_shuf"
+   },
+   {
+    "R": 16,
+    "R2_cond": -0.029754905891771516,
+    "block_size": 16,
+    "city": "Chengdu",
+    "medium_dof": 16,
+    "source": "mobility_shuf"
+   },
+   {
+    "R": 64,
+    "R2_cond": -0.029596005235071887,
+    "block_size": 8,
+    "city": "Chengdu",
+    "medium_dof": 64,
+    "source": "road"
+   },
+   {
+    "R": 64,
+    "R2_cond": -0.029099566221101852,
+    "block_size": 8,
+    "city": "Chengdu",
+    "medium_dof": 64,
+    "source": "mobility"
+   },
+   {
+    "R": 64,
+    "R2_cond": -0.029217979387454712,
+    "block_size": 8,
+    "city": "Chengdu",
+    "medium_dof": 64,
+    "source": "mobility_bin"
+   },
+   {
+    "R": 64,
+    "R2_cond": -0.029689487863296782,
+    "block_size": 8,
+    "city": "Chengdu",
+    "medium_dof": 64,
+    "source": "road_shuf"
+   },
+   {
+    "R": 64,
+    "R2_cond": -0.02976970602831952,
+    "block_size": 8,
+    "city": "Chengdu",
+    "medium_dof": 64,
+    "source": "mobility_shuf"
+   },
+   {
+    "R": 225,
+    "R2_cond": -0.029302176467425417,
+    "block_size": 4,
+    "city": "Chengdu",
+    "medium_dof": 225,
+    "source": "road"
+   },
+   {
+    "R": 225,
+    "R2_cond": -0.02733029432550632,
+    "block_size": 4,
+    "city": "Chengdu",
+    "medium_dof": 225,
+    "source": "mobility"
+   },
+   {
+    "R": 225,
+    "R2_cond": -0.02898190562849834,
+    "block_size": 4,
+    "city": "Chengdu",
+    "medium_dof": 225,
+    "source": "mobility_bin"
+   },
+   {
+    "R": 225,
+    "R2_cond": -0.02994764341644318,
+    "block_size": 4,
+    "city": "Chengdu",
+    "medium_dof": 225,
+    "source": "road_shuf"
+   },
+   {
+    "R": 225,
+    "R2_cond": -0.02901755815123963,
+    "block_size": 4,
+    "city": "Chengdu",
+    "medium_dof": 225,
+    "source": "mobility_shuf"
+   },
+   {
+    "R": 900,
+    "R2_cond": -0.029178022204122744,
+    "block_size": 2,
+    "city": "Chengdu",
+    "medium_dof": 900,
+    "source": "road"
+   },
+   {
+    "R": 900,
+    "R2_cond": -0.021892644318715987,
+    "block_size": 2,
+    "city": "Chengdu",
+    "medium_dof": 900,
+    "source": "mobility"
+   },
+   {
+    "R": 900,
+    "R2_cond": -0.027713114702774377,
+    "block_size": 2,
+    "city": "Chengdu",
+    "medium_dof": 900,
+    "source": "mobility_bin"
+   },
+   {
+    "R": 900,
+    "R2_cond": -0.03014852258071296,
+    "block_size": 2,
+    "city": "Chengdu",
+    "medium_dof": 900,
+    "source": "road_shuf"
+   },
+   {
+    "R": 900,
+    "R2_cond": -0.02883116296393845,
+    "block_size": 2,
+    "city": "Chengdu",
+    "medium_dof": 900,
+    "source": "mobility_shuf"
+   },
+   {
+    "R": 7080,
+    "R2_cond": -0.03081614032655175,
+    "block_size": 1,
+    "city": "Chengdu",
+    "medium_dof": 7080,
+    "source": "road"
+   },
+   {
+    "R": 7080,
+    "R2_cond": 0.0067309666039608584,
+    "block_size": 1,
+    "city": "Chengdu",
+    "medium_dof": 7080,
+    "source": "mobility"
+   },
+   {
+    "R": 7080,
+    "R2_cond": -0.02272185068043528,
+    "block_size": 1,
+    "city": "Chengdu",
+    "medium_dof": 7080,
+    "source": "mobility_bin"
+   },
+   {
+    "R": 7080,
+    "R2_cond": -0.030804270964904568,
+    "block_size": 1,
+    "city": "Chengdu",
+    "medium_dof": 7080,
+    "source": "road_shuf"
+   },
+   {
+    "R": 7080,
+    "R2_cond": -0.04551350216590211,
+    "block_size": 1,
+    "city": "Chengdu",
+    "medium_dof": 7080,
+    "source": "mobility_shuf"
+   }
+  ],
+  "seconds": 162.4,
+  "split_kind": "chronological",
+  "test_dates": [
+   16308,
+   16309,
+   16310,
+   16311
+  ],
+  "tw_selfcheck_max_err": 7.327471962526033e-12
+ },
+ "Porto": {
+  "D0_R2": 0.613027060912951,
+  "R_sweep": [
+   1,
+   4,
+   16,
+   64,
+   256,
+   1984
+  ],
+  "anchors_R_eq_n_int": {
+   "mobility": 0.7047312011951072,
+   "mobility_bin": 0.623190074002143,
+   "mobility_shuf": 0.5662788959331938,
+   "road": 0.6221083545751244,
+   "road_shuf": 0.6097598164750424
+  },
+  "block_sizes": [
+   0,
+   16,
+   8,
+   4,
+   2,
+   1
+  ],
+  "city": "Porto",
+  "frozen_label": "Porto",
+  "frozen_registry": {
+   "basis": "frozen",
+   "channel": "default",
+   "run": "Porto_allmotion"
+  },
+  "n_folds": 1,
+  "n_int": 1984,
+  "n_test_dates": 51,
+  "nx": 32,
+  "ny": 32,
+  "pairwise": [
+   {
+    "R": 1,
+    "ci95_hi": 1.7415263131375004e-17,
+    "ci95_lo": -1.3061447348531253e-17,
+    "city": "Porto",
+    "contrast": "mobility - road",
+    "delta_mean": 2.1769078914218755e-18,
+    "frac_dates_A_gt_B": 0.0784313725490196,
+    "n_boot": 10000,
+    "n_dates": 51,
+    "p_one_sided": 0.4387
+   },
+   {
+    "R": 1,
+    "ci95_hi": 1.0884539457109378e-17,
+    "ci95_lo": -2.6122894697062506e-17,
+    "city": "Porto",
+    "contrast": "mobility - mobility_shuf",
+    "delta_mean": -6.530723674265627e-18,
+    "frac_dates_A_gt_B": 0.0784313725490196,
+    "n_boot": 10000,
+    "n_dates": 51,
+    "p_one_sided": 0.7925
+   },
+   {
+    "R": 4,
+    "ci95_hi": -0.0009106507992447861,
+    "ci95_lo": -0.006731994560675964,
+    "city": "Porto",
+    "contrast": "mobility - road",
+    "delta_mean": -0.003584970249322829,
+    "frac_dates_A_gt_B": 0.43137254901960786,
+    "n_boot": 10000,
+    "n_dates": 51,
+    "p_one_sided": 0.9975
+   },
+   {
+    "R": 4,
+    "ci95_hi": -0.0008770977809178245,
+    "ci95_lo": -0.006204780260720673,
+    "city": "Porto",
+    "contrast": "mobility - mobility_shuf",
+    "delta_mean": -0.003321186770997588,
+    "frac_dates_A_gt_B": 0.39215686274509803,
+    "n_boot": 10000,
+    "n_dates": 51,
+    "p_one_sided": 0.9979
+   },
+   {
+    "R": 16,
+    "ci95_hi": 0.0011981551351786482,
+    "ci95_lo": 0.0003032828016349175,
+    "city": "Porto",
+    "contrast": "mobility - road",
+    "delta_mean": 0.0007150376879723219,
+    "frac_dates_A_gt_B": 0.7450980392156863,
+    "n_boot": 10000,
+    "n_dates": 51,
+    "p_one_sided": 0.0
+   },
+   {
+    "R": 16,
+    "ci95_hi": 0.002391023567840608,
+    "ci95_lo": 0.001035530939054685,
+    "city": "Porto",
+    "contrast": "mobility - mobility_shuf",
+    "delta_mean": 0.0016314675303547848,
+    "frac_dates_A_gt_B": 0.9411764705882353,
+    "n_boot": 10000,
+    "n_dates": 51,
+    "p_one_sided": 0.0
+   },
+   {
+    "R": 64,
+    "ci95_hi": 0.0058123384976724035,
+    "ci95_lo": 0.004254905839336425,
+    "city": "Porto",
+    "contrast": "mobility - road",
+    "delta_mean": 0.004944096083839001,
+    "frac_dates_A_gt_B": 1.0,
+    "n_boot": 10000,
+    "n_dates": 51,
+    "p_one_sided": 0.0
+   },
+   {
+    "R": 64,
+    "ci95_hi": 0.008793872571817966,
+    "ci95_lo": 0.006495675120717121,
+    "city": "Porto",
+    "contrast": "mobility - mobility_shuf",
+    "delta_mean": 0.00752085047177727,
+    "frac_dates_A_gt_B": 1.0,
+    "n_boot": 10000,
+    "n_dates": 51,
+    "p_one_sided": 0.0
+   },
+   {
+    "R": 256,
+    "ci95_hi": 0.015938801371442466,
+    "ci95_lo": 0.011917234722709292,
+    "city": "Porto",
+    "contrast": "mobility - road",
+    "delta_mean": 0.013774215747333746,
+    "frac_dates_A_gt_B": 1.0,
+    "n_boot": 10000,
+    "n_dates": 51,
+    "p_one_sided": 0.0
+   },
+   {
+    "R": 256,
+    "ci95_hi": 0.033153565459850175,
+    "ci95_lo": 0.021049309946494052,
+    "city": "Porto",
+    "contrast": "mobility - mobility_shuf",
+    "delta_mean": 0.026688978147774753,
+    "frac_dates_A_gt_B": 1.0,
+    "n_boot": 10000,
+    "n_dates": 51,
+    "p_one_sided": 0.0
+   },
+   {
+    "R": 1984,
+    "ci95_hi": 0.10877305882013899,
+    "ci95_lo": 0.06008322310860025,
+    "city": "Porto",
+    "contrast": "mobility - road",
+    "delta_mean": 0.08262284661998287,
+    "frac_dates_A_gt_B": 1.0,
+    "n_boot": 10000,
+    "n_dates": 51,
+    "p_one_sided": 0.0
+   },
+   {
+    "R": 1984,
+    "ci95_hi": 0.16848491844232155,
+    "ci95_lo": 0.11230584270546763,
+    "city": "Porto",
+    "contrast": "mobility - mobility_shuf",
+    "delta_mean": 0.1384523052619134,
+    "frac_dates_A_gt_B": 1.0,
+    "n_boot": 10000,
+    "n_dates": 51,
+    "p_one_sided": 0.0
+   }
+  ],
+  "reproduction": {
+   "max_abs_diff": 3.4416913763379853e-15,
+   "n_cells": 30,
+   "pairwise_max_abs_diff": 3.524958103184872e-15,
+   "source": "domain_rankmatched_results.csv"
+  },
+  "results": [
+   {
+    "R": 1,
+    "R2_cond": 0.613027060912951,
+    "block_size": 0,
+    "city": "Porto",
+    "medium_dof": 1,
+    "source": "road"
+   },
+   {
+    "R": 1,
+    "R2_cond": 0.613027060912951,
+    "block_size": 0,
+    "city": "Porto",
+    "medium_dof": 1,
+    "source": "mobility"
+   },
+   {
+    "R": 1,
+    "R2_cond": 0.613027060912951,
+    "block_size": 0,
+    "city": "Porto",
+    "medium_dof": 1,
+    "source": "mobility_bin"
+   },
+   {
+    "R": 1,
+    "R2_cond": 0.613027060912951,
+    "block_size": 0,
+    "city": "Porto",
+    "medium_dof": 1,
+    "source": "road_shuf"
+   },
+   {
+    "R": 1,
+    "R2_cond": 0.613027060912951,
+    "block_size": 0,
+    "city": "Porto",
+    "medium_dof": 1,
+    "source": "mobility_shuf"
+   },
+   {
+    "R": 4,
+    "R2_cond": 0.6131893643308126,
+    "block_size": 16,
+    "city": "Porto",
+    "medium_dof": 4,
+    "source": "road"
+   },
+   {
+    "R": 4,
+    "R2_cond": 0.6096043940814898,
+    "block_size": 16,
+    "city": "Porto",
+    "medium_dof": 4,
+    "source": "mobility"
+   },
+   {
+    "R": 4,
+    "R2_cond": 0.6125985677347201,
+    "block_size": 16,
+    "city": "Porto",
+    "medium_dof": 4,
+    "source": "mobility_bin"
+   },
+   {
+    "R": 4,
+    "R2_cond": 0.6130301406345313,
+    "block_size": 16,
+    "city": "Porto",
+    "medium_dof": 4,
+    "source": "road_shuf"
+   },
+   {
+    "R": 4,
+    "R2_cond": 0.6129255808524874,
+    "block_size": 16,
+    "city": "Porto",
+    "medium_dof": 4,
+    "source": "mobility_shuf"
+   },
+   {
+    "R": 16,
+    "R2_cond": 0.6141084028520605,
+    "block_size": 8,
+    "city": "Porto",
+    "medium_dof": 16,
+    "source": "road"
+   },
+   {
+    "R": 16,
+    "R2_cond": 0.6148234405400328,
+    "block_size": 8,
+    "city": "Porto",
+    "medium_dof": 16,
+    "source": "mobility"
+   },
+   {
+    "R": 16,
+    "R2_cond": 0.614029310234404,
+    "block_size": 8,
+    "city": "Porto",
+    "medium_dof": 16,
+    "source": "mobility_bin"
+   },
+   {
+    "R": 16,
+    "R2_cond": 0.6131083332587385,
+    "block_size": 8,
+    "city": "Porto",
+    "medium_dof": 16,
+    "source": "road_shuf"
+   },
+   {
+    "R": 16,
+    "R2_cond": 0.6131919730096781,
+    "block_size": 8,
+    "city": "Porto",
+    "medium_dof": 16,
+    "source": "mobility_shuf"
+   },
+   {
+    "R": 64,
+    "R2_cond": 0.6149837076899737,
+    "block_size": 4,
+    "city": "Porto",
+    "medium_dof": 64,
+    "source": "road"
+   },
+   {
+    "R": 64,
+    "R2_cond": 0.6199278037738126,
+    "block_size": 4,
+    "city": "Porto",
+    "medium_dof": 64,
+    "source": "mobility"
+   },
+   {
+    "R": 64,
+    "R2_cond": 0.6153632054729631,
+    "block_size": 4,
+    "city": "Porto",
+    "medium_dof": 64,
+    "source": "mobility_bin"
+   },
+   {
+    "R": 64,
+    "R2_cond": 0.6131832153990587,
+    "block_size": 4,
+    "city": "Porto",
+    "medium_dof": 64,
+    "source": "road_shuf"
+   },
+   {
+    "R": 64,
+    "R2_cond": 0.6124069533020353,
+    "block_size": 4,
+    "city": "Porto",
+    "medium_dof": 64,
+    "source": "mobility_shuf"
+   },
+   {
+    "R": 256,
+    "R2_cond": 0.6169203938374411,
+    "block_size": 2,
+    "city": "Porto",
+    "medium_dof": 256,
+    "source": "road"
+   },
+   {
+    "R": 256,
+    "R2_cond": 0.6306946095847749,
+    "block_size": 2,
+    "city": "Porto",
+    "medium_dof": 256,
+    "source": "mobility"
+   },
+   {
+    "R": 256,
+    "R2_cond": 0.616842619324404,
+    "block_size": 2,
+    "city": "Porto",
+    "medium_dof": 256,
+    "source": "mobility_bin"
+   },
+   {
+    "R": 256,
+    "R2_cond": 0.6127102276583316,
+    "block_size": 2,
+    "city": "Porto",
+    "medium_dof": 256,
+    "source": "road_shuf"
+   },
+   {
+    "R": 256,
+    "R2_cond": 0.6040056314370003,
+    "block_size": 2,
+    "city": "Porto",
+    "medium_dof": 256,
+    "source": "mobility_shuf"
+   },
+   {
+    "R": 1984,
+    "R2_cond": 0.6221083545751244,
+    "block_size": 1,
+    "city": "Porto",
+    "medium_dof": 1984,
+    "source": "road"
+   },
+   {
+    "R": 1984,
+    "R2_cond": 0.7047312011951072,
+    "block_size": 1,
+    "city": "Porto",
+    "medium_dof": 1984,
+    "source": "mobility"
+   },
+   {
+    "R": 1984,
+    "R2_cond": 0.623190074002143,
+    "block_size": 1,
+    "city": "Porto",
+    "medium_dof": 1984,
+    "source": "mobility_bin"
+   },
+   {
+    "R": 1984,
+    "R2_cond": 0.6097598164750424,
+    "block_size": 1,
+    "city": "Porto",
+    "medium_dof": 1984,
+    "source": "road_shuf"
+   },
+   {
+    "R": 1984,
+    "R2_cond": 0.5662788959331938,
+    "block_size": 1,
+    "city": "Porto",
+    "medium_dof": 1984,
+    "source": "mobility_shuf"
+   }
+  ],
+  "seconds": 41.3,
+  "split_kind": "chronological",
+  "test_dates": [
+   16171,
+   16174,
+   16175,
+   16176,
+   16177,
+   16181,
+   16182,
+   16183,
+   16184,
+   16188,
+   16189,
+   16190,
+   16192,
+   16195,
+   16196,
+   16197,
+   16198,
+   16199,
+   16202,
+   16203,
+   16204,
+   16205,
+   16206,
+   16209,
+   16210,
+   16211,
+   16212,
+   16213,
+   16216,
+   16217,
+   16218,
+   16219,
+   16220,
+   16223,
+   16224,
+   16225,
+   16226,
+   16227,
+   16230,
+   16232,
+   16233,
+   16234,
+   16237,
+   16238,
+   16239,
+   16240,
+   16241,
+   16244,
+   16246,
+   16247,
+   16248
+  ],
+  "tw_selfcheck_max_err": 1.3806733534238447e-12
+ },
+ "SF": {
+  "D0_R2": 0.7433641770920812,
+  "R_sweep": [
+   1,
+   3,
+   12,
+   44,
+   176,
+   704,
+   5512
+  ],
+  "anchors_R_eq_n_int": {
+   "mobility": 0.8284482357303663,
+   "mobility_bin": 0.7496797423120998,
+   "mobility_shuf": 0.6909618621772264,
+   "road": 0.7532844593156279,
+   "road_shuf": 0.7303425230277815
+  },
+  "block_sizes": [
+   0,
+   32,
+   16,
+   8,
+   4,
+   2,
+   1
+  ],
+  "city": "SF",
+  "frozen_label": "San Francisco",
+  "frozen_registry": {
+   "basis": "perfold",
+   "channel": "passenger",
+   "run": "SF_passenger"
+  },
+  "n_folds": 5,
+  "n_int": 5512,
+  "n_test_dates": 15,
+  "nx": 32,
+  "ny": 88,
+  "pairwise": [
+   {
+    "R": 1,
+    "ci95_hi": 0.0,
+    "ci95_lo": 0.0,
+    "city": "San Francisco",
+    "contrast": "mobility - road",
+    "delta_mean": 0.0,
+    "frac_dates_A_gt_B": 0.0,
+    "n_boot": 10000,
+    "n_dates": 15,
+    "p_one_sided": 1.0
+   },
+   {
+    "R": 1,
+    "ci95_hi": 0.0,
+    "ci95_lo": 0.0,
+    "city": "San Francisco",
+    "contrast": "mobility - mobility_shuf",
+    "delta_mean": 0.0,
+    "frac_dates_A_gt_B": 0.0,
+    "n_boot": 10000,
+    "n_dates": 15,
+    "p_one_sided": 1.0
+   },
+   {
+    "R": 3,
+    "ci95_hi": 0.0006068206092420084,
+    "ci95_lo": 0.00011217027427650203,
+    "city": "San Francisco",
+    "contrast": "mobility - road",
+    "delta_mean": 0.00033803209396924644,
+    "frac_dates_A_gt_B": 0.7333333333333333,
+    "n_boot": 10000,
+    "n_dates": 15,
+    "p_one_sided": 0.0003
+   },
+   {
+    "R": 3,
+    "ci95_hi": 0.0006618733060257509,
+    "ci95_lo": 0.00012619364705839133,
+    "city": "San Francisco",
+    "contrast": "mobility - mobility_shuf",
+    "delta_mean": 0.0003711619041109726,
+    "frac_dates_A_gt_B": 0.7333333333333333,
+    "n_boot": 10000,
+    "n_dates": 15,
+    "p_one_sided": 0.0003
+   },
+   {
+    "R": 12,
+    "ci95_hi": 0.005613537537382297,
+    "ci95_lo": 0.003659047345982387,
+    "city": "San Francisco",
+    "contrast": "mobility - road",
+    "delta_mean": 0.004552790883002141,
+    "frac_dates_A_gt_B": 1.0,
+    "n_boot": 10000,
+    "n_dates": 15,
+    "p_one_sided": 0.0
+   },
+   {
+    "R": 12,
+    "ci95_hi": 0.0051972264341279325,
+    "ci95_lo": 0.0034004640469704286,
+    "city": "San Francisco",
+    "contrast": "mobility - mobility_shuf",
+    "delta_mean": 0.004232462484015379,
+    "frac_dates_A_gt_B": 1.0,
+    "n_boot": 10000,
+    "n_dates": 15,
+    "p_one_sided": 0.0
+   },
+   {
+    "R": 44,
+    "ci95_hi": 0.01449712778734524,
+    "ci95_lo": 0.009507302920067795,
+    "city": "San Francisco",
+    "contrast": "mobility - road",
+    "delta_mean": 0.011842689511134355,
+    "frac_dates_A_gt_B": 1.0,
+    "n_boot": 10000,
+    "n_dates": 15,
+    "p_one_sided": 0.0
+   },
+   {
+    "R": 44,
+    "ci95_hi": 0.015718866056724155,
+    "ci95_lo": 0.010517121855111222,
+    "city": "San Francisco",
+    "contrast": "mobility - mobility_shuf",
+    "delta_mean": 0.013042068457503272,
+    "frac_dates_A_gt_B": 1.0,
+    "n_boot": 10000,
+    "n_dates": 15,
+    "p_one_sided": 0.0
+   },
+   {
+    "R": 176,
+    "ci95_hi": 0.03179028135596382,
+    "ci95_lo": 0.020844905413995553,
+    "city": "San Francisco",
+    "contrast": "mobility - road",
+    "delta_mean": 0.025889487731889926,
+    "frac_dates_A_gt_B": 1.0,
+    "n_boot": 10000,
+    "n_dates": 15,
+    "p_one_sided": 0.0
+   },
+   {
+    "R": 176,
+    "ci95_hi": 0.039142512542609795,
+    "ci95_lo": 0.02606608004882631,
+    "city": "San Francisco",
+    "contrast": "mobility - mobility_shuf",
+    "delta_mean": 0.03215723059146725,
+    "frac_dates_A_gt_B": 1.0,
+    "n_boot": 10000,
+    "n_dates": 15,
+    "p_one_sided": 0.0
+   },
+   {
+    "R": 704,
+    "ci95_hi": 0.051776021070885754,
+    "ci95_lo": 0.03388102515585358,
+    "city": "San Francisco",
+    "contrast": "mobility - road",
+    "delta_mean": 0.042123894466240444,
+    "frac_dates_A_gt_B": 1.0,
+    "n_boot": 10000,
+    "n_dates": 15,
+    "p_one_sided": 0.0
+   },
+   {
+    "R": 704,
+    "ci95_hi": 0.06773785698192995,
+    "ci95_lo": 0.04660017897247909,
+    "city": "San Francisco",
+    "contrast": "mobility - mobility_shuf",
+    "delta_mean": 0.05659075769781587,
+    "frac_dates_A_gt_B": 1.0,
+    "n_boot": 10000,
+    "n_dates": 15,
+    "p_one_sided": 0.0
+   },
+   {
+    "R": 5512,
+    "ci95_hi": 0.09081033178336259,
+    "ci95_lo": 0.06155918068179177,
+    "city": "San Francisco",
+    "contrast": "mobility - road",
+    "delta_mean": 0.0751637764147385,
+    "frac_dates_A_gt_B": 1.0,
+    "n_boot": 10000,
+    "n_dates": 15,
+    "p_one_sided": 0.0
+   },
+   {
+    "R": 5512,
+    "ci95_hi": 0.15823361011012932,
+    "ci95_lo": 0.11794369213461103,
+    "city": "San Francisco",
+    "contrast": "mobility - mobility_shuf",
+    "delta_mean": 0.13748637355314,
+    "frac_dates_A_gt_B": 1.0,
+    "n_boot": 10000,
+    "n_dates": 15,
+    "p_one_sided": 0.0
+   }
+  ],
+  "reproduction": {
+   "max_abs_diff": 1.509903313490213e-14,
+   "n_cells": 35,
+   "pairwise_max_abs_diff": 1.6514567491299204e-14,
+   "source": "domain_rankmatched_results.csv"
+  },
+  "results": [
+   {
+    "R": 1,
+    "R2_cond": 0.7433641770920812,
+    "block_size": 0,
+    "city": "San Francisco",
+    "medium_dof": 1,
+    "source": "road"
+   },
+   {
+    "R": 1,
+    "R2_cond": 0.7433641770920812,
+    "block_size": 0,
+    "city": "San Francisco",
+    "medium_dof": 1,
+    "source": "mobility"
+   },
+   {
+    "R": 1,
+    "R2_cond": 0.7433641770920814,
+    "block_size": 0,
+    "city": "San Francisco",
+    "medium_dof": 1,
+    "source": "mobility_bin"
+   },
+   {
+    "R": 1,
+    "R2_cond": 0.7433641770920812,
+    "block_size": 0,
+    "city": "San Francisco",
+    "medium_dof": 1,
+    "source": "road_shuf"
+   },
+   {
+    "R": 1,
+    "R2_cond": 0.7433641770920812,
+    "block_size": 0,
+    "city": "San Francisco",
+    "medium_dof": 1,
+    "source": "mobility_shuf"
+   },
+   {
+    "R": 3,
+    "R2_cond": 0.7433886788667008,
+    "block_size": 32,
+    "city": "San Francisco",
+    "medium_dof": 3,
+    "source": "road"
+   },
+   {
+    "R": 3,
+    "R2_cond": 0.7437267109606699,
+    "block_size": 32,
+    "city": "San Francisco",
+    "medium_dof": 3,
+    "source": "mobility"
+   },
+   {
+    "R": 3,
+    "R2_cond": 0.7434686418582878,
+    "block_size": 32,
+    "city": "San Francisco",
+    "medium_dof": 3,
+    "source": "mobility_bin"
+   },
+   {
+    "R": 3,
+    "R2_cond": 0.7433604865483208,
+    "block_size": 32,
+    "city": "San Francisco",
+    "medium_dof": 3,
+    "source": "road_shuf"
+   },
+   {
+    "R": 3,
+    "R2_cond": 0.7433555490565589,
+    "block_size": 32,
+    "city": "San Francisco",
+    "medium_dof": 3,
+    "source": "mobility_shuf"
+   },
+   {
+    "R": 12,
+    "R2_cond": 0.7441188034589562,
+    "block_size": 16,
+    "city": "San Francisco",
+    "medium_dof": 12,
+    "source": "road"
+   },
+   {
+    "R": 12,
+    "R2_cond": 0.7486715943419583,
+    "block_size": 16,
+    "city": "San Francisco",
+    "medium_dof": 12,
+    "source": "mobility"
+   },
+   {
+    "R": 12,
+    "R2_cond": 0.7439181517556896,
+    "block_size": 16,
+    "city": "San Francisco",
+    "medium_dof": 12,
+    "source": "mobility_bin"
+   },
+   {
+    "R": 12,
+    "R2_cond": 0.74339141703449,
+    "block_size": 16,
+    "city": "San Francisco",
+    "medium_dof": 12,
+    "source": "road_shuf"
+   },
+   {
+    "R": 12,
+    "R2_cond": 0.744439131857943,
+    "block_size": 16,
+    "city": "San Francisco",
+    "medium_dof": 12,
+    "source": "mobility_shuf"
+   },
+   {
+    "R": 44,
+    "R2_cond": 0.7449099330687851,
+    "block_size": 8,
+    "city": "San Francisco",
+    "medium_dof": 44,
+    "source": "road"
+   },
+   {
+    "R": 44,
+    "R2_cond": 0.7567526225799192,
+    "block_size": 8,
+    "city": "San Francisco",
+    "medium_dof": 44,
+    "source": "mobility"
+   },
+   {
+    "R": 44,
+    "R2_cond": 0.7448997630491494,
+    "block_size": 8,
+    "city": "San Francisco",
+    "medium_dof": 44,
+    "source": "mobility_bin"
+   },
+   {
+    "R": 44,
+    "R2_cond": 0.7437395708162995,
+    "block_size": 8,
+    "city": "San Francisco",
+    "medium_dof": 44,
+    "source": "road_shuf"
+   },
+   {
+    "R": 44,
+    "R2_cond": 0.7437105541224162,
+    "block_size": 8,
+    "city": "San Francisco",
+    "medium_dof": 44,
+    "source": "mobility_shuf"
+   },
+   {
+    "R": 176,
+    "R2_cond": 0.7482458194576913,
+    "block_size": 4,
+    "city": "San Francisco",
+    "medium_dof": 176,
+    "source": "road"
+   },
+   {
+    "R": 176,
+    "R2_cond": 0.7741353071895812,
+    "block_size": 4,
+    "city": "San Francisco",
+    "medium_dof": 176,
+    "source": "mobility"
+   },
+   {
+    "R": 176,
+    "R2_cond": 0.7495696883558041,
+    "block_size": 4,
+    "city": "San Francisco",
+    "medium_dof": 176,
+    "source": "mobility_bin"
+   },
+   {
+    "R": 176,
+    "R2_cond": 0.7434916995888887,
+    "block_size": 4,
+    "city": "San Francisco",
+    "medium_dof": 176,
+    "source": "road_shuf"
+   },
+   {
+    "R": 176,
+    "R2_cond": 0.7419780765981139,
+    "block_size": 4,
+    "city": "San Francisco",
+    "medium_dof": 176,
+    "source": "mobility_shuf"
+   },
+   {
+    "R": 704,
+    "R2_cond": 0.7506116348453524,
+    "block_size": 2,
+    "city": "San Francisco",
+    "medium_dof": 704,
+    "source": "road"
+   },
+   {
+    "R": 704,
+    "R2_cond": 0.7927355293115927,
+    "block_size": 2,
+    "city": "San Francisco",
+    "medium_dof": 704,
+    "source": "mobility"
+   },
+   {
+    "R": 704,
+    "R2_cond": 0.7501074408112539,
+    "block_size": 2,
+    "city": "San Francisco",
+    "medium_dof": 704,
+    "source": "mobility_bin"
+   },
+   {
+    "R": 704,
+    "R2_cond": 0.743089243318622,
+    "block_size": 2,
+    "city": "San Francisco",
+    "medium_dof": 704,
+    "source": "road_shuf"
+   },
+   {
+    "R": 704,
+    "R2_cond": 0.7361447716137769,
+    "block_size": 2,
+    "city": "San Francisco",
+    "medium_dof": 704,
+    "source": "mobility_shuf"
+   },
+   {
+    "R": 5512,
+    "R2_cond": 0.7532844593156279,
+    "block_size": 1,
+    "city": "San Francisco",
+    "medium_dof": 5512,
+    "source": "road"
+   },
+   {
+    "R": 5512,
+    "R2_cond": 0.8284482357303663,
+    "block_size": 1,
+    "city": "San Francisco",
+    "medium_dof": 5512,
+    "source": "mobility"
+   },
+   {
+    "R": 5512,
+    "R2_cond": 0.7496797423120998,
+    "block_size": 1,
+    "city": "San Francisco",
+    "medium_dof": 5512,
+    "source": "mobility_bin"
+   },
+   {
+    "R": 5512,
+    "R2_cond": 0.7303425230277815,
+    "block_size": 1,
+    "city": "San Francisco",
+    "medium_dof": 5512,
+    "source": "road_shuf"
+   },
+   {
+    "R": 5512,
+    "R2_cond": 0.6909618621772264,
+    "block_size": 1,
+    "city": "San Francisco",
+    "medium_dof": 5512,
+    "source": "mobility_shuf"
+   }
+  ],
+  "seconds": 141.5,
+  "split_kind": "kfold5",
+  "test_dates": [
+   14018,
+   14019,
+   14020,
+   14021,
+   14022,
+   14026,
+   14027,
+   14028,
+   14029,
+   14032,
+   14033,
+   14034,
+   14035,
+   14036,
+   14039
+  ],
+  "tw_selfcheck_max_err": 2.0454749005693884e-12
+ }
+}

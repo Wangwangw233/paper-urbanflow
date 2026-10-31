@@ -1,0 +1,51 @@
+{
+ "blas_thread_env": {
+  "MKL_NUM_THREADS": "1",
+  "NUMEXPR_NUM_THREADS": "1",
+  "OMP_NUM_THREADS": "1",
+  "OPENBLAS_NUM_THREADS": "1"
+ },
+ "cpu_count": 6,
+ "inputs": {
+  "project10/outputs/p0_l0/chengdu_aligned_l250_dt60.npz": "c9330b54e8fbcf589e8b63d480b4db877b7d48291df941fb1348662a9dfb0289",
+  "routing_urban_medium_constitutive/results/um_ctx.npz": "8f755fc860c6de1f5b9b6a9c9c6c4174a0f4a2d7e2d46fa5aafc21095acaa772"
+ },
+ "machine": "AMD64",
+ "numpy": "2.4.4",
+ "platform": "Windows-11-10.0.22631-SP0",
+ "processor": "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel",
+ "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+ "python_dont_write_bytecode": "1",
+ "python_executable": "python//python.exe",
+ "random_generator": "numpy.random.default_rng (bootstrap only; all fits deterministic)",
+ "scipy": "1.17.1",
+ "script": {
+  "path": ".//reports/chengdu_nonlinear_exploratory/scripts/run_experiment.py",
+  "sha256": "552993407b65d27c9213fd64ffe168cadd56ab27ab118b2e0e11458403651473"
+ },
+ "seed": 20261006,
+ "threadpool_at_record": [
+  {
+   "architecture": "Haswell",
+   "filepath": "python//Lib/site-packages/numpy.libs/libscipy_openblas64_-63c857e738469261263c764a36be9436.dll",
+   "internal_api": "openblas",
+   "num_threads": 1,
+   "prefix": "libscipy_openblas",
+   "threading_layer": "pthreads",
+   "user_api": "blas",
+   "version": "0.3.31.188.0"
+  },
+  {
+   "architecture": "Haswell",
+   "filepath": "python//Lib/site-packages/scipy.libs/libscipy_openblas-64eda39e79589aedb16f58e5547eb599.dll",
+   "internal_api": "openblas",
+   "num_threads": 1,
+   "prefix": "libscipy_openblas",
+   "threading_layer": "pthreads",
+   "user_api": "blas",
+   "version": "0.3.30"
+  }
+ ],
+ "threadpoolctl": "3.6.0",
+ "urbanflow_root": "./"
+}

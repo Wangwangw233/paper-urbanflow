@@ -1,0 +1,19 @@
+{
+ "derived_sources": {
+  "reconstruction": [
+   "crosscity_sample_complexity/artifacts/routing_snapshot_meta.json:647d2401c5132f123cef25255dac3142d8a5c86b368126abdc6a073d819562e8",
+   "crosscity_sample_complexity/artifacts/routing_snapshot_Porto.npz:25abe8181e93e07a13391c98c0e3edee3c0a2d0d4a58c816fc30d672acaeed68",
+   "crosscity_sample_complexity/artifacts/routing_snapshot_SF.npz:10736ca1d6d047bf9935b4f107911868699fef252971b77c21214fafa3bf776d"
+  ],
+  "source_spectra": [
+   "empirical_transfer_round/artifacts/et_data_porto.npz:7c658b18a7f37fb1440abc8474fe02089ed0b946abd286c24933644bf0ad9a51",
+   "empirical_transfer_round/artifacts/et_data_sf.npz:59b374bf49addcb52523231eb33d60aa19aee066ea44c50e4a6f847e3a4b5e76"
+  ]
+ },
+ "export_schema": 1,
+ "exported_reference_digest": "b7b85d7864eaf93c7916b1f4dfd24e9d23a4c7c807457c5767558905a9860566",
+ "paper_sync": "not asserted by export; rerun after final paper and Fig. 5 synchronization",
+ "portability_patch": "URBANFLOW_ROOT or <repo>/external_data; private legacy check made an explicit unsupported option; code and manifest hashes recomputed",
+ "source_policy": "explicit allowlist; no source-tree writes; no raw trajectories",
+ "upstream_reference_digest": "833a07ff7d5e9adbabef6818f6a36c10a8dfd30f521841eea7c8ffafe7676ceb"
+}
