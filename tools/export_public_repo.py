@@ -94,6 +94,7 @@ PAPER_FILES = [
     "paper/merged_manuscript/main.tex",
     "paper/merged_manuscript/supplement.tex",
     "paper/merged_manuscript/refs.bib",
+    "paper/merged_manuscript/authors.tex",
     "paper/merged_manuscript/main_refs.tex",
     "paper/merged_manuscript/supplement_refs.tex",
     "paper/merged_manuscript/main.pdf",
@@ -696,16 +697,20 @@ reuse this material under an assumed permission. The authors must replace this
 file with an explicitly chosen license and reconcile dataset, OpenStreetMap,
 font, and third-party code terms before public release.
 ''')
-    write_text(output_root / "CITATION", '''CITATION STATUS: AUTHOR DECISION REQUIRED
+    write_text(output_root / "CITATION", '''CITATION STATUS: PARTIAL METADATA
 
 Work title:
 Road-structured constitutive coupling between source--sink patterns and anisotropic urban routing
 
-The author list, publication year, venue, repository URL, software version,
-DOI, and preferred citation format have not been finalized. They are
-intentionally omitted rather than guessed. Replace this file with a
-machine-readable CITATION.cff or the authors' final citation instructions once
-those facts are confirmed.
+Authors:
+Tiehang Xu; Jiahui Wang; Junyan Yang; Qiao Wang
+
+Repository:
+https://github.com/Wangwangw233/paper-urbanflow
+
+The publication year, venue, software version, DOI and preferred citation format
+have not been finalized. Replace this file with a machine-readable
+CITATION.cff or the authors' final citation instructions once confirmed.
 ''')
     write_text(output_root / "requirements.txt", '''numpy>=1.24
 scipy>=1.10

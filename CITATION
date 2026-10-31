@@ -1,10 +1,14 @@
-CITATION STATUS: AUTHOR DECISION REQUIRED
+CITATION STATUS: PARTIAL METADATA
 
 Work title:
 Road-structured constitutive coupling between source--sink patterns and anisotropic urban routing
 
-The author list, publication year, venue, repository URL, software version,
-DOI, and preferred citation format have not been finalized. They are
-intentionally omitted rather than guessed. Replace this file with a
-machine-readable CITATION.cff or the authors' final citation instructions once
-those facts are confirmed.
+Authors:
+Tiehang Xu; Jiahui Wang; Junyan Yang; Qiao Wang
+
+Repository:
+https://github.com/Wangwangw233/paper-urbanflow
+
+The publication year, venue, software version, DOI and preferred citation format
+have not been finalized. Replace this file with a machine-readable
+CITATION.cff or the authors' final citation instructions once confirmed.
