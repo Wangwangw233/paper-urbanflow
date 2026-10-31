@@ -38,10 +38,11 @@ The absolute inner product makes $\gamma_m$ insensitive to a common phase rotati
 \begin{equation}
  R_m^2=1-\frac{\sum_d\norm{a_{d,m}-b_{d,m}}^2}{\sum_d\norm{a_{d,m}}^2},
  \qquad
- \widetilde\gamma_m=\frac{\operatorname{Re}\sum_d a_{d,m}^*b_{d,m}}{\norm{a_m}\norm{b_m}} .
+ \widetilde\gamma_m=\frac{\sum_d\operatorname{Re}(a_{d,m}^*b_{d,m})}
+ {\sqrt{\sum_d\norm{a_{d,m}}^2}\sqrt{\sum_d\norm{b_{d,m}}^2}} .
  \label{eq:supp-phase-sensitive}
 \end{equation}
-TRAIN values describe the fit sample; TEST values are held-out. San Francisco summaries are fold means and ranges. Chengdu evaluates all ten bins $m=0,\ldots,9$. Figure~\ref{fig:supp-3} displays the TRAIN/TEST magnitudes, while the phase-sensitive TEST scores are shown in main Fig.~\MainRef{fig:threecity-response}. Across Porto bins, $R_m^2$ falls from 0.89 at $m=0$ to 0.20 at $m=12$ while $|\gamma_m|$ remains 0.44; San Francisco has negative $R_m^2$ at four bins, and Chengdu at one. The phase-insensitive alignment therefore overstates the agreement between predicted and observed complex responses.
+The signed alignment pools date-wise complex inner products and energies across TEST dates; it is not a cosine of date-averaged coefficients. TRAIN values describe the fit sample; TEST values are held-out. San Francisco summaries are fold means and ranges. Chengdu evaluates all ten bins $m=0,\ldots,9$. Figure~\ref{fig:supp-3} displays the TRAIN/TEST magnitudes, while the phase-sensitive TEST scores are shown in main Fig.~\MainRef{fig:threecity-response}. Across Porto bins, $R_m^2$ falls from 0.89 at $m=0$ to 0.20 at $m=12$ while $|\gamma_m|$ remains 0.46 and pooled signed alignment spans 0.46--0.96; San Francisco has negative $R_m^2$ at four bins, and Chengdu at one. The phase-insensitive alignment therefore overstates the agreement between predicted and observed complex responses.
 
 \begin{figure}[!htbp]
 \centering

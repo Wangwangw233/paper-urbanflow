@@ -42,6 +42,8 @@ FIGURE_CODE = [
     "reports/review_response/scripts/phase_metrics.py",
     "reports/review_response/scripts/fig_phase_response.py",
     "reports/review_response/scripts/anisotropy_null.py",
+    "reports/review_response/scripts/gtheta_provenance.py",
+    "reports/review_response/scripts/d_uncertainty.py",
     "benchmark/scripts/domain_lib.py",
     "benchmark/scripts/domain_rankmatched.py",
 ]
@@ -94,6 +96,8 @@ DATA_FILES = [
     "reports/threecity_supplement/manifest.json",
     "reports/review_response/results/phase_metrics.json",
     "reports/review_response/results/anisotropy_null.json",
+    "reports/review_response/results/gtheta_provenance.json",
+    "reports/review_response/results/d_uncertainty.json",
     "routing_urban_medium_constitutive/results/um_ctx.npz",
 ]
 
@@ -615,11 +619,11 @@ def make_readme(output_root: Path, digest: str) -> None:
     ])
     write_text(output_root / "README.md", f'''# UrbanFlow public-release candidate
 
-Code and small frozen products for **Road-supported effective constitutive coupling between source--sink patterns and anisotropic urban routing**.
+Code and small frozen products for **Road-supported effective constitutive coupling and anisotropic routing responses in urban mobility**.
 
 Repository: https://github.com/Wangwangw233/paper-urbanflow
 
-> **Candidate, not yet an open-source release.** The authors must still choose a license, complete the citation metadata, and supply the repository URL. The current paper and figures are synchronized and verified. `LICENSE` intentionally grants no new rights. No DOI, author list, or repository URL is invented here.
+> **Candidate, not yet an open-source release.** The authors must still choose a license and finalize the citation metadata. The current paper and figures are synchronized and verified. `LICENSE` intentionally grants no new rights. No DOI or author metadata is invented here.
 
 ## Three reproduction levels
 
@@ -707,7 +711,7 @@ font, and third-party code terms before public release.
     write_text(output_root / "CITATION", '''CITATION STATUS: PARTIAL METADATA
 
 Work title:
-Road-supported effective constitutive coupling between source--sink patterns and anisotropic urban routing
+Road-supported effective constitutive coupling and anisotropic routing responses in urban mobility
 
 Authors:
 Tiehang Xu; Jiahui Wang; Junyan Yang; Qiao Wang

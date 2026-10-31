@@ -1,0 +1,50 @@
+{
+ "cities": {
+  "Chengdu": {
+   "G_theta": 0.7578408738886976,
+   "control_implementation_G": 0.7904465653561403,
+   "estimator": "archived frozen tensors",
+   "n_cells": 3199,
+   "n_cells_total": 3364,
+   "null_median": 0.8082289933493755,
+   "null_min": 0.8033969085837593,
+   "null_n": 999,
+   "null_n_at_least_observed": 999,
+   "one_sided_p": 1.0,
+   "source": "reports/threecity_figure5_revision/results/chengdu_anisotropy.npz",
+   "source_sha256": "b91f588ab95945d946f5d2b047224768001765664cadaf3f3cdbb4c659e16f7c"
+  },
+  "Porto": {
+   "G_theta": 0.7926812390819257,
+   "control_implementation_G": 0.8187616421849911,
+   "estimator": "archived frozen tensors",
+   "n_cells": 845,
+   "n_cells_total": 900,
+   "null_median": 0.9726105128563227,
+   "null_min": 0.9665253245973553,
+   "null_n": 999,
+   "null_n_at_least_observed": 999,
+   "one_sided_p": 1.0,
+   "source": "full_operator_spatial_anisotropy/results/fo4_fig5_data.npz",
+   "source_sha256": "28509b290b452301cb4a55ca733a92eb5353a12ca2b7038d6e14d339d25bf819"
+  },
+  "SF": {
+   "G_theta": 0.7885165696071812,
+   "control_implementation_G": 0.8697481053644794,
+   "estimator": "archived five-fold/consensus tensors",
+   "n_cells": 2140,
+   "n_cells_total": 2580,
+   "null_median": 0.9113477542772822,
+   "null_min": 0.9024384298212115,
+   "null_n": 999,
+   "null_n_at_least_observed": 999,
+   "one_sided_p": 1.0,
+   "source": "full_operator_spatial_anisotropy/results/fo4_fig5_data.npz",
+   "source_sha256": "28509b290b452301cb4a55ca733a92eb5353a12ca2b7038d6e14d339d25bf819"
+  }
+ },
+ "definition": "G_theta = sum_c A_C A_U cos(2(theta_C-theta_U)) / sum_c A_C A_U, A_C A_U > 0",
+ "null_source": "reports/review_response/results/anisotropy_null.json",
+ "null_source_sha256": "5f98496df42573b41a260766d1a7d51dd40084d6cc25842200436d478e61ec11",
+ "primary_rule": "The archived tensors are the single primary estimate used in the main text, Supplementary Note S8, and Fig. 4a-c. The control refit supplies only the spectrum-matched rotation null because K_R is not stored with the archived tensors; its own G_theta is an implementation check, not a second estimate."
+}

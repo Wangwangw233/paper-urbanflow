@@ -61,6 +61,10 @@ def concept():
 def threecity():
  score=rows(ROOT/'reports/mainstream_mobility_comparison/crosscity_results.csv')
  sp=js(ROOT/'reports/crosscity_standard_replication/results/spectra.json')
+ try:
+  du=js(ROOT/'reports/review_response/results/d_uncertainty.json')['cities']
+ except FileNotFoundError:
+  du={}
  fig,axs=plt.subplots(2,3,figsize=(7.0,4.15));fig.subplots_adjust(left=.09,right=.98,bottom=.12,top=.88,hspace=.40,wspace=.25)
  summary['threecity']={}
  for j,city in enumerate(COL):
@@ -69,6 +73,8 @@ def threecity():
    for support,dx,fill in [('ROAD',-.11,True),('FACE',.11,False)]:
     r=next(r for r in score if r['object']==city and r['frame']==frame and r['support']==support and r['model']=='OURS')
     val=float(r['pooled_R']);ax.plot(k+dx,val,'o',color=color,mfc=color if fill else 'white',ms=6)
+    if frame=='D' and support=='ROAD' and city in du:
+     lo,hi=du[city]['bootstrap_ci95'];ax.errorbar(k+dx,val,yerr=[[val-lo],[hi-val]],fmt='none',ecolor=color,elinewidth=.8,capsize=1.6,capthick=.8,zorder=2)
   cl=next(r for r in score if r['object']==city and r['frame']=='P' and r['support']=='ROAD' and r['model']=='CLIM')
   clim=float(cl['pooled_R']);ax.plot([-0.24],[clim],'D',color='#6d757c',mfc='white',mew=1.0,ms=4.6)
   summary['threecity'].setdefault(city,{})['CLIM']=clim

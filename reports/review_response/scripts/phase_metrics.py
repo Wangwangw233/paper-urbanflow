@@ -84,6 +84,8 @@ def main():
             bn = np.linalg.norm(b, axis=2)
             signed = inner / np.maximum(an * bn, 1e-300)
             abs_align = inner_abs / np.maximum(an * bn, 1e-300)
+            signed_pooled = inner.sum(axis=0) / np.maximum(
+                np.sqrt((an ** 2).sum(axis=0) * (bn ** 2).sum(axis=0)), 1e-300)
             date_r2 = 1.0 - (np.abs(a - b) ** 2).sum(axis=2) / np.maximum(
                 (np.abs(a) ** 2).sum(axis=2), 1e-300)
             weights = den / den.sum()
@@ -95,6 +97,7 @@ def main():
                 n_phase=n_phase, n_bins=n_bins, n_dates=len(dates),
                 test_dates=[int(x) for x in dates],
                 bin_R2=r2_bin.tolist(),
+                bin_signed_pooled=signed_pooled.tolist(),
                 bin_signed_mean=signed.mean(axis=0).tolist(),
                 bin_abs_mean=abs_align.mean(axis=0).tolist(),
                 bin_abs_median=np.median(abs_align, axis=0).tolist(),

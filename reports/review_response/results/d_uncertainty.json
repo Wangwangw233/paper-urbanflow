@@ -1,0 +1,138 @@
+{
+ "bootstrap": "dates resampled with replacement within each fold, then pooled",
+ "cities": {
+  "Chengdu": {
+   "bootstrap_ci95": [
+    0.10695385621279918,
+    0.14194839433167405
+   ],
+   "bootstrap_n": 10000,
+   "expected_D": [
+    0.12
+   ],
+   "folds": [
+    0
+   ],
+   "n_test_dates": [
+    3
+   ],
+   "null_max": 0.016337914263738207,
+   "null_median": -0.00010619623955832047,
+   "null_n": 199,
+   "null_q95": 0.011252724064243368,
+   "pairing_p": null,
+   "pairing_p_note": "descriptive only: three TEST dates allow six date permutations",
+   "per_fold": [
+    {
+     "R_D": 0.11960043023398481,
+     "fold": 0,
+     "kappa": 0.1,
+     "n_test_dates": 3
+    }
+   ],
+   "real_D": 0.11960043023398481,
+   "total_test_dates": 3,
+   "which": "window"
+  },
+  "Porto": {
+   "bootstrap_ci95": [
+    0.3553851716566043,
+    0.5280625114809553
+   ],
+   "bootstrap_n": 10000,
+   "expected_D": [
+    0.468
+   ],
+   "folds": [
+    0
+   ],
+   "n_test_dates": [
+    51
+   ],
+   "null_max": 0.0004807541650899694,
+   "null_median": -9.335653157194201e-07,
+   "null_n": 199,
+   "null_q95": 8.504826868487303e-05,
+   "pairing_p": 0.005,
+   "pairing_p_note": null,
+   "per_fold": [
+    {
+     "R_D": 0.4683057894145787,
+     "fold": 0,
+     "kappa": 0.01,
+     "n_test_dates": 51
+    }
+   ],
+   "real_D": 0.4683057894145787,
+   "total_test_dates": 51,
+   "which": "frozen"
+  },
+  "SF": {
+   "bootstrap_ci95": [
+    0.1881148018553134,
+    0.28761392495394095
+   ],
+   "bootstrap_n": 10000,
+   "expected_D": [
+    0.24
+   ],
+   "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_test_dates": [
+    3,
+    3,
+    3,
+    3,
+    3
+   ],
+   "null_max": 0.02728799582113539,
+   "null_median": -0.0021747517144099504,
+   "null_n": 199,
+   "null_q95": 0.0068899110136922915,
+   "pairing_p": 0.005,
+   "pairing_p_note": null,
+   "per_fold": [
+    {
+     "R_D": 0.2433088683182797,
+     "fold": 0,
+     "kappa": 0.1,
+     "n_test_dates": 3
+    },
+    {
+     "R_D": 0.2145036844322079,
+     "fold": 1,
+     "kappa": 0.1,
+     "n_test_dates": 3
+    },
+    {
+     "R_D": 0.2069417545399611,
+     "fold": 2,
+     "kappa": 0.1,
+     "n_test_dates": 3
+    },
+    {
+     "R_D": 0.2081489153692262,
+     "fold": 3,
+     "kappa": 0.1,
+     "n_test_dates": 3
+    },
+    {
+     "R_D": 0.30249731632372134,
+     "fold": 4,
+     "kappa": 0.1,
+     "n_test_dates": 3
+    }
+   ],
+   "real_D": 0.2404564268917786,
+   "total_test_dates": 15,
+   "which": "frozen"
+  }
+ },
+ "null": "date blocks permuted within TRAIN, VAL and TEST separately; D ridge refitted and re-selected in every draw",
+ "seed": 20261003
+}

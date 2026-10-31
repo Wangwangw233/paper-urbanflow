@@ -1,10 +1,10 @@
 # UrbanFlow public-release candidate
 
-Code and small frozen products for **Road-supported effective constitutive coupling between source--sink patterns and anisotropic urban routing**.
+Code and small frozen products for **Road-supported effective constitutive coupling and anisotropic routing responses in urban mobility**.
 
 Repository: https://github.com/Wangwangw233/paper-urbanflow
 
-> **Candidate, not yet an open-source release.** The authors must still choose a license, complete the citation metadata, and supply the repository URL. The current paper and figures are synchronized and verified. `LICENSE` intentionally grants no new rights. No DOI, author list, or repository URL is invented here.
+> **Candidate, not yet an open-source release.** The authors must still choose a license and finalize the citation metadata. The current paper and figures are synchronized and verified. `LICENSE` intentionally grants no new rights. No DOI or author metadata is invented here.
 
 ## Three reproduction levels
 

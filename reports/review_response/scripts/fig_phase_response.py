@@ -30,12 +30,12 @@ plt.rcParams.update({
 def main():
     data = json.loads(DATA.read_text(encoding="utf-8"))["cities"]
     fig, axes = plt.subplots(2, 3, figsize=(7.0, 3.85), sharex=False)
-    fig.subplots_adjust(left=0.085, right=0.985, bottom=0.16, top=0.815,
+    fig.subplots_adjust(left=0.085, right=0.985, bottom=0.10, top=0.815,
                         wspace=0.24, hspace=0.40)
     for j, city in enumerate(CITY):
         folds = data[city]["folds"]
         r2 = np.asarray([f["bin_R2"] for f in folds])
-        sg = np.asarray([f["bin_signed_mean"] for f in folds])
+        sg = np.asarray([f["bin_signed_pooled"] for f in folds])
         ab = np.asarray([f["bin_abs_mean"] for f in folds])
         m = np.arange(r2.shape[1])
         for row, arr, ylabel in ((0, r2, "Phase-sensitive $R_m^2$"),
@@ -73,11 +73,6 @@ def main():
     handles, labels = axes[0, 0].get_legend_handles_labels()
     fig.legend(handles, labels, loc="upper center", bbox_to_anchor=(0.53, 0.995),
                ncol=2, frameon=False, handletextpad=0.5, columnspacing=1.4)
-    fig.text(0.5, 0.03,
-             "Phase-sensitive $R_m^2$ uses per-date complex coefficients; "
-             "signed alignment retains phase and direction. The dotted curve is the "
-             "phase-insensitive magnitude used previously.",
-             ha="center", fontsize=6.3, color="#5d656d")
     OUT.mkdir(parents=True, exist_ok=True)
     for ext in ("pdf", "png"):
         fig.savefig(OUT / f"fig03_frequency_response.{ext}", dpi=600,
