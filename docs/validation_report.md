@@ -2,7 +2,7 @@
 
 ## Repository state
 
-- Branch: `release/nature-cities`
+- Branch: `release/urban-flow` (renamed from `release/nature-cities`)
 - Refactor source commit before the public push: `d743958e2ec52bf211ee6b507ca4128e4dfdffad`
 - Public push commit: `0dc73b2742850723d9d364cd2948f69108e70319`
 - Files: 181 total; `data_manifest/files.csv` lists 180 (the manifest excludes itself).
