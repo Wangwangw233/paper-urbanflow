@@ -51,3 +51,38 @@ The nominal draw counts are 499/199/199 for Null-1 and 99/--/49 for Null-2 in Po
 A directionally matched non-road medium, preserving the exact weight multiset and 26 spatial statistics within the frozen tolerances, does not reproduce the road score: 0 of 499 accepted draws in Porto and 0 of 199 in San Francisco and Chengdu reach it. The best draws reach 23\%, 42\% and 47\% of the road value. In Porto and Chengdu, coarse matching raises the surrogate mean by factors of 4.1 and 3.6 over Null-1, respectively, but the road remains 2.4 and 2.1 times the best coarse draw. San Francisco has no accepted coarse-matched draw (0 of 199), so its evidence supports directional but not fine-scale specificity. The coarse families contain only about six and twelve effective independent configurations, and their tail estimates sit at the design floor; they bound the constructed family rather than calibrating a tail probability.
 
 \paragraph{Road prior beyond a learned learner.} Used as a prior under an equal-capacity residual ridge, the road operator raises held-out $R^2$ by 0.0116 in Porto, 0.0207 in San Francisco and 0.0023 in Chengdu. These are relative residual-SSE reductions of 2.27\%, 2.65\% and 0.26\%, respectively. The 20 directionally matched priors change held-out $R^2$ by between $-0.0013$ and $+0.0003$. The road increment is positive on every Porto TEST date and in three of four blocked Porto folds; the fourth, highest-energy block is negative. The increment is largest when TRAIN is reduced, consistent with a prior that substitutes for data, and the Porto learner sits at the top of its rank grid, so the measured increment is a lower bound in a saturated regime. The prior-only score is still far below the learned model, and the learned correction has no reproducible response direction across TRAIN halves (median cosine 0.20--0.46). The evidence is for an informative structural prior, not an identified learned operator.
+
+\paragraph{Independent static urban fields.} A separate test asks whether other measured urban structure can replace the road medium. On the same Porto rows, operator family, $(K,\kappa)$ grid and score, we fitted media from GHSL 2015 population density, GHSL 2015 built-up surface and Urban Atlas 2012 built land-use fractions (eight built classes; the five transport classes are excluded). Each cell field is mapped to faces as the mean of its two adjacent cells and normalized to unit mean with floor $10^{-3}$. The additive joint medium is $0.5(W_{\mathrm{road}}+W_{\mathrm{nr}})$ after separate normalization; the multiplicative sensitivity is $\operatorname{normalize}(W_{\mathrm{road}}\cdot W_{\mathrm{nr}})$. The rasters were registered to the frozen row order by a single vertical flip determined from the static road layer, not from any mobility target.
+
+Table~\ref{tab:supp-urban-fields} reports held-out D/FACE $R^2$ and paired TEST-date increments on the 51 TEST dates. The road medium reaches 0.0619; the three fields on their own lie between $-0.0025$ and $+0.0029$, and the additive joint media reach 0.0208--0.0380. Joint minus field is positive for all three fields (+0.0200, +0.0384, +0.0233), whereas joint minus road is negative ($-0.0390$, $-0.0239$, $-0.0411$). The complementarity is one-directional: the road medium adds to each field, but no field adds to the road medium. The multiplicative land-use composition does not clear the pre-registered 0.01 margin ($+0.0023$), so the conclusion is tied to the additive composition. All media remain weak in absolute terms. The result says that the measured fields do not substitute for the road medium; it does not say that road is the only possible medium.
+
+\begin{table}[!htbp]
+\centering\small
+\caption{\textbf{Independent static urban fields against the road medium (Porto).} (a) Pooled TEST D/FACE $R^2$ in the frozen E2 family. (b) Paired TEST-date bootstrap increments, $\delta=0.01$. Fields are external GIS layers with no mobility input; the joint medium is additive and the multiplicative composition is a sensitivity check. All values are from the frozen J3 output.}
+\label{tab:supp-urban-fields}
+\begin{tabular}{lcc}
+\toprule
+Quantity & Value & 95\% interval \\
+\midrule
+\multicolumn{3}{@{}l}{\emph{(a) Held-out $R^2$}}\\
+Road & 0.0619 & -- \\
+Population & 0.0029 & -- \\
+Built-up surface & $-0.0004$ & -- \\
+Built land use & $-0.0025$ & -- \\
+Joint, population & 0.0229 & -- \\
+Joint, built-up & 0.0380 & -- \\
+Joint, land use & 0.0208 & -- \\
+Joint$_{\times}$, population & 0.0152 & -- \\
+Joint$_{\times}$, built-up & 0.0225 & -- \\
+Joint$_{\times}$, land use & $-0.0002$ & -- \\
+\midrule
+\multicolumn{3}{@{}l}{\emph{(b) Paired increments}}\\
+Joint $-$ population & $+0.0200$ & [0.0135, 0.0231] \\
+Joint $-$ built-up & $+0.0384$ & [0.0275, 0.0436] \\
+Joint $-$ land use & $+0.0233$ & [0.0178, 0.0261] \\
+Joint $-$ road (population) & $-0.0390$ & [$-0.0439$, $-0.0293$] \\
+Joint $-$ road (built-up) & $-0.0239$ & [$-0.0276$, $-0.0168$] \\
+Joint $-$ road (land use) & $-0.0411$ & [$-0.0474$, $-0.0280$] \\
+\bottomrule
+\end{tabular}
+\end{table}

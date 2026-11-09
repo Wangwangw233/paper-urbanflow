@@ -52,12 +52,12 @@ NAME = F5.NAME
 LONG = {"Porto": "Porto", "SF": "San Francisco", "Chengdu": "Chengdu"}
 
 # ---- geometry, in inches ---------------------------------------------------
-W, H = 7.00, 5.28
-MAPH = 2.60
+W, H = 7.00, 5.72
+MAPH = 2.35
 GAPM = 0.12
-Y_MAP = 2.14
-Y_CB, CBH = 1.905, 0.050
-Y_PC, PH = 0.60, 0.98
+Y_MAP = 2.48
+Y_CB, CBH = 2.16, 0.050
+Y_PC, PH = 0.58, 1.28
 XLBL = 0.72
 WD = 3.25
 XE = XLBL + WD + 0.38
@@ -499,10 +499,10 @@ def build(mode):
              "real road vs matched spatial statistics (FACE departure)"),
             (XE, WE, "Road-prior contribution",
              "absolute $\\Delta R^2$ over learned-only")):
-        fig.text((x0 + w0 / 2) / W, (Y_PC + PH + 0.165) / H, t,
+        fig.text((x0 + w0 / 2) / W, (Y_PC + PH + 0.120) / H, t,
                  fontsize=7.2, fontweight="bold", color=FS.INK,
                  ha="center", va="bottom")
-        fig.text((x0 + w0 / 2) / W, (Y_PC + PH + 0.075) / H, sub,
+        fig.text((x0 + w0 / 2) / W, (Y_PC + PH + 0.035) / H, sub,
                  fontsize=6.5, color="#4f555b", ha="center", va="bottom",
                  style="italic")
 

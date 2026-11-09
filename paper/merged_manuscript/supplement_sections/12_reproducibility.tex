@@ -3,10 +3,12 @@
 Table~\ref{tab:artifact-map} separates frozen-score recomputation, figure rebuilding and incomplete raw/training exports. All paths are repository-relative. A file's presence does not imply that an end-to-end raw-trajectory rebuild is possible, and missing modules or per-run outputs are stated rather than replaced by inferred definitions.
 
 \begin{table}[!htbp]
-\centering\scriptsize
+\centering
 \caption{\textbf{Artifact and reproducibility map.} Paths are relative to the repository root. The status column distinguishes archived evidence from entry points runnable in the present export.}
 \label{tab:artifact-map}
+{\tiny
 \setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{0.95}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash}p{2.0cm}>{\raggedright\arraybackslash}p{7.15cm}>{\raggedright\arraybackslash}p{6.1cm}@{}}
 \toprule
 Result family & Source artifacts and code & Reproduction status or limitation \\
@@ -18,6 +20,7 @@ Three-city physical reconstruction & \path{results/frozen/constitutive/chengdu_s
 Chengdu nonlinear exploration & \path{configs/experiments/chengdu_nonlinear.json}; \path{experiments/baseline_comparison/chengdu_nonlinear_exploratory.py}; \path{results/frozen/baselines/chengdu_nonlinear/chengdu_nonlinear_exploratory.json}; \path{results/frozen/baselines/chengdu_nonlinear/validation.json} & The 18-phase full-FACE A-to-D experiment is exploratory with three TEST dates and 144 TRAIN rows. It supports neither nonlinear improvement nor absence of nonlinearity. \\
 Road-modulated operator and matched media & \path{results/frozen/road_medium/}; \path{reports/roundE_graph_constitutive/outputs/}; \path{reports/roundF_constitutive_evidence/outputs/}; \path{reports/roundG_directional_medium_null/outputs/} & Aggregate E2/E3, F3 and G4 results are bundled in \path{results/frozen/road_medium/}. Full null-draw archives and construction scripts remain in the analysis-tree rounds named here and are not part of the public export. \\
 Modern D/FACE benchmark (Task H) & \path{results/frozen/modern_benchmark/}; \path{reports/roundH_modern_baselines/outputs/agg/} & Aggregate summaries and paired-date CSVs are bundled. Model weights and full training runs are not. This D/FACE table is not comparable with the P/FACE Table~\ref{tab:supp-pface-loading}. \\
+Task J1--J4 rechecks & \path{reports/roundJ_claim_validation/outputs/}; \path{reports/roundJ_claim_validation/scripts/} & Frozen JSON/NPZ records for anisotropy controls, cross-regime splits, independent static fields and VAL-reselected arms. Analysis-tree records, not in the public export. \\
 Structured identification (Task I) & \path{results/frozen/identification/}; \path{reports/roundI_interpretable_operator/outputs/runs/} & Porto identification, stability and attribution records are bundled as aggregate outputs. Training caches and model weights are not. The result is prediction-only, not a physical identification or a new XAI method. \\
 Archived neural and sealed Graph WaveNet & \path{results/frozen/crosscity/crosscity_results.csv}; \path{configs/baselines/graph_wavenet.yaml}; \path{results/frozen/baselines/splits/} & Aggregate scores and frozen split records are bundled. Large predictions, Jacobians and complete sealed per-run JSON outputs are not included. \\
 Gravity and network loading & \path{results/frozen/crosscity/crosscity_results.csv}; \path{configs/baselines/} & Aggregate scores are bundled; detailed loading JSON and the Chengdu collated record are not. Loading rows diagnose the implemented pipeline and are not source-only predictions. \\
@@ -25,7 +28,7 @@ Joint spectrum and anisotropy & \path{results/frozen/spectra/verified_joint.npz}
 Structural and matched-capacity tests & \path{results/frozen/anisotropy/partA_topology.json}; \path{results/frozen/anisotropy/partA_chengdu.json}; \path{results/frozen/anisotropy/partF_summary.json}; \path{results/frozen/matched_capacity/}; \path{archive/legacy/matched_capacity/} & Aggregate rank-matched and matched-capacity results are bundled. The original construction modules are archived and depend on external fields and GIS rasters. \\
 Canonical figures & \path{figures/main/}; \path{figures/supplementary/}; \path{scripts/reproduce_figures/reproduce_all.py} & Four main figures and seven supplementary figures map to their generators. Figure rebuilding is distinct from recomputing the experiments. \\
 \bottomrule
-\end{tabular*}
+\end{tabular*}}
 \end{table}
 
 \paragraph{Deep-baseline record.} The archived scoring chain is \texttt{run\_modern.py} $\rightarrow$ \texttt{bmlib.anomalies} $\rightarrow$ \texttt{cc\_lib.anomaly}. Only TRAIN rows are phase-centred by the called implementation, leaving VAL/TEST raw. Deduplicating Porto GWNET fold 0 by retaining the final authoritative per-date record gives an archived single draw of 0.4970176832 in Porto; pooling the archived San Francisco per-date numerators and denominators gives 0.2540477278. These are the values used in Supplementary Table~\ref{tab:supp-pface-loading}, not the sealed seed means. Graphormer's 60-epoch budget and incomplete fold-level prediction-file export remain disclosed. Per-date error records exist for all scored archived folds, but zero-divergence residuals follow from projection and are not learned conservation.

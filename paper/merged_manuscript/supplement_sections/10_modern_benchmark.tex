@@ -8,7 +8,7 @@ This note reports the separate D/FACE comparison used in Results 1.5. It is not 
 
 \begin{table}[!htbp]
 \centering\small
-\caption{\textbf{Modern D/FACE benchmark on Porto.} Pooled TEST $R^2$ for the full divergence-free departure. Five seeds per neural arm; the linear reference is a single frozen fit. The P/FACE values in Supplementary Table~\ref{tab:supp-pface-loading} are a different estimand and are not comparable.}
+\caption{\textbf{Modern D/FACE benchmark on Porto.} Pooled TEST $R^2$ for the full divergence-free departure. Five seeds per neural arm; the linear reference is a single frozen fit. The VAL-reselected rows select the configuration on VAL alone; the linear contrast adds the frozen E2 road response and, in L2, two same-size matched null response blocks. The P/FACE values in Supplementary Table~\ref{tab:supp-pface-loading} are a different estimand and are not comparable.}
 \label{tab:supp-modern-dface}
 \begin{tabular}{lcc}
 \toprule
@@ -23,8 +23,21 @@ Fourier operator, source only & 0.0288 & 5 \\
 Fourier operator, source + road & 0.1097 & 5 \\
 GraphGPS, source only & 0.1575 & 5 \\
 GraphGPS, source + road & 0.0193 & 5 \\
+\midrule
+\multicolumn{3}{@{}l}{\emph{VAL-reselected}}\\
+MLP, source + road (cfg 4) & 0.4404 (0.0208) & 5 \\
+U-Net, source + road (cfg 1) & 0.1589 (0.0052) & 5 \\
+Fourier operator, source + road (cfg 3) & 0.1414 (0.0153) & 5 \\
+\midrule
+\multicolumn{3}{@{}l}{\emph{Linear road-structure contrast}}\\
+Ridge + E2 road block (L1) & 0.5405 & -- \\
+Ridge + E2 and two matched blocks (L2) & 0.5343 & -- \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\paragraph{Independent VAL reselection.} The MLP, U-Net and Fourier grids were rerun with the configuration selected on VAL alone, and TEST was scored once. The ordering is unchanged: the best arm is the MLP at 0.4404 (s.d. 0.0208) against 0.5044 for the linear ridge, followed by the U-Net at 0.1589 (0.0052) and the Fourier operator at 0.1414 (0.0153). The selected configurations are MLP cfg 4, U-Net cfg 1 and Fourier cfg 3; the training budget, splits and score are unchanged. The seed base differs from Task H for configurations other than U-Net's, so these are independent replicate arms rather than a bitwise rerun.
+
+\paragraph{Linear road-structure contrast.} With the frozen E2 operator $s=C_{E2}^{\mathrm{phys}}x$, the feature block $[x,s]$ reaches 0.5405, an increment of $+0.0361$ over the 0.5044 ridge (95\% date interval [0.0283, 0.0418]; positive on 51/51 TEST dates). Adding two same-size matched-null response blocks, $[x,s,s_{\rm null1},s_{\rm null2}]$, raises VAL from 0.3422 to 0.3492 but lowers TEST from 0.5405 to 0.5343 ($+0.0299$ [0.0237, 0.0367] over the ridge). The increment is therefore not explained by the number of added features: the real road block transfers, the matched blocks do not. A null-only arm was not fitted, so the two-null contrast is the available control.
 
 \paragraph{Replication and boundary.} San Francisco and Chengdu reproduce the ordering but have three TEST dates each. The best neural arm reaches 0.2319 against 0.2582 for the linear reference in San Francisco, and 0.0125 against 0.1258 in Chengdu. These are sign-and-ordering replications, not significance claims. Road channels help the Fourier operator consistently, help the MLP on the pooled estimand but not on the unweighted date mean in Porto, and hurt GraphGPS and the Porto U-Net; the effect is architecture-dependent. The comparison concerns four architectures at one capacity, one sample size and one 300-epoch budget. It does not establish that neural models cannot learn this map, and it does not re-run UrbanFlow. Exact projection, where applied, costs at most 0.0066 and is retained for admissibility.
