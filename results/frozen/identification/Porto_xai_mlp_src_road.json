@@ -1,0 +1,193 @@
+{
+ "base_val_r2": 0.2364070293140984,
+ "baseline": "zero in TRAIN-standardised space (= TRAIN mean)",
+ "cfg": {
+  "_cfg": 0,
+  "depth": 2,
+  "hidden": 256,
+  "lr": 0.001,
+  "wd": 0.0001
+ },
+ "city": "Porto",
+ "meta": {
+  "config_sha256": "5ad8e40cbf2f9b7f8d4201a74690ba22e7e74f5a529805adf2ea0e73c1a9c3c4",
+  "scripts": {
+   "i_build.py": "3cc56d76270e6b1a9065fda29eec41b1ca38bc4c2e3bede04fc4b5ba0651fae9",
+   "i_common.py": "b6a5851fbcf63c699aa172bbce93a53a54dfbc1ec3bb02db48240f967ad4c020",
+   "i_identify.py": "9fd1040474ffdf49636feeb8bfb605e95c99454faa42c197a0dda5766a214e92",
+   "i_xai.py": "8d642c6fd8def9cb1d2ad24b18b8e1346071e6595333e4d21e5f8bda7dbcb9dc"
+  },
+  "seed": 20261109,
+  "written": "2026-11-09T21:56:37"
+ },
+ "model": "mlp",
+ "n_rand": 10,
+ "n_rows": 400,
+ "road": {
+  "compactness": {
+   "k50_mean": 187.7075,
+   "k90_mean": 614.1375,
+   "k90_median": 615.0,
+   "mass_sum_mean": 9.86067607300356e-05
+  },
+  "deletion": [
+   {
+    "delta_sse": 1166.8125,
+    "excess": 1115.5437499999534,
+    "k": 1,
+    "rand_delta_mean": 51.268750000046566,
+    "rand_sse_mean": 694113.33125,
+    "rel_delta": 0.0016811356837415387,
+    "val_r2": 0.23512332592322416
+   },
+   {
+    "delta_sse": 4924.4375,
+    "excess": 4872.137499999953,
+    "k": 2,
+    "rand_delta_mean": 52.300000000046566,
+    "rand_sse_mean": 694114.3625,
+    "rel_delta": 0.007095096773136192,
+    "val_r2": 0.23098926329179537
+   },
+   {
+    "delta_sse": 7283.1875,
+    "excess": 7123.787499999977,
+    "k": 4,
+    "rand_delta_mean": 159.40000000002328,
+    "rand_sse_mean": 694221.4625,
+    "rel_delta": 0.01049356807338825,
+    "val_r2": 0.22839421449584518
+   },
+   {
+    "delta_sse": 9534.1875,
+    "excess": 9281.699999999953,
+    "k": 8,
+    "rand_delta_mean": 252.48750000004657,
+    "rand_sse_mean": 694314.55,
+    "rel_delta": 0.013736793890820102,
+    "val_r2": 0.22591771005930716
+   },
+   {
+    "delta_sse": 13604.625,
+    "excess": 13124.612500000047,
+    "k": 16,
+    "rand_delta_mean": 480.01249999995343,
+    "rand_sse_mean": 694542.075,
+    "rel_delta": 0.019601453148146965,
+    "val_r2": 0.2214394974749443
+   },
+   {
+    "delta_sse": 17312.75,
+    "excess": 16284.856249999953,
+    "k": 32,
+    "rand_delta_mean": 1027.8937500000466,
+    "rand_sse_mean": 695089.95625,
+    "rel_delta": 0.024944094967011686,
+    "val_r2": 0.2173598937371667
+   }
+  ],
+  "mass_ratio": 1.4658704996109009,
+  "stability": {
+   "k16": {
+    "jaccard_mean": 0.805517154230113,
+    "jaccard_p10": 0.6842105263157895,
+    "n_dates": 50
+   },
+   "k32": {
+    "jaccard_mean": 0.8168165959853582,
+    "jaccard_p10": 0.7297297297297297,
+    "n_dates": 50
+   },
+   "k8": {
+    "jaccard_mean": 0.7881970727685013,
+    "jaccard_p10": 0.6,
+    "n_dates": 50
+   }
+  }
+ },
+ "seconds": 7.052923202514648,
+ "seed": 20261109,
+ "src": {
+  "compactness": {
+   "k50_mean": 44.7625,
+   "k90_mean": 209.3525,
+   "k90_median": 217.0,
+   "mass_sum_mean": 6.726838182657957e-05
+  },
+  "deletion": [
+   {
+    "delta_sse": 76235.5625,
+    "excess": 76155.18125000002,
+    "k": 1,
+    "rand_delta_mean": 80.38124999997672,
+    "rand_sse_mean": 694142.44375,
+    "rel_delta": 0.10983969102907133,
+    "val_r2": 0.15253421334198825
+   },
+   {
+    "delta_sse": 91317.3125,
+    "excess": 91043.16249999998,
+    "k": 2,
+    "rand_delta_mean": 274.1500000000233,
+    "rand_sse_mean": 694336.2125,
+    "rel_delta": 0.13156937604553195,
+    "val_r2": 0.1359415786082001
+   },
+   {
+    "delta_sse": 119690.4375,
+    "excess": 117949.84375,
+    "k": 4,
+    "rand_delta_mean": 1740.59375,
+    "rand_sse_mean": 695802.65625,
+    "rel_delta": 0.1724491856951193,
+    "val_r2": 0.10472604331679758
+   },
+   {
+    "delta_sse": 147638.4375,
+    "excess": 145707.68125000002,
+    "k": 8,
+    "rand_delta_mean": 1930.7562499999767,
+    "rand_sse_mean": 695992.81875,
+    "rel_delta": 0.21271647807432206,
+    "val_r2": 0.07397822190748438
+   },
+   {
+    "delta_sse": 175390.8125,
+    "excess": 170972.11875000002,
+    "k": 16,
+    "rand_delta_mean": 4418.693749999977,
+    "rand_sse_mean": 698480.75625,
+    "rel_delta": 0.2527019152555972,
+    "val_r2": 0.04344562314605993
+   },
+   {
+    "delta_sse": 188607.0625,
+    "excess": 178735.08750000002,
+    "k": 32,
+    "rand_delta_mean": 9871.974999999977,
+    "rand_sse_mean": 703934.0375,
+    "rel_delta": 0.271743800288753,
+    "val_r2": 0.0289053735861331
+   }
+  ],
+  "stability": {
+   "k16": {
+    "jaccard_mean": 0.4363723953373342,
+    "jaccard_p10": 0.28,
+    "n_dates": 50
+   },
+   "k32": {
+    "jaccard_mean": 0.4791301414001426,
+    "jaccard_p10": 0.391304347826087,
+    "n_dates": 50
+   },
+   "k8": {
+    "jaccard_mean": 0.4293151383763629,
+    "jaccard_p10": 0.3333333333333333,
+    "n_dates": 50
+   }
+  }
+ },
+ "steps": 64,
+ "variant": "src_road"
+}
