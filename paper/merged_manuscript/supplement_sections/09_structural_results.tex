@@ -8,7 +8,25 @@ The comparison matches capacity and estimator, not information: the road pattern
 
 Together, the two tests show that the road-induced subspace is not generic under the stated rank-matched null, while the road-only medium does not match the mobility-inferred medium under this estimator and information regime. They do not show that road geometry lacks physical meaning, that all alternative road structures have been tested, or that source-only closure has been achieved. The source files, real $R$ grids and missing-module definition gap are listed in Notes~\ref{note:spatial} and \ref{note:reproducibility}.
 
-\paragraph{Road-modulated operator in the FACE-departure frame.} The road-medium test uses a different target from the rank-matched and matched-capacity tests above: the full divergence-free departure $\delta F_t^\circ$, scored by Eq.~\ref{eq:supp-facedep}. The frozen road operator reaches 0.0619 in Porto, 0.0649 in San Francisco and 0.0039 in Chengdu. These values are not comparable with the P/FACE entries of main Table~1 or the ROAD-support D scores; the unrestricted FACE ridge on the same rows reaches 0.5044, 0.2582 and 0.1258. A uniform medium gives a response at floating-point zero, and face permutation or a $90^\circ$/$270^\circ$ rotation of the medium collapses the held-out score to at most 0.005. The operator's selected spectral order is at the pre-registered grid boundary in all three cities.
+\begin{table}[!htbp]
+\centering\small
+\caption{\textbf{Rank-matched and matched-capacity structural controls.} Full results from the former main Fig.~4d--e. The rank-matched test uses the full aligned observation pool; the matched-capacity test uses the date-centred conditional score.}
+\label{tab:supp-structural-controls}
+\begin{tabular}{lccc}
+\toprule
+Control & Porto & San Francisco & Chengdu \\
+\midrule
+Road capture, full pool & 0.900 & 0.900 & 0.731 \\
+Rank-matched nulls at least as good & 0/999 & 0/999 & 0/999 \\
+Excess $\Delta E$ range & 0.23--0.30 & 0.28--0.33 & 0.09--0.15 \\
+Road-medium gain at $R=n_{\rm int}$ & 0.009 & 0.010 & $-0.001$ \\
+Mobility-medium gain at $R=n_{\rm int}$ & 0.092 & 0.085 & 0.036 \\
+Paired mobility $-$ road [95\%] & 0.083 [0.060, 0.109] & 0.075 [0.062, 0.091] & 0.038 [0.035, 0.040] \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Road-modulated operator in the FACE-departure frame.} The road-medium test uses a different target from the rank-matched and matched-capacity tests above: the full divergence-free departure $\delta F_t^\circ$, scored by Eq.~\ref{eq:supp-facedep}. The frozen road operator reaches 0.0619 in Porto, 0.0649 in San Francisco and 0.0039 in Chengdu. These values are not comparable with the P/FACE entries of Supplementary Table~\ref{tab:supp-pface-loading} or the ROAD-support D scores; the unrestricted FACE ridge on the same rows reaches 0.5044, 0.2582 and 0.1258. A uniform medium gives a response at floating-point zero, and face permutation or a $90^\circ$/$270^\circ$ rotation of the medium collapses the held-out score to at most 0.005. The operator's selected spectral order is at the pre-registered grid boundary in all three cities.
 
 \begin{table}[!htbp]
 \centering\small
@@ -27,6 +45,8 @@ FACE ridge (scale) & 0.5044 & 0.2582 & 0.1258 \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+The nominal draw counts are 499/199/199 for Null-1 and 99/--/49 for Null-2 in Porto/San Francisco/Chengdu; participation-ratio effective sizes are 148/93/175 and 5.6/--/12.4. The corresponding Monte-Carlo floors are 0.002/0.005/0.005 and 0.010/--/0.020.
 
 A directionally matched non-road medium, preserving the exact weight multiset and 26 spatial statistics within the frozen tolerances, does not reproduce the road score: 0 of 499 accepted draws in Porto and 0 of 199 in San Francisco and Chengdu reach it. The best draws reach 23\%, 42\% and 47\% of the road value. In Porto and Chengdu, coarse matching raises the surrogate mean by factors of 4.1 and 3.6 over Null-1, respectively, but the road remains 2.4 and 2.1 times the best coarse draw. San Francisco has no accepted coarse-matched draw (0 of 199), so its evidence supports directional but not fine-scale specificity. The coarse families contain only about six and twelve effective independent configurations, and their tail estimates sit at the design floor; they bound the constructed family rather than calibrating a tail probability.
 

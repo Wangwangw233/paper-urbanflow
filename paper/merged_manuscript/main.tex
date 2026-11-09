@@ -169,60 +169,51 @@ where $a_{d,m}$ and $b_{d,m}$ are observed and predicted coefficients on date $d
 
 The fitted response is strongly anisotropic in every city (Fig.~\ref{fig:road-tests}a--c; full distributions in Supplementary Fig.~\SuppRef{fig:supp-4}). Its local directional selectivity exceeds that of the road-support tensor and varies substantially across space. San Francisco's anisotropy map is stable across date folds. Source-covariance weighting preserves this selectivity, showing that the realized excitation statistics also produce pronounced directional organization. Orientation agreement with the road support is reported in Supplementary Note~\SuppRef{note:anisotropy-results}.
 
-Road geometry also identifies a distinctive routing space. Against 999 rank-matched random subspaces of $\ker D$, every random basis leaves more routing energy uncaptured than the road-induced basis (Fig.~\ref{fig:road-tests}d). The road space is therefore specific within the full aligned observation pool, not merely a convenient choice of coordinates.
+Road geometry also identifies a distinctive routing space. Against 999 rank-matched random subspaces of $\ker D$, every random basis leaves more routing energy uncaptured than the road-induced basis (Supplementary Table~\SuppRef{tab:supp-structural-controls}). The road space is therefore specific within the full aligned observation pool, not merely a convenient choice of coordinates.
 
-At matched nominal capacity, a mobility-inferred medium improves on the road-only medium in every city (Fig.~\ref{fig:road-tests}e). The paired mobility-minus-road differences are positive with narrow date-resampled intervals, while spatial permutation removes the mobility medium's advantage. Road geometry supplies a specific and interpretable support; the learned response additionally contains organization encoded in the mobility data (Supplementary Note~\SuppRef{note:structural-results}).
+At matched nominal capacity, a mobility-inferred medium improves on the road-only medium in every city (Supplementary Table~\SuppRef{tab:supp-structural-controls}; Supplementary Fig.~\SuppRef{fig:supp-5}). The paired mobility-minus-road differences are positive with narrow date-resampled intervals, while spatial permutation removes the mobility medium's advantage. Road geometry supplies a specific and interpretable support; the learned response additionally contains organization encoded in the mobility data.
 
-The preceding tests concern representation and capacity. To ask whether the road field enters the response as a spatial medium, we fitted a graph operator whose coefficients are learned but whose medium is frozen (Methods). On the FACE-departure target, which is distinct from the P and D scores, the road operator reaches 0.062, 0.065 and 0.004 in Porto, San Francisco and Chengdu, against 0.504, 0.258 and 0.126 for an unrestricted FACE-departure ridge. A uniform medium produces zero response, and permuting or rotating the road weights collapses the held-out score to at most 0.005. The absolute share is small, but the response is a constrained property of the arrangement rather than a restatement of road coverage.
+The preceding tests concern representation and capacity. To ask whether the road field enters the response as a spatial medium, we fitted a graph operator whose coefficients are learned but whose medium is frozen (Methods). On the FACE-departure target, which is distinct from the P and D scores, the road operator reaches 0.062, 0.065 and 0.004 in Porto, San Francisco and Chengdu, against 0.504, 0.258 and 0.126 for an unrestricted FACE-departure ridge (Fig.~\ref{fig:road-tests}d). A uniform medium produces zero response, and permuting or rotating the road weights collapses the held-out score to at most 0.005. The absolute share is small, but the response is a constrained property of the arrangement rather than a restatement of road coverage.
 
 A directionally matched non-road medium, preserving the exact weight multiset and 26 spatial statistics within the frozen tolerances, never reaches the road score: 0 of 499 draws in Porto and 0 of 199 in San Francisco and Chengdu. The best draws reach 23\%, 42\% and 47\% of the road score. In Porto and Chengdu, a second family that also preserves coarse spatial organization recovers more of the response, at 3.6--4.1 times the directionally matched mean, but the road remains 2.4 and 2.1 times the best coarse draw. San Francisco admits no coarse-matched medium under the frozen criteria (0 of 199), so its evidence supports directional specificity but not a fine-scale attribution.
 
-The road medium also adds information beyond a flexible learner. Used as a prior under an equal-capacity residual ridge, it raises held-out $R^2$ by 0.0116, 0.0207 and 0.0023 in the three cities, corresponding to relative residual-SSE reductions of 2.27\%, 2.65\% and 0.26\%. The 20 directionally matched priors change held-out $R^2$ by between $-0.0013$ and $+0.0003$. The road increment is positive on every Porto TEST date and in three of four blocked Porto folds, and it is largest when TRAIN is reduced, consistent with a structural prior that substitutes for data. It is nevertheless modest, and the learned correction has no reproducible response direction (median half-TRAIN cosine 0.20--0.46). We therefore treat it as an informative constraint, not an identified operator.
+The road medium also adds information beyond a flexible learner. Used as a prior under an equal-capacity residual ridge, it raises held-out $R^2$ by 0.0116, 0.0207 and 0.0023 in the three cities (Fig.~\ref{fig:road-tests}e), corresponding to relative residual-SSE reductions of 2.27\%, 2.65\% and 0.26\%. The 20 directionally matched priors change held-out $R^2$ by between $-0.0013$ and $+0.0003$. The road increment is positive on every Porto TEST date and in three of four blocked Porto folds, and it is largest when TRAIN is reduced, consistent with a structural prior that substitutes for data. It is nevertheless modest, and the learned correction has no reproducible response direction (median half-TRAIN cosine 0.20--0.46). We therefore treat it as an informative constraint, not an identified operator.
 
 \begin{figure}[!t]
 \centering
 \includegraphics[width=\textwidth]{fig04_anisotropy_road_tests.pdf}
-\caption{\textbf{Anisotropy and matched capacity.} \textbf{a--c}, Local response anisotropy $A_C$ on 250\,m regular interior lattices at true aspect (San Francisco: five-fold consensus). Colour shares 0--1; segments show axial directions for $A_C>0.02$ and hollow squares mark zero anisotropy. Streets are \textcopyright~OpenStreetMap contributors. \textbf{d}, Excess unexplained energy $\Delta E$ for 999 rank-matched random subspaces in fixed $\ker D$; the road basis is at zero. Thick/thin marks show 1--99\%/full null ranges. \textbf{e}, Paired mobility-minus-road $\Delta R^2$ at $R=n_{\rm int}$ with 95\% date-resampled intervals. Scores use raw routing against each TEST-date mean; equal $R$ matches nominal capacity, not information. Chengdu's interval is descriptive. Axis agreement is evaluated in Supplementary Note~\SuppRef{note:anisotropy-results}; media are shown in Supplementary Fig.~\SuppRef{fig:supp-5}.}
+\caption{\textbf{Anisotropy and road-medium specificity.} \textbf{a--c}, Local response anisotropy $A_C$ on 250\,m regular interior lattices at true aspect (San Francisco: five-fold consensus). Colour shares 0--1; segments show axial directions for $A_C>0.02$ and hollow squares mark zero anisotropy. Streets are \textcopyright~OpenStreetMap contributors. \textbf{d}, FACE-departure $R^2$ for the real road operator (stars), directionally matched Null-1 (gray) and coarse-matched Null-2 (purple) distributions. Points, boxes and whiskers show draws and percentiles; SF has no constructible Null-2 (0/199). Nominal and effective draw counts and the Monte Carlo floor are in Supplementary Note~\SuppRef{note:structural-results}. \textbf{e}, Absolute $\Delta R^2$ of the road prior and 20 matched priors over the learned-only reference; Porto blocked folds are shown above (3/4 positive). The panels use the FACE-departure target, not the P/D scores. Rank-matched and matched-capacity controls are retained in Supplementary Table~\SuppRef{tab:supp-structural-controls}.}
 \label{fig:road-tests}
 \end{figure}
 
 \subsection{Model comparison}\label{sec:comparison}
 
-Table~\ref{tab:mainstream-main} compares the source-to-routing operator with unrestricted linear representations and a completed Graph WaveNet adaptation. It also reports the separate OD-estimation and network-loading diagnostics. The inference block uses the same pooled per-date error convention for every row.
-
-Full-face ridge and POD achieve higher reconstruction accuracy, while UrbanFlow exceeds the completed Graph WaveNet adaptation in all three cities under the common pooled convention. The archived Porto paired contrast and sealed-seed robustness are reported in Supplementary Note~\SuppRef{note:baselines}. The loading rows diagnose the implemented demand--registration--loading pipeline; they are not source-only predictions.
-
-A separate audit evaluates the same conditional task in the D/FACE frame with four modern families (a residual MLP, a U-Net, a Fourier neural operator and GraphGPS; Supplementary Note~\SuppRef{note:modern-benchmark}); the Porto comparison uses five seeds per arm, and San Francisco and Chengdu replicate the ordering. The linear reference remains the strongest model in all three cities. In Porto, ridge reaches 0.504 and the best neural arm, an MLP with road channels, reaches 0.447; San Francisco and Chengdu reproduce the same ordering. Road channels help some architectures and hurt others, but no neural arm closes the gap. The comparison is specific to the tested capacities, sample sizes and 300-epoch training protocol, and the D/FACE numbers are not comparable with the P/FACE entries in Table~\ref{tab:mainstream-main}.
+Table~\ref{tab:mainstream-main} reports the modern conditional-reconstruction comparison on the D/FACE target. The linear ridge and POD reference remains the strongest model in all three cities. In Porto, ridge reaches 0.504 and the best neural arm, an MLP with road channels, reaches 0.447; San Francisco and Chengdu reproduce the ordering (best neural 0.232 versus 0.258, and 0.012 versus 0.126). Road channels help some architectures and hurt others, but no neural arm closes the gap. The comparison uses five seeds per neural arm on Porto and is specific to the tested capacities, sample size and 300-epoch protocol. Table~\ref{tab:mainstream-main} is D/FACE only: the original P/FACE model, Graph WaveNet and the gravity/loading diagnostics are retained in Supplementary Table~\SuppRef{tab:supp-pface-loading} and are not ranked with these values.
 
 \begin{table}[!htbp]
 \centering\small
 \caption{\textbf{Model comparison.}}
 \label{tab:mainstream-main}
-\setlength{\tabcolsep}{7pt}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llrrr@{}}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrr@{}}
 \toprule
-Model & Metric & Porto & San Francisco & Chengdu \\
+Model (D/FACE) & Porto & San Francisco & Chengdu \\
 \midrule
-\multicolumn{5}{@{}l}{\emph{Source-to-routing inference}}\\
-UrbanFlow & $R_{\rm P,FACE}^2$ & 0.607 & 0.528 & 0.440 \\
-Full-face ridge & $R_{\rm P,FACE}^2$ & 0.701 & 0.611 & 0.572 \\
-POD regression & $R_{\rm P,FACE}^2$ & 0.701 & 0.637 & 0.575 \\
-Graph WaveNet & $R_{\rm P,FACE}^2$ & 0.497 & 0.254 & 0.275 \\
-\midrule
-\multicolumn{5}{@{}l}{\emph{OD estimation}}\\
-Gravity & CPC & 0.525 & 0.464 & 0.555 \\
-\midrule
-\multicolumn{5}{@{}l}{\emph{Network-loading diagnostics}}\\
-Gravity + AON & $R_{\rm FACE}^2$\textsuperscript{a} & 0.136 & 0.270 & $<0.001$ \\
-TEST OD + AON & $R_{\rm FACE}^2$\textsuperscript{a} & 0.172 & 0.336 & 0.002 \\
-TEST OD + AON & $R_{\rm FACE}^2$\textsuperscript{b} & 0.126 & $-0.533$ & $-0.565$ \\
+Linear ridge & 0.504 & 0.258 & 0.126 \\
+POD regression & 0.504 & 0.267 & 0.126 \\
+MLP, source & 0.421 (0.010) & 0.070 (0.004) & $-0.070$ (0.005) \\
+MLP, source + road & 0.447 (0.019) & 0.098 (0.006) & $-0.019$ (0.013) \\
+U-Net, source & 0.183 (0.015) & 0.198 (0.023) & 0.012 (0.004) \\
+U-Net, source + road & 0.162 (0.005) & 0.232 (0.012) & 0.012 (0.003) \\
+GraphGPS, source & 0.158 (0.015) & -- & -- \\
+GraphGPS, source + road & 0.019 (0.024) & -- & -- \\
+Fourier operator, source & 0.029 (0.010) & 0.142 (0.006) & 0.0003 (0.0002) \\
+Fourier operator, source + road & 0.110 (0.011) & 0.207 (0.006) & 0.007 (0.002) \\
 \bottomrule
 \end{tabular*}
 \par\smallskip
-\parbox{\textwidth}{\footnotesize Inference rows share sources, splits and targets; TEST errors are pooled from per-date numerators and denominators. Gravity uses TRAIN OD margins; AON denotes all-or-nothing assignment. \textsuperscript{a}Amplitude fitted on TEST. \textsuperscript{b}Fixed amplitude, $\alpha=1$. Graph WaveNet reports archived single draws; sealed-seed robustness and the archived Porto paired contrast are in Supplementary Note~\SuppRef{note:baselines}. Loading rows diagnose the implemented pipelines; Chengdu's loading is margin-dominated. Full protocols: Methods and Supplementary Note~\SuppRef{note:reproducibility}.}
+\parbox{\textwidth}{\footnotesize Pooled TEST $R^2$ on the full divergence-free departure. Neural entries are means (s.d.) over five seeds; linear rows are a single frozen fit. Dashes mark configurations not run. UrbanFlow was not re-run under D/FACE and is not ranked here. The P/FACE model, Graph WaveNet, gravity and loading diagnostics are in Supplementary Table~\SuppRef{tab:supp-pface-loading}; the two frames are not mixed. Full training configurations and paired-date contrasts are in Supplementary Note~\SuppRef{note:modern-benchmark}.}
 \end{table}
-
-The gravity and loading results separate these tasks from source-to-routing inference. Gravity uses TRAIN OD margins; the loading rows additionally use TEST-fitted amplitudes or TEST OD. Chengdu's loading remains largely margin-driven. Detailed protocols are in Supplementary Notes~\SuppRef{note:baselines} and \SuppRef{note:reproducibility}.
 
 \section{Discussion}\label{sec:disc}
 \subsection{A constitutive description of urban movement}
@@ -314,7 +305,7 @@ The second test compares road, mobility-inferred and spatially permuted mobility
  \frac{\sum_{t\in d}\|T_t-\widehat T_t\|^2}
  {\sum_{t\in d}\|T_t-\langle T\rangle_d\|^2}.
 \end{equation}
-Figure~\ref{fig:road-tests}e reports the paired-date interval for mobility minus road at $R=n_{\rm int}$, the number of interior faces (1984, 5512 and 7080); Supplementary Fig.~\SuppRef{fig:supp-5} reports each medium's gain over the constant medium. Chengdu uses the archived all-motion channel and a four-date held-out protocol. This date-centred statistic is separate from Eq.~\ref{eq:m-scores}. Source files and partitions are specified in Supplementary Note~\SuppRef{note:spatial}.
+Supplementary Table~\SuppRef{tab:supp-structural-controls} reports the paired-date interval for mobility minus road at $R=n_{\rm int}$, the number of interior faces (1984, 5512 and 7080); Supplementary Fig.~\SuppRef{fig:supp-5} reports each medium's gain over the constant medium. Chengdu uses the archived all-motion channel and a four-date held-out protocol. This date-centred statistic is separate from Eq.~\ref{eq:m-scores}. Source files and partitions are specified in Supplementary Note~\SuppRef{note:spatial}.
 
 \subsection{Road-medium operator}\label{sec:m-roadop}
 

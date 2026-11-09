@@ -1,6 +1,6 @@
 \suppnote{Modern D/FACE benchmark}{note:modern-benchmark}
 
-This note reports the separate D/FACE comparison used in Results 1.5. It is not a re-ranking of the P/FACE scores in main Table~1: the target is the full divergence-free departure $\delta F_t^\circ$, the source is $\delta x_t$, and every arm uses the same frozen splits, pooled ratio-of-sums score, VAL selection and single TEST pass. The two frames answer different questions and their numbers are never combined.
+This note reports the separate D/FACE comparison used in Results 1.5. It is not a re-ranking of the P/FACE scores in Supplementary Table~\ref{tab:supp-pface-loading}: the target is the full divergence-free departure $\delta F_t^\circ$, the source is $\delta x_t$, and every arm uses the same frozen splits, pooled ratio-of-sums score, VAL selection and single TEST pass. The two frames answer different questions and their numbers are never combined.
 
 \paragraph{Protocol.} The linear reference is the unrestricted FACE ridge (and POD, which solves the same full-rank problem) from the frozen three-city analysis. Four modern families were trained: a residual MLP with an explicit linear skip, a 2-D U-Net, a Fourier neural operator and GraphGPS. Each main arm used five seeds; the 300-epoch budget, VAL selection and early-stopping rule were fixed before any TEST row was scored. The scientific margin was $\delta=0.01$ pooled $R^2$. Intervals resample TEST dates and recompute the pooled contrast. P/FACE values were retained as an auxiliary frame but never ranked against D/FACE.
 
@@ -8,7 +8,7 @@ This note reports the separate D/FACE comparison used in Results 1.5. It is not 
 
 \begin{table}[!htbp]
 \centering\small
-\caption{\textbf{Modern D/FACE benchmark on Porto.} Pooled TEST $R^2$ for the full divergence-free departure. Five seeds per neural arm; the linear reference is a single frozen fit. The P/FACE column of main Table~1 is a different estimand and is not comparable.}
+\caption{\textbf{Modern D/FACE benchmark on Porto.} Pooled TEST $R^2$ for the full divergence-free departure. Five seeds per neural arm; the linear reference is a single frozen fit. The P/FACE values in Supplementary Table~\ref{tab:supp-pface-loading} are a different estimand and are not comparable.}
 \label{tab:supp-modern-dface}
 \begin{tabular}{lcc}
 \toprule

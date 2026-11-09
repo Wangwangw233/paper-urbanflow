@@ -94,7 +94,7 @@ The comparison uses the FACE-departure target,
  {\sum_{t\in\mathrm{TEST}}\norm{\delta F_t^\circ}^2},
  \label{eq:supp-facedep}
 \end{equation}
-with $\delta$ the TRAIN phase departure. This is neither the P/FACE score of main Table~1 nor the ROAD-support D score; it scores the full divergence-free departure and is never combined with those scores.
+with $\delta$ the TRAIN phase departure. This is neither the P/FACE score of Supplementary Table~\ref{tab:supp-pface-loading} nor the ROAD-support D score; it scores the full divergence-free departure and is never combined with those scores.
 
 \paragraph{Matched non-road media.} Two surrogate families preserve selected properties of $W_R$ while destroying its arrangement. The directionally matched Null-1 preserves the exact weight multiset and 26 lag, smoothness and cross-family statistics within pre-registered tolerances; accepted draws also satisfy small road correlation and reduced top-decile overlap. The coarse-matched Null-2 additionally preserves the road's $\sigma=2$ cell-scale projection by permuting within 20 equal-count strata and requires the fine residual to be weakly correlated with the road field. Each candidate is fitted with the same operator family, split and selection rule; the primary protocol reselects $(K,\kappa)$ per draw, and a fixed protocol refits at the road-selected parameters. Tail estimates use the Monte-Carlo floor $1/(N+1)$ and are comparisons with the constructed family, not permutation $p$-values. Accepted draws are correlated by construction, so effective sample sizes are smaller than nominal counts. San Francisco admits no coarse-matched draw under the frozen criteria (0/199); its result supports directional specificity only.
 

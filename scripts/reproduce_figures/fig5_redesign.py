@@ -59,10 +59,113 @@ Y_MAP = 2.14
 Y_CB, CBH = 1.905, 0.050
 Y_PC, PH = 0.60, 0.98
 XLBL = 0.72
-WD = 2.68
-XE = XLBL + WD + 0.42
+WD = 3.25
+XE = XLBL + WD + 0.38
 WE = W - XE - 0.06
 YLIM3 = (-0.58, 2.74)
+PANELS = ROOT / 'results' / 'frozen' / 'road_medium' / 'fig4_panels.json'
+
+
+def load_panels():
+    """Compact, real-data panel values produced from G3/G4/E2/F3."""
+    return json.loads(PANELS.read_text(encoding="utf-8"))
+
+
+def _distribution(ax, values, y, color, label=None):
+    v = np.asarray(values, float)
+    q01, q25, med, q75, q99 = np.percentile(v, [1, 25, 50, 75, 99])
+    ax.plot([q01, q99], [y, y], color=color, lw=0.8, alpha=0.65,
+            solid_capstyle="round", zorder=2)
+    ax.plot([q25, q75], [y, y], color=color, lw=3.0, alpha=0.85,
+            solid_capstyle="round", zorder=3)
+    ax.plot([v.min(), v.max()], [y, y], color=color, lw=0.5, alpha=0.35,
+            solid_capstyle="round", zorder=1)
+    rng = np.random.default_rng(20261110)
+    jitter = rng.uniform(-0.055, 0.055, size=v.size)
+    ax.scatter(v, y + jitter, s=1.0, color=color, alpha=0.25, lw=0,
+               zorder=2.5, label=label, rasterized=True)
+    ax.plot([med], [y], "|", color=color, ms=5.0, mew=1.0, zorder=4)
+
+
+def panel_d(ax, pm):
+    """FACE-departure response: road vs directionally/coarse-matched media."""
+    ax.axvline(0.0, color="#4f555b", lw=0.65, ls=(0, (3.0, 2.2)), zorder=0)
+    for i, city in enumerate(CITY3):
+        y = 2 - i
+        fam = pm[city]["families"]
+        _distribution(ax, fam["null1"]["scores"], y - 0.16, "#8a9096", "Null-1")
+        if fam["null2"]["available"]:
+            _distribution(ax, fam["null2"]["scores"], y + 0.16, "#7f63a8", "Null-2")
+        else:
+            ax.text(0.58, y + 0.16, "Null-2 unavailable (0/199)", transform=ax.get_yaxis_transform(),
+                    ha="left", va="center", fontsize=5.8, color="#6b4c91")
+        road = pm[city]["road_score"]
+        ax.plot([road], [y + 0.34], "*", ms=7.0, color=COL[city],
+                mec="white", mew=0.55, zorder=8)
+        ax.text(road + 0.0022, y + 0.34, f"{road:.3f}", fontsize=5.9,
+                color=COL[city], va="center", ha="left")
+    ax.set_yscale("linear")
+    ax.set_xscale("symlog", linthresh=0.002, linscale=0.7)
+    ax.set_xlim(-0.035, 0.075)
+    ax.set_ylim(-0.90, 2.85)
+    ax.set_yticks([2, 1, 0])
+    ax.set_yticklabels([LONG[c] for c in CITY3], fontsize=6.4)
+    ax.set_xticks([-0.02, 0.0, 0.005, 0.02, 0.06])
+    ax.set_xticklabels(["-0.02", "0", "0.005", "0.02", "0.06"], fontsize=6.1)
+    ax.set_xlabel("FACE-departure $R^2$", fontsize=6.8, labelpad=2.0)
+    handles = [
+        Line2D([], [], marker="*", ls="", ms=6.5, color="#3a3f44",
+               label="real road"),
+        Line2D([], [], marker="o", ls="", ms=3.0, color="#8a9096",
+               label="Null-1 (directional)"),
+        Line2D([], [], marker="o", ls="", ms=3.0, color="#7f63a8",
+               label="Null-2 (coarse)"),
+    ]
+    ax.legend(handles=handles, loc="lower right", frameon=False, fontsize=5.4,
+              handletextpad=0.25, borderpad=0.0, labelspacing=0.25)
+    FS.light_axes(ax, grid=False)
+
+
+def panel_e(ax, pm):
+    """Absolute road-prior increment over the learned-only reference."""
+    ax.axvline(0.0, color="#4f555b", lw=0.65, ls=(0, (3.0, 2.2)), zorder=0)
+    for i, city in enumerate(CITY3):
+        y = 2 - i
+        p = pm[city]["prior"]
+        vals = np.asarray(p["matched_deltas"], float)
+        _distribution(ax, vals, y - 0.18, "#8a9096")
+        ax.plot([p["road_delta"]], [y + 0.20], "*", ms=7.0, color=COL[city],
+                mec="white", mew=0.55, zorder=8)
+        ax.text(p["road_delta"] + 0.0006, y + 0.20,
+                f"{p['road_delta']:+.3f}", fontsize=5.9, color=COL[city],
+                va="center", ha="left")
+        ax.plot([0.0], [y], "|", color="#3a3f44", ms=4.2, mew=0.8, zorder=5)
+    # Porto blocked validation: four internal blocks, 3 positive.
+    block = np.asarray(pm["Porto"]["prior"]["blocked_deltas"], float)
+    ax.plot(block, [2.60] * block.size, "s", ms=2.8, color=COL["Porto"],
+            mec="white", mew=0.35, zorder=6)
+    ax.text(0.0003, 2.78, "Porto blocked folds: 3/4 positive",
+            fontsize=5.5, color="#4f555b", ha="left", va="center")
+    ax.set_xlim(-0.006, 0.030)
+    ax.set_ylim(-0.90, 2.85)
+    ax.set_yticks([2, 1, 0])
+    ax.set_yticklabels([LONG[c] for c in CITY3], fontsize=6.4)
+    ax.set_xticks([0.0, 0.01, 0.02, 0.03])
+    ax.set_xticklabels(["0", "0.01", "0.02", "0.03"], fontsize=6.1)
+    ax.tick_params(axis="y", which="both", left=False, labelleft=False)
+    ax.set_xlabel("absolute $\\Delta R^2$ over learned-only", fontsize=6.8,
+                  labelpad=2.0)
+    handles = [
+        Line2D([], [], marker="*", ls="", ms=6.5, color="#3a3f44",
+               label="road prior"),
+        Line2D([], [], marker="o", ls="", ms=3.0, color="#8a9096",
+               label="matched prior"),
+        Line2D([], [], marker="|", ls="", ms=5.0, color="#3a3f44",
+               label="learned-only (0)"),
+    ]
+    ax.legend(handles=handles, loc="lower right", frameon=False, fontsize=5.4,
+              handletextpad=0.25, borderpad=0.0, labelspacing=0.25)
+    FS.light_axes(ax, grid=False)
 
 # ---- anisotropy ramp -------------------------------------------------------
 # Single-hue sequential (purple) chosen so it shares no hue with the three
@@ -252,7 +355,7 @@ def km_bar(ax, blk):
 # ---------------------------------------------------------------------------
 # bottom row
 # ---------------------------------------------------------------------------
-def panel_d(ax, nl):
+def panel_d_legacy(ax, nl):
     """dE = E_null - E_road on one axis: the gap is the effect size."""
     ax.axvline(0.0, color="#4f555b", lw=0.75, ls=(0, (3.0, 2.2)), zorder=1)
     for k, city in enumerate(CITY3):
@@ -283,7 +386,7 @@ def panel_d(ax, nl):
     FS.light_axes(ax, grid=False)
 
 
-def panel_e(ax, sel):
+def panel_e_legacy(ax, sel):
     """One contrast only: mobility-inferred minus road at matched capacity."""
     ax.axvline(0.0, color="#4f555b", lw=0.75, ls=(0, (3.0, 2.2)), zorder=1)
     for k, city in enumerate(CITY3):
@@ -316,7 +419,7 @@ def panel_e(ax, sel):
 def build(mode):
     z = F5.load()
     F5.checks(z)                              # frozen anchors, or raise
-    nl, sel = TS.nulls3(), TS.sweep3()
+    pm = load_panels()
     bm = F5.basemaps()
 
     blk = {c: block(z, c) for c in CITY3}
@@ -379,27 +482,27 @@ def build(mode):
 
     # ---- bottom row -------------------------------------------------------
     axd = aa(XLBL, Y_PC, WD, PH)
-    panel_d(axd, nl)
+    panel_d(axd, pm)
     axd.annotate("(d)", xy=(0.0, 1.02), xycoords="axes fraction",
                  xytext=(-16.0, 4.0), textcoords="offset points",
                  fontsize=7.8, fontweight="bold", va="bottom", ha="left",
                  color=FS.FG, annotation_clip=False)
     axe = aa(XE, Y_PC, WE, PH)
-    panel_e(axe, sel)
+    panel_e(axe, pm)
     axe.annotate("(e)", xy=(0.0, 1.02), xycoords="axes fraction",
                  xytext=(-16.0, 4.0), textcoords="offset points",
                  fontsize=7.8, fontweight="bold", va="bottom", ha="left",
                  color=FS.FG, annotation_clip=False)
 
     for x0, w0, t, sub in (
-            (XLBL, WD, "Road specificity",
-             "real road vs rank-matched random subspaces"),
-            (XE, WE, "Matched-capacity media",
-             "paired mobility-inferred minus road contrast")):
-        fig.text((x0 + w0 / 2) / W, (Y_PC + PH + 0.095) / H, t,
+            (XLBL, WD, "Road-medium specificity",
+             "real road vs matched spatial statistics (FACE departure)"),
+            (XE, WE, "Road-prior contribution",
+             "absolute $\\Delta R^2$ over learned-only")):
+        fig.text((x0 + w0 / 2) / W, (Y_PC + PH + 0.165) / H, t,
                  fontsize=7.2, fontweight="bold", color=FS.INK,
                  ha="center", va="bottom")
-        fig.text((x0 + w0 / 2) / W, (Y_PC + PH + 0.030) / H, sub,
+        fig.text((x0 + w0 / 2) / W, (Y_PC + PH + 0.075) / H, sub,
                  fontsize=6.5, color="#4f555b", ha="center", va="bottom",
                  style="italic")
 
@@ -409,9 +512,8 @@ def build(mode):
                              panel_e=[XE, Y_PC, WE, PH])
     info["glyph_amin"] = GLYPH_AMIN
     info["glyph_pitch_in"] = GLYPH_PITCH
-    info["de_median"] = {c: float(np.median(nl[c]["de"])) for c in CITY3}
-    info["gap"] = {c: float(sel[c]["gap"]) for c in CITY3}
-    info["gap_ci"] = {c: [float(v) for v in sel[c]["gap_ci"]] for c in CITY3}
+    info["road_score"] = {c: float(pm[c]["road_score"]) for c in CITY3}
+    info["road_prior_delta"] = {c: float(pm[c]["prior"]["road_delta"]) for c in CITY3}
     return fig, info
 
 
@@ -471,7 +573,7 @@ def save(fig, name, dpi=600, preview_only=False):
         metadata = None
         if ext == "pdf":
             metadata = {
-                "Title": "Road specificity and matched-capacity media" if name.startswith("fig05") else "Three media at matched capacity",
+                "Title": "Anisotropy and road-medium specificity",
                 "Author": "UrbanFlow manuscript authors",
                 "Subject": "Urban mobility constitutive response analysis",
                 "Creator": "UrbanFlow frozen-product figure pipeline",
@@ -489,7 +591,7 @@ def save(fig, name, dpi=600, preview_only=False):
 
 def write_manifest(info):
     ins = [F5.FO4, F5.CD, F5.CD_SUM, A5.TOPO, A5.RM, A5.PW_CSV,
-           TS.CD_A, TS.CD_F] + [F5.DATA_REV / "basemaps" / n for n in F5.BM_FILE.values()]
+           PANELS, TS.CD_A, TS.CD_F] + [F5.DATA_REV / "basemaps" / n for n in F5.BM_FILE.values()]
     rec = dict(info)
     rec["inputs_sha256"] = {p.relative_to(ROOT).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
                             for p in ins}
