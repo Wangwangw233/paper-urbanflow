@@ -1,0 +1,30 @@
+\suppnote{Modern D/FACE benchmark}{note:modern-benchmark}
+
+This note reports the separate D/FACE comparison used in Results 1.5. It is not a re-ranking of the P/FACE scores in main Table~1: the target is the full divergence-free departure $\delta F_t^\circ$, the source is $\delta x_t$, and every arm uses the same frozen splits, pooled ratio-of-sums score, VAL selection and single TEST pass. The two frames answer different questions and their numbers are never combined.
+
+\paragraph{Protocol.} The linear reference is the unrestricted FACE ridge (and POD, which solves the same full-rank problem) from the frozen three-city analysis. Four modern families were trained: a residual MLP with an explicit linear skip, a 2-D U-Net, a Fourier neural operator and GraphGPS. Each main arm used five seeds; the 300-epoch budget, VAL selection and early-stopping rule were fixed before any TEST row was scored. The scientific margin was $\delta=0.01$ pooled $R^2$. Intervals resample TEST dates and recompute the pooled contrast. P/FACE values were retained as an auxiliary frame but never ranked against D/FACE.
+
+\paragraph{Porto results.} The linear reference reaches 0.5044. No neural arm reaches it. The best is the MLP with road channels at 0.4473, a gap of 0.0513 with a date-level interval excluding zero; the same MLP without road channels reaches 0.4213. The U-Net reaches 0.1827 without road channels and 0.1616 with them, the Fourier operator 0.0288 and 0.1097, and GraphGPS 0.1575 and 0.0193. The best neural configuration is the one closest to a linear map: a depth-0 MLP reaches 0.4916, and removing its nonlinear residual stack gains 0.0703. The ordering is therefore not a failure to train; it is a sample-size and target-dimensionality effect at the tested capacity.
+
+\begin{table}[!htbp]
+\centering\small
+\caption{\textbf{Modern D/FACE benchmark on Porto.} Pooled TEST $R^2$ for the full divergence-free departure. Five seeds per neural arm; the linear reference is a single frozen fit. The P/FACE column of main Table~1 is a different estimand and is not comparable.}
+\label{tab:supp-modern-dface}
+\begin{tabular}{lcc}
+\toprule
+Arm & D/FACE $R^2$ & Seeds \\
+\midrule
+FACE ridge / POD (linear reference) & 0.5044 & -- \\
+MLP, source only & 0.4213 & 5 \\
+MLP, source + road & 0.4473 & 5 \\
+U-Net, source only & 0.1827 & 5 \\
+U-Net, source + road & 0.1616 & 5 \\
+Fourier operator, source only & 0.0288 & 5 \\
+Fourier operator, source + road & 0.1097 & 5 \\
+GraphGPS, source only & 0.1575 & 5 \\
+GraphGPS, source + road & 0.0193 & 5 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Replication and boundary.} San Francisco and Chengdu reproduce the ordering but have three TEST dates each. The best neural arm reaches 0.2319 against 0.2582 for the linear reference in San Francisco, and 0.0125 against 0.1258 in Chengdu. These are sign-and-ordering replications, not significance claims. Road channels help the Fourier operator consistently, help the MLP on the pooled estimand but not on the unweighted date mean in Porto, and hurt GraphGPS and the Porto U-Net; the effect is architecture-dependent. The comparison concerns four architectures at one capacity, one sample size and one 300-epoch budget. It does not establish that neural models cannot learn this map, and it does not re-run UrbanFlow. Exact projection, where applied, costs at most 0.0066 and is retained for admissibility.

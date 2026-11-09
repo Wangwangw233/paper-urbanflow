@@ -7,3 +7,27 @@
 The comparison matches capacity and estimator, not information: the road pattern is an external GIS raster, whereas the mobility-inferred pattern is estimated from TRAIN mobility. Both use the same nominal block capacity under the same normalization. Permuting the mobility medium's spatial arrangement preserves its values, partition and nominal block count and removes the gain. Chengdu uses one all-motion channel, a frozen per-fold basis and four held-out alternate-hour dates; its interval resamples only those dates. The design cannot separate the influence of date count, delivery phase and channel, and the four-date interval is only a descriptive summary, not the 14-date P/D experiment.
 
 Together, the two tests show that the road-induced subspace is not generic under the stated rank-matched null, while the road-only medium does not match the mobility-inferred medium under this estimator and information regime. They do not show that road geometry lacks physical meaning, that all alternative road structures have been tested, or that source-only closure has been achieved. The source files, real $R$ grids and missing-module definition gap are listed in Notes~\ref{note:spatial} and \ref{note:reproducibility}.
+
+\paragraph{Road-modulated operator in the FACE-departure frame.} The road-medium test uses a different target from the rank-matched and matched-capacity tests above: the full divergence-free departure $\delta F_t^\circ$, scored by Eq.~\ref{eq:supp-facedep}. The frozen road operator reaches 0.0619 in Porto, 0.0649 in San Francisco and 0.0039 in Chengdu. These values are not comparable with the P/FACE entries of main Table~1 or the ROAD-support D scores; the unrestricted FACE ridge on the same rows reaches 0.5044, 0.2582 and 0.1258. A uniform medium gives a response at floating-point zero, and face permutation or a $90^\circ$/$270^\circ$ rotation of the medium collapses the held-out score to at most 0.005. The operator's selected spectral order is at the pre-registered grid boundary in all three cities.
+
+\begin{table}[!htbp]
+\centering\small
+\caption{\textbf{Road-medium contrast in the FACE-departure frame.} Held-out $R^2$ for the road-modulated operator, directionally matched Null-1 and coarse-matched Null-2; ``best'' is the highest accepted draw. The unrestricted FACE ridge is shown for scale only. Dashes mark families that could not be constructed under the frozen criteria.}
+\label{tab:supp-roadmedium}
+\begin{tabular}{lccc}
+\toprule
+Score & Porto & San Francisco & Chengdu \\
+\midrule
+Road operator & 0.0619 & 0.0649 & 0.0039 \\
+Null-1 mean & 0.0011 & 0.0040 & 0.0003 \\
+Null-1 best & 0.0145 & 0.0273 & 0.0018 \\
+Null-2 mean & 0.0046 & -- & 0.0010 \\
+Null-2 best & 0.0259 & -- & 0.0019 \\
+FACE ridge (scale) & 0.5044 & 0.2582 & 0.1258 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+A directionally matched non-road medium, preserving the exact weight multiset and 26 spatial statistics within the frozen tolerances, does not reproduce the road score: 0 of 499 accepted draws in Porto and 0 of 199 in San Francisco and Chengdu reach it. The best draws reach 23\%, 42\% and 47\% of the road value. In Porto and Chengdu, coarse matching raises the surrogate mean by factors of 4.1 and 3.6 over Null-1, respectively, but the road remains 2.4 and 2.1 times the best coarse draw. San Francisco has no accepted coarse-matched draw (0 of 199), so its evidence supports directional but not fine-scale specificity. The coarse families contain only about six and twelve effective independent configurations, and their tail estimates sit at the design floor; they bound the constructed family rather than calibrating a tail probability.
+
+\paragraph{Road prior beyond a learned learner.} Used as a prior under an equal-capacity residual ridge, the road operator raises held-out $R^2$ by 0.0116 in Porto, 0.0207 in San Francisco and 0.0023 in Chengdu. These are relative residual-SSE reductions of 2.27\%, 2.65\% and 0.26\%, respectively. The 20 directionally matched priors change held-out $R^2$ by between $-0.0013$ and $+0.0003$. The road increment is positive on every Porto TEST date and in three of four blocked Porto folds; the fourth, highest-energy block is negative. The increment is largest when TRAIN is reduced, consistent with a prior that substitutes for data, and the Porto learner sits at the top of its rank grid, so the measured increment is a lower bound in a saturated regime. The prior-only score is still far below the learned model, and the learned correction has no reproducible response direction across TRAIN halves (median cosine 0.20--0.46). The evidence is for an informative structural prior, not an identified learned operator.

@@ -1,0 +1,25 @@
+\suppnote{Structured operator identification: a negative result}{note:identification-negative}
+
+This note reports the Porto identification experiment referenced in Discussion 2.2. It is deliberately a negative result about one estimator, one 14-atom dictionary and one city; it is not an XAI method and it does not revise the road-specific evidence from the matched-medium tests.
+
+\paragraph{Estimand and models.} The target is the FACE-departure field $\delta F_t^\circ$, the source is $\delta x_t$, and the score is the pooled D/FACE $R^2$ used above. I0 is the learned-only full-face ridge. I1 adds a fixed five-atom E2 road prior selected on VAL. I2 fits a 14-atom structured dictionary jointly with the residual ridge; I4 is the same dictionary with a ridge rather than lasso penalty. I3 repeats I2 with four structure-matched surrogate media. Every arm uses the same splits, VAL rule, penalty grid and single TEST pass.
+
+\begin{table}[!htbp]
+\centering\small
+\caption{\textbf{Porto structured-operator identification.} Pooled D/FACE TEST $R^2$; the I3 entry is the range over four qualified surrogate-media draws. The structured share is the TEST $R^2$ of the prior applied without the residual ridge.}
+\label{tab:supp-identification}
+\begin{tabular}{lcc}
+\toprule
+Model & End-to-end $R^2$ & Structured-only $R^2$ \\
+\midrule
+I0 learned-only ridge & 0.5044 & -- \\
+I1 fixed E2 prior & 0.5139 & -- \\
+I2 14-atom joint fit & 0.5262 & 0.1393 \\
+I3 matched surrogate media & 0.5249--0.5265 & 0.1325--0.1443 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Why the gain is prediction-only.} I2 improves the end-to-end score by 0.0218 over I0. Every surrogate medium reproduces essentially the same gain, and one surrogate lies above the real medium. The structured part alone explains 0.1393 of TEST variance, while the surrogates span 0.1325--0.1443; the real medium sits inside that range. The lasso path selects $\lambda=0$ and all 14 atoms, so no compact support is identified. The standardized TRAIN Gram has condition number $9.2\times10^{15}$ and mean absolute off-diagonal correlation 0.42; the coefficient vector is a minimum-norm representative of a nearly degenerate design, not a set of physical road parameters. The response is stable when the dictionary basis is fixed (half-TRAIN cosine 0.997), but this stability does not establish medium identity.
+
+\paragraph{Post-hoc attribution control.} Integrated gradients on the road-conditioned MLP are faithful for the source field: deleting the top cell costs about 11 points of VAL $R^2$, far beyond a matched random control. For the road block, deletion is much weaker (2.5 points at the top 32 entries) but still above its control. However, models trained on the real and spatially permuted road fields differ by 0.043 TEST $R^2$, while their attribution maps are indistinguishable in magnitude, shape and stability. Post-hoc attribution therefore cannot certify the road medium. The negative result is consistent with the matched-medium findings above: the estimator can use a structured prior without identifying which medium generated it.
