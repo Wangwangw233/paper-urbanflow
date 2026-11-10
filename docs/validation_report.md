@@ -5,7 +5,7 @@
 - Branch: `release/urban-flow` (renamed from `release/nature-cities`)
 - Refactor source commit before the public push: `d743958e2ec52bf211ee6b507ca4128e4dfdffad`
 - Public push commit: `0dc73b2742850723d9d364cd2948f69108e70319`
-- Files: 222 total; `data_manifest/files.csv` lists 221 (the manifest excludes itself).
+- Files: 220 total; `data_manifest/files.csv` lists 219 (the manifest excludes itself).
 - Python files: 53.
 - NPZ archives: 12, containing 295 numeric/Unicode arrays; all loaded with `allow_pickle=False`.
 - Frozen result files: 59 checksum entries including the 11 reference PDFs.
