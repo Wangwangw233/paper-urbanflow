@@ -13,7 +13,7 @@ class FrozenProducts(unittest.TestCase):
     def test_figure_manifest_matches_files(self):
         with (ROOT / "data_manifest/figures.csv").open(encoding="utf-8", newline="") as fh:
             rows = list(csv.DictReader(fh))
-        self.assertEqual(len(rows), 11)
+        self.assertEqual(len(rows), 12)
         for row in rows:
             path = ROOT / row["reference_pdf"]
             self.assertTrue(path.is_file(), path)

@@ -144,8 +144,6 @@ def panel_e(ax, pm):
     block = np.asarray(pm["Porto"]["prior"]["blocked_deltas"], float)
     ax.plot(block, [2.60] * block.size, "s", ms=2.8, color=COL["Porto"],
             mec="white", mew=0.35, zorder=6)
-    ax.text(0.0003, 2.78, "Porto blocked folds: 3/4 positive",
-            fontsize=5.5, color="#4f555b", ha="left", va="center")
     ax.set_xlim(-0.006, 0.030)
     ax.set_ylim(-0.90, 2.85)
     ax.set_yticks([2, 1, 0])

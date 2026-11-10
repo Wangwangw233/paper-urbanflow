@@ -35,7 +35,7 @@ def main() -> int:
         ("main redraw", [sys.executable, "scripts/reproduce_figures/redraw_urbanflow.py",
                          "--out", str(args.out), "--supp-out", str(args.supp_out)]),
         ("phase-sensitive response", [sys.executable, "scripts/reproduce_figures/fig_phase_response.py"]),
-        ("main Fig. 4", [sys.executable, "scripts/reproduce_figures/fig5_redesign.py", "B"]),
+        ("main Figs. 4-5", [sys.executable, "scripts/reproduce_figures/fig4_split.py"]),
         ("three-city supplement", [sys.executable, "scripts/reproduce_figures/make_figures.py"]),
     ]
     supplement_env = env.copy()
